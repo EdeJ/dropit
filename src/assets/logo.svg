@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 1920 682" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g id="Artboard1" transform="matrix(1,0,0,1,0,-195.868)">
+        <rect x="0" y="195.868" width="1920" height="681.141" style="fill:none;"/>
+        <g transform="matrix(47.8676,0,0,47.8676,-24474.8,-9451.33)">
+            <text x="512px" y="212.028px" style="font-family:'Comfortaa-Regular', 'Comfortaa';font-size:12px;fill:rgb(99,87,72);">dr<tspan x="525.5px " y="212.028px ">o</tspan>pit</text>
+        </g>
+        <g transform="matrix(1.05275,0,0,1.05275,-47.2343,-23.3935)">
+            <g transform="matrix(0.309332,0,0,0.309332,629.061,288.335)">
+                <circle cx="800" cy="800" r="502.518" style="fill:rgb(99,87,72);stroke:rgb(99,87,72);stroke-width:3.07px;"/>
+            </g>
+            <g transform="matrix(0.21082,0,0,0.21082,707.871,367.145)">
+                <path d="M800,592.029C914.782,592.029 1007.97,685.218 1007.97,800C1007.97,914.782 914.782,1007.97 800,1007.97C685.218,1007.97 592.029,914.782 592.029,800C592.029,685.218 685.218,592.029 800,592.029ZM800,723.097C842.444,723.097 876.903,757.556 876.903,800C876.903,842.444 842.444,876.903 800,876.903C757.556,876.903 723.097,842.444 723.097,800C723.097,757.556 757.556,723.097 800,723.097Z" style="fill:white;"/>
+            </g>
+            <g transform="matrix(0.304842,0,0,0.304842,632.653,291.927)">
+                <path d="M1259.37,639.188C1235.22,570.198 1195.84,507.533 1144.15,455.846L918.369,681.63C936.147,699.408 949.692,720.961 957.998,744.69L1259.37,639.188Z" style="fill:white;"/>
+            </g>
+            <g transform="matrix(-0.304842,-3.73323e-17,3.73323e-17,-0.304842,1120.4,779.674)">
+                <path d="M1259.37,639.188C1235.22,570.198 1195.84,507.533 1144.15,455.846L918.369,681.63C936.147,699.408 949.692,720.961 957.998,744.69L1259.37,639.188Z" style="fill:white;"/>
+            </g>
+        </g>
+    </g>
+</svg>
