@@ -12,7 +12,7 @@ function Player() {
         <div className="sticky-player">
             <div onClick={() => setToggleMainPLayer(!toggleMainPlayer)}
                 className="container"
-                style={{ background: toggleMainPlayer ? 'red' : 'blue' }}
+                style={{ background: toggleMainPlayer ? 'red' : '#69BA5E' }}
             >
                 <div className="song-details">
                     <strong>Fly Me To The Moon</strong>

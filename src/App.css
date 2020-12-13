@@ -20,6 +20,10 @@ body {
   color: var(--custom-brown);
 }
 
+main {
+  padding: 0 20px;
+}
+
 @media (min-width: 600px) {
   body {
     background: green;
