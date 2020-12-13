@@ -1,0 +1,33 @@
+:root {
+    --custom-background: #EEE9DB;
+    --custom-red: #CB2431;
+    --custom-light-red: #ffefef;
+    --custom-green:  #69BA5E;
+    --custom-dark-green: #58a34d;
+    --custom-brown: #635748;
+    --custem-border-beige: #d0b899;
+  }
+
+.toggle-button {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 34px;
+    /* width: 36px; */
+    background: transparent;
+    border: none;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.toggle-button:focus {
+    outline: none;
+    cursor: pointer;
+}
+
+.toggle-button-line {
+    width: 30px;
+    height: 3px;
+    background-color: var(--custom-green);
+}

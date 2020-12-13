@@ -1,0 +1,39 @@
+:root {
+    --custom-background: #EEE9DB;
+    --custom-red: #CB2431;
+    --custom-light-red: #ffefef;
+    --custom-green:  #69BA5E;
+    --custom-dark-green: #58a34d;
+    --custom-brown: #635748;
+    --custem-border-beige: #d0b899;
+    --custem-text-white: #fff;
+  }
+
+
+.sticky-player {
+    position: fixed;
+    bottom: 0;
+    height: 80px;
+    width: 100%;
+    background-color: var(--custom-green);
+    color: var(--custem-text-white);
+
+}
+.container {
+    height: 100%;
+    padding-left: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+}
+button {
+    width: 60px;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+button svg {
+width: 20px;
+}
