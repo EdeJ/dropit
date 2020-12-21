@@ -6,6 +6,14 @@ import Player from './components/Player/Player';
 
 import './App.css';
 import { useState } from 'react';
+import Home from './pages/Home';
+import Login from './pages/Login';
+import { Route, Switch } from 'react-router-dom';
+import MyDemos from './pages/MyDemos';
+import SignIn from './pages/SignIn';
+import SignUp from './pages/SignUp';
+import AddDemo from './pages/AddDemo';
+import MyProfile from './pages/MyProfile';
 
 function App() {
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
@@ -26,8 +34,29 @@ function App() {
       <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
       {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
       <main style={{ marginTop: '64px' }}>
-        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus odit esse a totam odio nemo. Incidunt, iusto minima labore cumque repudiandae vel saepe officia est eligendi ab, perferendis earum voluptates sunt, omnis ratione? Velit obcaecati exercitationem fugiat itaque, dolorum natus harum quibusdam a vero excepturi quaerat aspernatur, iste, molestias veniam deserunt sed blanditiis iure vitae necessitatibus molestiae nemo illum? Ut fugit sapiente odit dolores ipsa. Officia at aliquam quibusdam itaque ullam, tenetur ducimus possimus adipisci ea quam natus quasi inventore nesciunt deleniti sint atque laborum, debitis dolorum veritatis sed. Deserunt cum possimus tempore asperiores, ipsum consequatur dolorem in! Accusantium, animi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus odit esse a totam odio nemo. Incidunt, iusto minima labore cumque repudiandae vel saepe officia est eligendi ab, perferendis earum voluptates sunt, omnis ratione? Velit obcaecati exercitationem fugiat itaque, dolorum natus harum quibusdam a vero excepturi quaerat aspernatur, iste, molestias veniam deserunt sed blanditiis iure vitae necessitatibus molestiae nemo illum? Ut fugit sapiente odit dolores ipsa. Officia at aliquam quibusdam itaque ullam, tenetur ducimus possimus adipisci ea quam natus quasi inventore nesciunt deleniti sint atque laborum, debitis dolorum veritatis sed. Deserunt cum possimus tempore asperiores, ipsum consequatur dolorem in! Accusantium, animi.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ducimus odit esse a totam odio nemo. Incidunt, iusto minima labore cumque repudiandae vel saepe officia est eligendi ab, perferendis earum voluptates sunt, omnis ratione? Velit obcaecati exercitationem fugiat itaque, dolorum natus harum quibusdam a vero excepturi quaerat aspernatur, iste, molestias veniam deserunt sed blanditiis iure vitae necessitatibus molestiae nemo illum? Ut fugit sapiente odit dolores ipsa. Officia at aliquam quibusdam itaque ullam, tenetur ducimus possimus adipisci ea quam natus quasi inventore nesciunt deleniti sint atque laborum, debitis dolorum veritatis sed. Deserunt cum possimus tempore asperiores, ipsum consequatur dolorem in! Accusantium, animi.</p>
-
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/sign-up">
+            <SignUp />
+          </Route>
+          <Route path="/sign-in">
+            <SignIn />
+          </Route>
+          <Route path="/my-demos">
+            <MyDemos />
+          </Route>
+          <Route path="/add-new-demo">
+            <AddDemo />
+          </Route>
+          <Route path="/my-profile">
+            <MyProfile />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
       </main>
       <Player />
     </div>
