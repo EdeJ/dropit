@@ -8,7 +8,7 @@ import './App.css';
 import { useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, useLocation } from 'react-router-dom';
 import MyDemos from './pages/MyDemos';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -16,6 +16,7 @@ import AddDemo from './pages/AddDemo';
 import MyProfile from './pages/MyProfile';
 
 function App() {
+
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
   const drawerToggleClickHandler = () => {
@@ -23,7 +24,6 @@ function App() {
   }
 
   const backdropClickHandler = () => {
-    // console.log('close');
     setSideDrawerOpen(false);
   }
 

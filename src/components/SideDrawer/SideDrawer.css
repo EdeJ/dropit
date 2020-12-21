@@ -42,13 +42,18 @@
 }
 
 .side-drawer li {
-    margin: 0.5rem 0;
     border-bottom: 1px solid var(--custem-border-beige);
+    /* height: 60px;
+    display: flex;
+    align-items: center; */
 }
 
 .side-drawer a {
     color: var(--custom-brown);
     text-decoration: none;
+    padding: 18px 0;
+    float: left;
+    width: 100%;
     /* font-size: 1.2rem; */
 }
 
