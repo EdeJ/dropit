@@ -8,7 +8,7 @@ import './App.css';
 import { useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { Route, Switch, useLocation } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import MyDemos from './pages/MyDemos';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -30,10 +30,10 @@ function App() {
 
   return (
     <div style={{ height: '100%' }}>
-      <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} />
+      <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
       <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
       {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
-      <main style={{ marginTop: '64px' }}>
+      <main>
         <Switch>
           <Route exact path="/">
             <Home />

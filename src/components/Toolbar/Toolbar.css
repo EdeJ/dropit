@@ -1,9 +1,10 @@
+@import url('../../colors.css');
+
 .toolbar {
     /* position: fixed; */
     top: 0;
     left: 0;
     width: 100%;
-    /* background-color: #aaa; */
     height: 80px;
 }
 .toolbar-navigation {
@@ -14,9 +15,6 @@
     justify-content: space-between
 }
 
-.toolbar-logo {
-    /* margin-left: 1rem; */
-}
 .toolbar-logo svg {
     width: 150px
 }
@@ -37,13 +35,13 @@ padding: 0 0.5rem;
 }
 
 .toolbar-navigation-items a {
-    color: white;
+    color: var(--custom-brown);
     text-decoration: none;
 }
 
 .toolbar-navigation-items a:hover,
 .toolbar-navigation-items a:active {
-    color: orange;
+    color: var(--custom-green);
 }
 
 @media (max-width: 768px) {
