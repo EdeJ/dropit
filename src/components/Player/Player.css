@@ -1,29 +1,25 @@
-:root {
-    --custom-background: #EEE9DB;
-    --custom-red: #CB2431;
-    --custom-light-red: #ffefef;
-    --custom-green:  #69BA5E;
-    --custom-dark-green: #58a34d;
-    --custom-brown: #635748;
-    --custem-border-beige: #d0b899;
-    --custem-text-white: #fff;
-  }
-
+@import url('../../custom-vars.css');
 
 .sticky-player {
     position: fixed;
     bottom: 0;
     height: 80px;
     width: 100%;
+    /* max-width: 1480px; */
     background-color: var(--custom-green);
-    color: var(--custem-text-white);
+    color: var(--custom-text-white);
 
     /* Maak tekst niet selecteerbaar */
-    -webkit-user-select: none; /* Safari */        
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* IE10+/Edge */
-    user-select: none; /* Standard */
+    -webkit-user-select: none;
+    /* Safari */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* IE10+/Edge */
+    user-select: none;
+    /* Standard */
 }
+
 .container {
     height: 100%;
     padding-left: 10px;
@@ -32,6 +28,7 @@
     align-items: center;
     cursor: pointer;
 }
+
 .sticky-player button {
     width: 60px;
     height: 100%;
@@ -39,6 +36,7 @@
     border: none;
     cursor: pointer;
 }
+
 .sticky-player svg {
-width: 20px;
+    width: 20px;
 }

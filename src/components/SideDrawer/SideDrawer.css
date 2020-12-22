@@ -1,12 +1,4 @@
-:root {
-    --custom-background: #EEE9DB;
-    --custom-red: #CB2431;
-    --custom-light-red: #FFEFEF;
-    --custom-green: #69BA5E;
-    --custom-dark-green: #58A34D;
-    --custom-brown: #635748;
-    --custem-border-beige: #D0B899;
-}
+@import url('../../custom-vars.css');
 
 .side-drawer {
     height: 100%;
@@ -23,7 +15,7 @@
     transition: transform 0.2s ease-out;
     /* position: relative; */
     /* box-shadow: 5px 10px 8px #888888; */
-    border-right: 1px solid var(--custem-border-beige);
+    border-right: 1px solid var(--custom-border-beige);
     box-sizing: border-box;
     padding: 20px;
 }
@@ -42,7 +34,7 @@
 }
 
 .side-drawer li {
-    border-bottom: 1px solid var(--custem-border-beige);
+    border-bottom: 1px solid var(--custom-border-beige);
     /* height: 60px;
     display: flex;
     align-items: center; */
@@ -72,7 +64,7 @@
     top: 20px;
 }
 
-@media (min-width: 600px) {
+@media (min-width: 769px) {
     .side-drawer {
         display: none;
     }

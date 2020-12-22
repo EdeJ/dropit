@@ -29,37 +29,40 @@ function App() {
 
 
   return (
-    <div style={{ height: '100%' }}>
-      <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
-      <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
-      {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
-      <main>
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/sign-up">
-            <SignUp />
-          </Route>
-          <Route path="/sign-in">
-            <SignIn />
-          </Route>
-          <Route path="/my-demos">
-            <MyDemos />
-          </Route>
-          <Route path="/add-new-demo">
-            <AddDemo />
-          </Route>
-          <Route path="/my-profile">
-            <MyProfile />
-          </Route>
-          <Route path="/login">
-            <Login />
-          </Route>
-        </Switch>
-      </main>
+    <>
+      <div className="app" style={{ height: '100%' }}>
+        <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
+        <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
+        {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
+        <main>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/sign-up">
+              <SignUp />
+            </Route>
+            <Route path="/sign-in">
+              <SignIn />
+            </Route>
+            <Route path="/my-demos">
+              <MyDemos />
+            </Route>
+            <Route path="/add-new-demo">
+              <AddDemo />
+            </Route>
+            <Route path="/my-profile">
+              <MyProfile />
+            </Route>
+            <Route path="/login">
+              <Login />
+            </Route>
+          </Switch>
+        </main>
+
+      </div>
       <Player />
-    </div>
+    </>
   )
 }
 

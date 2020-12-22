@@ -1,25 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap');
+@import url('./custom-vars.css');
 
 * {
   margin: 0;
   padding: 0;
 }
 
-:root {
-  --custom-background: #EEE9DB;
-  --custom-red: #CB2431;
-  --custom-light-red: #FFEFEF;
-  --custom-green: #69BA5E;
-  --custom-dark-green: #58A34D;
-  --custom-brown: #635748;
-  --custem-border-beige: #D0B899;
-}
-
 body {
   font-family: 'Montserrat', sans-serif;
-  background-color: var(--custom-background);
   color: var(--custom-brown);
+  display: flex;
+  justify-content: center;
+  /* background-color: #ebe5d6; */
+  background-color: var(--custom-background);
+}
+
+#root {
+  background-color: var(--custom-background);
+  width: 100%;
+  /* box-shadow: 0px 0px 8px #aaa; */
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  max-width: var(--custom-max-width);
+  width: 100%;
 }
 
 h2 {
@@ -31,10 +38,6 @@ main {
 }
 
 @media (min-width: 600px) {
-  body {
-    /* background: green; */
-  }
-
   h2 {
     font-size: 50px;
   }
