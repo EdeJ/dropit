@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600&display=swap');
 
 * {
   margin: 0;
@@ -21,6 +22,10 @@ body {
   color: var(--custom-brown);
 }
 
+h2 {
+  font-family: 'Comfortaa', cursive;
+}
+
 main {
   padding: 0 20px;
 }
@@ -28,5 +33,9 @@ main {
 @media (min-width: 600px) {
   body {
     /* background: green; */
+  }
+
+  h2 {
+    font-size: 50px;
   }
 }
