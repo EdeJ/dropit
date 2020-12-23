@@ -1,9 +1,10 @@
 import React from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
-import './Toolbar.css';
-import { NavLink, useLocation } from 'react-router-dom';
 import MenuLinks from '../MenuLinks';
+
+import './Toolbar.css';
 
 function Toolbar({ drawerToggleClickHandler, backdropClickHandler }) {
 

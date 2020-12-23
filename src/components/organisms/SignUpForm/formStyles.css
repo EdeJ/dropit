@@ -1,0 +1,114 @@
+:root {
+    --custom-background: #EEE9DB;
+    --custom-red: #CB2431;
+    --custom-light-red: #ffefef;
+    --custom-green: #69BA5E;
+    --custom-dark-green: #58a34d;
+    --custom-brown: #635748;
+    --custem-border-beige: #d0b899;
+}
+
+.sign-up-form {
+    margin-bottom: 120px;
+}
+
+.sign-up-form input:focus,
+.sign-up-form select:focus,
+.sign-up-form textarea:focus,
+.sign-up-form button:focus {
+    outline: none;
+}
+
+.sign-up-form .input-section {
+    margin-top: 1.6rem;
+}
+
+.sign-up-form input[type=text],
+.sign-up-form input[type=number],
+.sign-up-form textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 2.8rem;
+    border: 1px solid var(--custem-border-beige);
+    border-radius: 4px;
+    padding: 0 10px;
+}
+
+.sign-up-form input[type=number] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.sign-up-form input:hover,
+.sign-up-form textarea:hover {
+    border-color: var(--custom-brown);
+}
+
+.sign-up-form input:focus,
+.sign-up-form textarea:focus {
+    border-color: var(--custom-green);
+}
+
+.sign-up-form .error {
+    border-color: var(--custom-red);
+    /* background-color: var(--custom-light-red); */
+}
+
+.sign-up-form input.error {
+    border-color: var(--custom-red);
+}
+
+.sign-up-form .error-message {
+    color: var(--custom-red);
+}
+
+.sign-up-form label {
+    /* font-size: 0.9rem;
+    font-weight: 700; */
+}
+
+.sign-up-form button {
+    margin-top: 1.6rem;
+    background-color: var(--custom-green);
+    border-radius: 4px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 6.4rem;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 2.6rem;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    /* transition: background .1s; */
+}
+
+.sign-up-form button:hover {
+    background-color: var(--custom-dark-green);
+}
+
+
+.sign-up-form .radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.sign-up-form .radio-set {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.sign-up-form .radio-set label {
+    margin-left: 10px;
+}
+
+.sign-up-form .checkbox label {
+    margin-left: 10px;
+}

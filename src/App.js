@@ -1,19 +1,17 @@
-import Backdrop from './components/Backdrop/Backdrop';
+import { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Toolbar from './components/Toolbar/Toolbar';
-import Header from './components/Header';
 import Player from './components/Player/Player';
-
-import './App.css';
-import { useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { Route, Switch } from 'react-router-dom';
 import MyDemos from './pages/MyDemos';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import AddDemo from './pages/AddDemo';
 import MyProfile from './pages/MyProfile';
+
+import './App.css';
 
 function App() {
 
@@ -59,7 +57,6 @@ function App() {
             </Route>
           </Switch>
         </main>
-
       </div>
       <Player />
     </>

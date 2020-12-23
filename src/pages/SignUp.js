@@ -1,11 +1,13 @@
 import React from 'react'
+import { SignUpForm } from '../components/organisms/SignUpForm'
 
 function SignUp() {
     return (
         <div>
-            <h1>SIGN UP</h1>
+            <h3>Sign Up</h3>
+            <SignUpForm />
         </div>
     )
 }
 
-export default SignUp
+export default SignUp 
