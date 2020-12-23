@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SignUpForm } from '../components/organisms/SignUpForm';
 
 function SignUp({ setShowPlayer }) {
-    setShowPlayer(false);
+    useEffect(() => {
+        setShowPlayer(false);
+    }, [])
+
     return (
         <div className="page">
             <div className="content">
