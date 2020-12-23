@@ -1,15 +1,16 @@
-:root {
-    --custom-background: #EEE9DB;
-    --custom-red: #CB2431;
-    --custom-light-red: #ffefef;
-    --custom-green: #69BA5E;
-    --custom-dark-green: #58a34d;
-    --custom-brown: #635748;
-    --custem-border-beige: #d0b899;
+@import url('../../../custom-vars.css');
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .sign-up-form {
-    margin-bottom: 120px;
+margin-top: 20px;
+max-width: 600px;
 }
 
 .sign-up-form input:focus,
@@ -20,19 +21,22 @@
 }
 
 .sign-up-form .input-section {
-    margin-top: 1.6rem;
+    margin-top: 20px;
 }
 
 .sign-up-form input[type=text],
 .sign-up-form input[type=number],
+.sign-up-form input[type=password],
 .sign-up-form textarea {
     display: block;
     box-sizing: border-box;
     width: 100%;
-    line-height: 2.8rem;
-    border: 1px solid var(--custem-border-beige);
-    border-radius: 4px;
+    line-height: 44px;
+    border: 1px solid var(--custom-border-beige);
+    border-radius: 5px;
     padding: 0 10px;
+    color: var(--custom-brown);
+    font-size: 16px;
 }
 
 .sign-up-form input[type=number] {
@@ -70,16 +74,16 @@
 }
 
 .sign-up-form button {
-    margin-top: 1.6rem;
+    margin-top: 40px;
     background-color: var(--custom-green);
-    border-radius: 4px;
+    border-radius: 5px;
     color: #fff;
     cursor: pointer;
     display: inline-block;
-    min-width: 6.4rem;
+    /* min-width: 6.4rem; */
     font-size: inherit;
     font-weight: 700;
-    line-height: 2.6rem;
+    line-height: 44px;
     outline: none;
     text-align: center;
     text-decoration: none;
@@ -111,4 +115,7 @@
 
 .sign-up-form .checkbox label {
     margin-left: 10px;
+}
+main {
+    height: auto;
 }

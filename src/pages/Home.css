@@ -8,10 +8,7 @@ body,
 
 
 main {
-    /* background: url('../assets/headphones-2.svg') no-repeat; */
-    background-position: center center;
-    background-size: 80%;
-    height: calc(100% - 80px);
+
 }
 
 .container-center {

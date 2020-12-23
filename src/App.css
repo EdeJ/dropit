@@ -34,8 +34,19 @@ h3 {
   font-family: 'Comfortaa', cursive;
 }
 
-main {
+.page {
+  height: calc(100% - 80px);
   padding: 0 20px;
+}
+
+/* .content {
+  margin-top: 30px;
+} */
+
+.small-text {
+  float: left;
+  margin-top: 10px;
+  font-size: 12px;
 }
 
 @media (min-width: 600px) {

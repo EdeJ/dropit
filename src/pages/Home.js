@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 import './Home.css';
 
 function Home() {
+
     return (
-        // <div style={{ height: '100%' }}>
         <div className="container-center">
             <h2>"Now Give Me A Beat!"</h2>
             <div className="action-btns">
@@ -17,7 +17,6 @@ function Home() {
                 <li>Change the history of music...</li>
             </ul>
         </div>
-        // </div>
     )
 }
 

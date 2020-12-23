@@ -1,11 +1,13 @@
 import React from 'react'
-import { SignUpForm } from '../components/organisms/SignUpForm'
+import { SignUpForm } from '../components/organisms/SignUpForm';
 
-function SignUp() {
+function SignUp({ setShowPlayer }) {
+    setShowPlayer(false);
     return (
-        <div>
-            <h3>Sign Up</h3>
-            <SignUpForm />
+        <div className="page">
+            <div className="content">
+                <SignUpForm />
+            </div>
         </div>
     )
 }
