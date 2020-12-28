@@ -1,51 +1,50 @@
-import Backdrop from './components/Backdrop/Backdrop';
+import { useState } from 'react';
+import { Route, Switch } from 'react-router-dom';
 import SideDrawer from './components/SideDrawer/SideDrawer';
 import Toolbar from './components/Toolbar/Toolbar';
-import Header from './components/Header';
 import Player from './components/Player/Player';
-
-import './App.css';
-import { useState } from 'react';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import { Route, Switch } from 'react-router-dom';
 import MyDemos from './pages/MyDemos';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import AddDemo from './pages/AddDemo';
 import MyProfile from './pages/MyProfile';
 
+import './App.css';
+
 function App() {
+
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(false);
 
   const drawerToggleClickHandler = () => {
     setSideDrawerOpen(!sideDrawerOpen);
   }
 
   const backdropClickHandler = () => {
-    // console.log('close');
     setSideDrawerOpen(false);
   }
 
 
   return (
-    <div style={{ height: '100%' }}>
-      <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} />
-      <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
-      {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
-      <main style={{ marginTop: '64px' }}>
+    <>
+      <div className="app" style={{ height: '100%' }}>
+        <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
+        <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
+        {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
         <Switch>
           <Route exact path="/">
             <Home />
           </Route>
           <Route path="/sign-up">
-            <SignUp />
+            <SignUp setShowPlayer={setShowPlayer} />
           </Route>
           <Route path="/sign-in">
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos />
+            <MyDemos setShowPlayer={setShowPlayer} />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />
@@ -57,9 +56,9 @@ function App() {
             <Login />
           </Route>
         </Switch>
-      </main>
-      <Player />
-    </div>
+      </div>
+      {showPlayer && <Player />}
+    </>
   )
 }
 

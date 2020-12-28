@@ -1,0 +1,121 @@
+@import url('../../../custom-vars.css');
+
+.content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-up-form {
+margin-top: 20px;
+max-width: 600px;
+}
+
+.sign-up-form input:focus,
+.sign-up-form select:focus,
+.sign-up-form textarea:focus,
+.sign-up-form button:focus {
+    outline: none;
+}
+
+.sign-up-form .input-section {
+    margin-top: 20px;
+}
+
+.sign-up-form input[type=text],
+.sign-up-form input[type=number],
+.sign-up-form input[type=password],
+.sign-up-form textarea {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    line-height: 44px;
+    border: 1px solid var(--custom-border-beige);
+    border-radius: 5px;
+    padding: 0 10px;
+    color: var(--custom-brown);
+    font-size: 16px;
+}
+
+.sign-up-form input[type=number] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.sign-up-form input:hover,
+.sign-up-form textarea:hover {
+    border-color: var(--custom-brown);
+}
+
+.sign-up-form input:focus,
+.sign-up-form textarea:focus {
+    border-color: var(--custom-green);
+}
+
+.sign-up-form .error {
+    border-color: var(--custom-red);
+    /* background-color: var(--custom-light-red); */
+}
+
+.sign-up-form input.error {
+    border-color: var(--custom-red);
+}
+
+.sign-up-form .error-message {
+    color: var(--custom-red);
+}
+
+.sign-up-form label {
+    /* font-size: 0.9rem;
+    font-weight: 700; */
+}
+
+.sign-up-form button {
+    margin-top: 40px;
+    background-color: var(--custom-green);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    /* min-width: 6.4rem; */
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 44px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    /* transition: background .1s; */
+}
+
+.sign-up-form button:hover {
+    background-color: var(--custom-dark-green);
+}
+
+
+.sign-up-form .radio-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+.sign-up-form .radio-set {
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+.sign-up-form .radio-set label {
+    margin-left: 10px;
+}
+
+.sign-up-form .checkbox label {
+    margin-left: 10px;
+}
+main {
+    height: auto;
+}

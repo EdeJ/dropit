@@ -1,0 +1,16 @@
+@import url('../custom-vars.css');
+
+.demo-list ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 30px 0 110px 0;
+}
+
+.demo-list li {
+    width: 155px;
+    height: 155px;
+    border: 1px solid var(--custom-border-beige);
+    border-radius: 5px;
+}

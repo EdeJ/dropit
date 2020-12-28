@@ -2,6 +2,9 @@ import React from 'react'
 import { Route, Switch } from 'react-router-dom'
 // import { Switch, Route } from 'react-router-dom';
 
+/// WORDT NOG NIET GEBRUIK|T
+
+
 function Routes() {
     return (
         <Switch>
