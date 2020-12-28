@@ -1,10 +1,11 @@
 import React, { useEffect } from 'react'
-import { SignUpForm } from '../components/organisms/SignUpForm';
+import { SignUpForm } from '../components/signUpForm/SignUpForm';
+
 
 function SignUp({ setShowPlayer }) {
     useEffect(() => {
         setShowPlayer(false);
-    }, [])
+    }, [setShowPlayer])
 
     return (
         <div className="page">

@@ -1,5 +1,4 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
 import { ReactComponent as CloseIcon } from '../../assets/close-icon.svg';
 import MenuLinks from '../MenuLinks';
 import './SideDrawer.css';

@@ -1,14 +1,14 @@
 import React from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
-import DrawerToggleButton from '../SideDrawer/DrawerToggleButton';
-import { ReactComponent as Logo } from '../../assets/logo.svg';
+import { NavLink } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
+import DrawerToggleButton from '../sideDrawer/DrawerToggleButton';
 import MenuLinks from '../MenuLinks';
-
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Toolbar.css';
 
 function Toolbar({ drawerToggleClickHandler, backdropClickHandler }) {
 
-    const location = useLocation();
+    // const location = useLocation();
 
     return (
         <header className="toolbar">
@@ -32,4 +32,4 @@ function Toolbar({ drawerToggleClickHandler, backdropClickHandler }) {
     )
 }
 
-export default Toolbar;
+export default Toolbar

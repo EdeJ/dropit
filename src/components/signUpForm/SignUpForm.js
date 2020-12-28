@@ -1,11 +1,8 @@
 import React, { useRef } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Button } from '../../atoms'
-import { CheckBox, NumberInput, RadioGroup, RadioInput, TextArea, TextInput } from '../../molecules'
-import { PasswordInput } from '../../molecules/passwordInput'
-import './formStyles.css'
+import { TextInput } from '../TextInput';
 
-
+import './SignUpForm.css';
 
 export const SignUpForm = () => {
 
@@ -27,6 +24,7 @@ export const SignUpForm = () => {
             <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
                 <h3>Sign Up</h3>
                 <TextInput
+                    type="text"
                     label="E-mail *"
                     name="email"
                     fieldRef={methods.register({
@@ -37,7 +35,8 @@ export const SignUpForm = () => {
                         }
                     })}
                 />
-                <PasswordInput
+                <TextInput
+                    type="password"
                     label="Password *"
                     name="password"
                     fieldRef={methods.register({
@@ -51,14 +50,15 @@ export const SignUpForm = () => {
                         }
                     })}
                 />
-                <PasswordInput
+                <TextInput
+                    type="password"
                     label="Repeat password *"
                     name="password-repeat"
                     fieldRef={methods.register({
                         validate: value => value === password.current || "The passwords do not match"
                     })}
                 />
-                <Button>Sign up for dropit</Button>
+                <button type="submit">Sign up for dropit</button>
                 <p className="small-text">By creating an account, you agree to the Terms of Service.</p>
             </form>
         </FormProvider>
