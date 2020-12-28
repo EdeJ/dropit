@@ -1,4 +1,4 @@
-@import url('../../../custom-vars.css');
+@import url('../../custom-vars.css');
 
 .content {
     height: 100%;
@@ -9,8 +9,8 @@
 }
 
 .sign-up-form {
-margin-top: 20px;
-max-width: 600px;
+    margin-top: 20px;
+    max-width: 600px;
 }
 
 .sign-up-form input:focus,
@@ -116,6 +116,7 @@ max-width: 600px;
 .sign-up-form .checkbox label {
     margin-left: 10px;
 }
+
 main {
     height: auto;
 }

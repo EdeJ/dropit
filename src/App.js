@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { Route, Switch } from 'react-router-dom';
-import SideDrawer from './components/SideDrawer/SideDrawer';
-import Toolbar from './components/Toolbar/Toolbar';
-import Player from './components/Player/Player';
+import SideDrawer from './components/sideDrawer/SideDrawer';
+import Toolbar from './components/toolbar/Toolbar';
+import Player from './components/player/Player';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import MyDemos from './pages/MyDemos';
@@ -13,10 +13,11 @@ import MyProfile from './pages/MyProfile';
 
 import './App.css';
 
+
 function App() {
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-  const [showPlayer, setShowPlayer] = useState(false);
+  const [showPlayer, setShowPlayer] = useState(true);
 
   const drawerToggleClickHandler = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -32,7 +33,6 @@ function App() {
       <div className="app" style={{ height: '100%' }}>
         <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
         <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
-        {/* {sideDrawerOpen && <Backdrop backdropClickHandler={backdropClickHandler} />} */}
         <Switch>
           <Route exact path="/">
             <Home />
