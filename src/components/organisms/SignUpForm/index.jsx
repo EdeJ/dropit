@@ -6,7 +6,6 @@ import { PasswordInput } from '../../molecules/passwordInput'
 import './formStyles.css'
 
 
-
 export const SignUpForm = () => {
 
     const { ...methods } = useForm();
