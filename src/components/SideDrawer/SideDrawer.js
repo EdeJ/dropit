@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as CloseIcon } from '../../assets/close-icon.svg';
+import { ReactComponent as CloseIcon } from '../../assets/images/close-icon.svg';
 import MenuLinks from '../MenuLinks';
 import './SideDrawer.css';
 

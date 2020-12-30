@@ -32,17 +32,23 @@
     padding: 5px 10px;
     border-top: 1px solid var(--custom-border-beige);
     height: 40px;
-    width: 125px;
     font-size: 12px;
     display: flex;
     flex-wrap: wrap;
-}
-
-.song-details {
+    justify-content: flex-start;
+/* 
     white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 125;
+    text-overflow: ellipsis; */
+}
+
+.song-details strong,
+.song-details span
+ {
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
 }
 
 .demo-list svg {

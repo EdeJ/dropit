@@ -1,12 +1,40 @@
-import React, { useState } from 'react'
-import { ReactComponent as PlayIcon } from '../../assets/play-icon.svg';
-import { ReactComponent as PauseIcon } from '../../assets/pause-icon.svg';
+import React, { useEffect, useState } from 'react'
+import { ReactComponent as PlayIcon } from '../../assets/images/play-icon.svg';
+import { ReactComponent as PauseIcon } from '../../assets/images/pause-icon.svg';
+import { Howl, Howler } from 'howler';
+import * as Tone from 'tone'
+
+
 import './Player.css'
 
-function Player() {
+function Player({ song }) {
 
-    const [toggle, setTogglePLay] = useState(false);
+    const [togglePlay, setTogglePLay] = useState(false);
     const [toggleMainPlayer, setToggleMainPLayer] = useState(false);
+
+
+    useEffect(() => {
+        // const sound = new Howl({
+        //     src: ['../../assets/adio/1.mp3']
+        // });
+        // sound.play();
+        // if (song) {
+        //     const player = new Tone.Player(song.fileName).toDestination();
+        //     Tone.loaded().then(() => {
+        //         player.start();
+        //     });
+        // }
+    }, [song])
+
+    function play() {
+        setTogglePLay(!togglePlay);
+        // const player = new Tone.Player('../../assets/audio/' + song.fileName).toDestination();
+        // Tone.loaded().then(() => {
+        //     player.start();
+        // });
+
+    }
+
 
     return (
         <div className="sticky-player">
@@ -14,17 +42,20 @@ function Player() {
                 className="container"
                 style={{ background: toggleMainPlayer ? 'red' : '#69BA5E' }}
             >
-                <div className="song-details">
-                    <strong>Fly Me To The Moon</strong>
-                    <p>Frank Sinatra</p>
-                </div>
+                {song && (
+                    <div className="song-details">
+                        <strong>{song.title}</strong>
+                        <p>{song.artist}</p>
+                    </div>
+                )}
                 <button onClick={(e) => {
                     e.stopPropagation();
-                    setTogglePLay(!toggle);
+                    // setTogglePLay(!togglePlay);
+                    play();
                 }
                 }
                     type="button">
-                    {toggle ? <PlayIcon /> : <PauseIcon />
+                    {togglePlay ? <PlayIcon /> : <PauseIcon />
 
                     }
                 </button>
