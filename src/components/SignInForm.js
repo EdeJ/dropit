@@ -1,7 +1,9 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom';
 import { TextInput } from './TextInput';
 import './signUpForm/SignUpForm.css'
+
 
 
 export const SignInForm = () => {
@@ -47,7 +49,8 @@ export const SignInForm = () => {
                         }
                     })}
                 />
-                <button type="submit">Sign up for dropit</button>
+                <button type="submit">Sign In</button>
+                <p className="small-text card">New to dropit? &nbsp;<Link to="/sign-up"> Create an account</Link></p>
             </form>
         </FormProvider>
     )
