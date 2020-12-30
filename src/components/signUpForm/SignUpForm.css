@@ -9,7 +9,7 @@
 }
 
 .sign-up-form {
-    margin-top: 20px;
+    width: 100%;
     max-width: 600px;
 }
 
@@ -20,7 +20,7 @@
     outline: none;
 }
 
-.sign-up-form .input-section {
+.input-section {
     margin-top: 20px;
 }
 

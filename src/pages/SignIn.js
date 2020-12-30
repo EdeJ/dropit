@@ -1,9 +1,12 @@
 import React from 'react'
+import { SignInForm } from '../components/SignInForm'
 
 function SignIn() {
     return (
-        <div>
-            <h1>SIGN IN</h1>
+        <div className="page">
+            <div className="content">
+                <SignInForm />
+            </div>
         </div>
     )
 }

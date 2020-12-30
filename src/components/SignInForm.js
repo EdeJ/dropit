@@ -1,14 +1,12 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { TextInput } from '../TextInput';
+import { TextInput } from './TextInput';
+import './signUpForm/SignUpForm.css'
 
-import './SignUpForm.css';
 
-export const SignUpForm = () => {
+export const SignInForm = () => {
 
     const { ...methods } = useForm();
-    const currentPassword = methods.watch("password");
-
 
     const onSuccess = (formData) => {
         console.log(formData)
@@ -21,7 +19,7 @@ export const SignUpForm = () => {
     return (
         <FormProvider {...methods} >
             <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
-                <h3>Sign Up</h3>
+                <h3>Sign In</h3>
                 <TextInput
                     type="text"
                     label="E-mail *"
@@ -49,16 +47,7 @@ export const SignUpForm = () => {
                         }
                     })}
                 />
-                <TextInput
-                    type="password"
-                    label="Repeat password *"
-                    name="password-repeat"
-                    fieldRef={methods.register({
-                        validate: value => value === currentPassword || "The passwords do not match"
-                    })}
-                />
                 <button type="submit">Sign up for dropit</button>
-                <p className="small-text">By creating an account, you agree to the Terms of Service.</p>
             </form>
         </FormProvider>
     )
