@@ -44,4 +44,5 @@
 
 .sticky-player svg {
     width: 20px;
+    fill: var(--custom-text-white);
 }
