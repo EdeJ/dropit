@@ -33,7 +33,7 @@ function MyDemos({ setShowPlayer }) {
                             <div><PlayIcon /></div>
                             <div className="song-details">
                                 <strong>{title.length < 18 ? title : title.substr(0, 17) + '...'}</strong>
-                                <span>{artist}</span>
+                                <span>{artist.length < 18 ? artist : artist.substr(0, 17) + '...'}</span>
                             </div>
                         </li>
                     ))}
