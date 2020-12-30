@@ -1,7 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { SignInForm } from '../components/SignInForm'
 
-function SignIn() {
+function SignIn({ setShowPlayer }) {
+
+    useEffect(() => {
+        setShowPlayer(false);
+    }, [setShowPlayer])
+
     return (
         <div className="page">
             <div className="content">

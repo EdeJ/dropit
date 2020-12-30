@@ -1,5 +1,6 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom';
 import { TextInput } from '../TextInput';
 
 import './SignUpForm.css';
@@ -58,7 +59,7 @@ export const SignUpForm = () => {
                     })}
                 />
                 <button type="submit">Sign up for dropit</button>
-                <p className="small-text">By creating an account, you agree to the Terms of Service.</p>
+                <p className="small-text">By creating an account, you agree to the <Link to="/">Terms of Service</Link>.</p>
             </form>
         </FormProvider>
     )

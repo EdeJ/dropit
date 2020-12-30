@@ -3,6 +3,7 @@ import { SignUpForm } from '../components/signUpForm/SignUpForm';
 
 
 function SignUp({ setShowPlayer }) {
+
     useEffect(() => {
         setShowPlayer(false);
     }, [setShowPlayer])
