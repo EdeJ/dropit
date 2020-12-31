@@ -43,8 +43,8 @@
 }
 
 .sticky-player svg {
-    width: 20px;
-    fill: var(--custom-text-white);
+    /* width: 20px; */
+    /* fill: var(--custom-text-white); */
 }
 
 .sticky-player .song-details {

@@ -1,46 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import { ReactComponent as PlayIcon } from '../../assets/images/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/images/pause-icon.svg';
-import { Howl, Howler } from 'howler';
-import * as Tone from 'tone'
 
+// import { Howl, Howler } from 'howler';
+// import * as Tone from 'tone'
+
+// TODO kies een audio library en verwijder wat niet wordt gebruikt van de package.json file.
 
 import './Player.css'
+// import SideDrawer from '../sideDrawer/SideDrawer';
+import MainPlayer from '../mainPlayer/MainPlayer';
 
 function Player({ song }) {
 
     const [togglePlay, setTogglePLay] = useState(false);
-    const [toggleMainPlayer, setToggleMainPLayer] = useState(false);
+    const [showMainPlayer, setShowMainPlayer] = useState(false);
 
+    // const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
     useEffect(() => {
-        // const sound = new Howl({
-        //     src: ['../../assets/adio/1.mp3']
-        // });
-        // sound.play();
-        // if (song) {
-        //     const player = new Tone.Player(song.fileName).toDestination();
-        //     Tone.loaded().then(() => {
-        //         player.start();
-        //     });
-        // }
     }, [song])
 
     function play() {
         setTogglePLay(!togglePlay);
-        // const player = new Tone.Player('../../assets/audio/' + song.fileName).toDestination();
-        // Tone.loaded().then(() => {
-        //     player.start();
-        // });
-
     }
-
 
     return (
         <div className="sticky-player">
-            <div onClick={() => setToggleMainPLayer(!toggleMainPlayer)}
+            <MainPlayer show={showMainPlayer} setShowMainPlayer={setShowMainPlayer} />
+            <div onClick={() => {
+                setShowMainPlayer(true);
+            }}
                 className="container"
-                style={{ background: toggleMainPlayer ? 'red' : '#69BA5E' }}
             >
                 {song && (
                     <div className="song-details">
@@ -52,12 +43,9 @@ function Player({ song }) {
                     e.stopPropagation();
                     // setTogglePLay(!togglePlay);
                     play();
-                }
-                }
+                }}
                     type="button">
-                    {togglePlay ? <PlayIcon /> : <PauseIcon />
-
-                    }
+                    {togglePlay ? <PlayIcon /> : <PauseIcon />}
                 </button>
             </div>
         </div>

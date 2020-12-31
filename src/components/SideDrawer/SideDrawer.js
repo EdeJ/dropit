@@ -13,4 +13,4 @@ function SideDrawer({ show, backdropClickHandler }) {
     )
 }
 
-export default SideDrawer;
+export default SideDrawer

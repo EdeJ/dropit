@@ -6,7 +6,7 @@ import './MyDemos.css'
 
 function MyDemos({ setCurrentSong, setShowPlayer }) {
 
-    const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+    // const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
 
     useEffect(() => {
         console.log(songs);
@@ -16,7 +16,7 @@ function MyDemos({ setCurrentSong, setShowPlayer }) {
 
     return (
         <div className="full-page">
-            <SideDrawer show={sideDrawerOpen} backdropClickHandler={() => setSideDrawerOpen(false)} />
+
             <h3>My Demos</h3>
             <div className="demo-list">
                 <ul>
