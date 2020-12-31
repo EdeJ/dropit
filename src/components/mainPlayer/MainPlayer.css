@@ -24,32 +24,76 @@
     transform: translateY(0);
 }
 
-.btn-container {
+.header-container {
     position: relative;
     height: 80px;
     background-color: var(--custom-green);
+    display: flex;
+    justify-content: end;
 }
+
+.song-container {
+    display: flex;
+    justify-content: center;
+}
+
+.song-container svg {
+    fill: var(--custom-brown);
+}
+
+
+
 .main-player .close-btn {
     /* fill: var(--custom-green); */
     /* background: none;
     border: none; */
-    cursor: pointer; 
+    cursor: pointer;
     position: absolute;
     right: 0;
     top: 0;
-    padding: 20px;
+    font-size: 40px;
+    color: var(--custom-text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
 }
+
+
+
 .control-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
+
 .control-btns {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
 }
 
- 
+.control-btns button {
+    /* width: 80px;
+    height: 80px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
+
+.control-btns button.play {
+    font-size: 100px;
+}
+
+.control-btns svg {
+    color: var(--custom-green);
+}
+
+
+
 
 @media (min-width: 769px) {
     .main-player {

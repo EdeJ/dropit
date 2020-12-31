@@ -4,6 +4,8 @@ import SideDrawer from '../components/sideDrawer/SideDrawer'
 import songs from '../assets/audio/songs'
 import './MyDemos.css'
 
+// TODO border current selected song
+
 function MyDemos({ setCurrentSong, setShowPlayer }) {
 
     // const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
