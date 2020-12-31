@@ -1,0 +1,58 @@
+@import url('../../custom-vars.css');
+
+.main-player {
+    position: relative;
+    height: 100%;
+    background-color: var(--custom-background);
+    /* background-origin: 1px 0 5px rgba(0, 0, 0, 0.5); */
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 200;
+    transform: translateY(100%);
+    transition: transform 0.2s ease-out;
+    /* border-top: 80px solid var(--custom-green); */
+    box-sizing: border-box;
+    /* padding: 20px; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.main-player.open {
+    transform: translateY(0);
+}
+
+.btn-container {
+    position: relative;
+    height: 80px;
+    background-color: var(--custom-green);
+}
+.main-player .close-btn {
+    /* fill: var(--custom-green); */
+    /* background: none;
+    border: none; */
+    cursor: pointer; 
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 20px;
+}
+.control-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+.control-btns {
+    display: flex;
+    align-items: center;
+}
+
+ 
+
+@media (min-width: 769px) {
+    .main-player {
+        display: none;
+    }
+}

@@ -30,7 +30,7 @@
 }
 
 .sticky-player button {
-    width: 60px;
+    min-width: 60px;
     height: 100%;
     cursor: pointer;
     border: none;
@@ -43,6 +43,12 @@
 }
 
 .sticky-player svg {
-    width: 20px;
-    fill: var(--custom-text-white);
+    /* width: 20px; */
+    /* fill: var(--custom-text-white); */
+}
+
+.sticky-player .song-details {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }

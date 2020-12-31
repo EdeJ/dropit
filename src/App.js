@@ -18,6 +18,7 @@ function App() {
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [showPlayer, setShowPlayer] = useState(true);
+  const [currentSong, setCurrentSong] = useState();
 
   const drawerToggleClickHandler = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -44,7 +45,7 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos setShowPlayer={setShowPlayer} />
+            <MyDemos setCurrentSong={setCurrentSong} setShowPlayer={setShowPlayer} />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />
@@ -57,7 +58,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-      {showPlayer && <Player />}
+      {showPlayer && <Player song={currentSong} />}
     </>
   )
 }

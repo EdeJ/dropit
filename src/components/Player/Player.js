@@ -1,32 +1,51 @@
-import React, { useState } from 'react'
-import { ReactComponent as PlayIcon } from '../../assets/play-icon.svg';
-import { ReactComponent as PauseIcon } from '../../assets/pause-icon.svg';
+import React, { useEffect, useState } from 'react'
+import { ReactComponent as PlayIcon } from '../../assets/images/play-icon.svg';
+import { ReactComponent as PauseIcon } from '../../assets/images/pause-icon.svg';
+
+// import { Howl, Howler } from 'howler';
+// import * as Tone from 'tone'
+
+// TODO kies een audio library en verwijder wat niet wordt gebruikt van de package.json file.
+
 import './Player.css'
+// import SideDrawer from '../sideDrawer/SideDrawer';
+import MainPlayer from '../mainPlayer/MainPlayer';
 
-function Player() {
+function Player({ song }) {
 
-    const [toggle, setTogglePLay] = useState(false);
-    const [toggleMainPlayer, setToggleMainPLayer] = useState(false);
+    const [togglePlay, setTogglePLay] = useState(false);
+    const [showMainPlayer, setShowMainPlayer] = useState(false);
+
+    // const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+
+    useEffect(() => {
+    }, [song])
+
+    function play() {
+        setTogglePLay(!togglePlay);
+    }
 
     return (
         <div className="sticky-player">
-            <div onClick={() => setToggleMainPLayer(!toggleMainPlayer)}
+            <MainPlayer show={showMainPlayer} setShowMainPlayer={setShowMainPlayer} />
+            <div onClick={() => {
+                setShowMainPlayer(true);
+            }}
                 className="container"
-                style={{ background: toggleMainPlayer ? 'red' : '#69BA5E' }}
             >
-                <div className="song-details">
-                    <strong>Fly Me To The Moon</strong>
-                    <p>Frank Sinatra</p>
-                </div>
+                {song && (
+                    <div className="song-details">
+                        <strong>{song.title}</strong>
+                        <p>{song.artist}</p>
+                    </div>
+                )}
                 <button onClick={(e) => {
                     e.stopPropagation();
-                    setTogglePLay(!toggle);
-                }
-                }
+                    // setTogglePLay(!togglePlay);
+                    play();
+                }}
                     type="button">
-                    {toggle ? <PlayIcon /> : <PauseIcon />
-
-                    }
+                    {togglePlay ? <PlayIcon /> : <PauseIcon />}
                 </button>
             </div>
         </div>
