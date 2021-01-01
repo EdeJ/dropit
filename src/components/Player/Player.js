@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { ReactComponent as PlayIcon } from '../../assets/images/play-icon.svg';
 import { ReactComponent as PauseIcon } from '../../assets/images/pause-icon.svg';
+import { IoChevronUpSharp, IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
+
 
 // import { Howl, Howler } from 'howler';
 // import * as Tone from 'tone'
@@ -27,12 +29,17 @@ function Player({ song }) {
 
     return (
         <div className="sticky-player">
-            <MainPlayer show={showMainPlayer} setShowMainPlayer={setShowMainPlayer} />
+            <MainPlayer
+                song={song}
+                show={showMainPlayer}
+                setShowMainPlayer={setShowMainPlayer}
+            />
             <div onClick={() => {
                 setShowMainPlayer(true);
             }}
                 className="container"
             >
+                {/* <IoChevronUpSharp className="arrow-up" /> */}
                 {song && (
                     <div className="song-details">
                         <strong>{song.title}</strong>
@@ -45,7 +52,8 @@ function Player({ song }) {
                     play();
                 }}
                     type="button">
-                    {togglePlay ? <PlayIcon /> : <PauseIcon />}
+                    {togglePlay ? <IoPlaySharp /> : <IoPauseSharp />}
+                    {/* {togglePlay ? <PlayIcon /> : <PauseIcon />} */}
                 </button>
             </div>
         </div>

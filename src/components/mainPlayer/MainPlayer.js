@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/images/close-icon.svg';
 import './MainPlayer.css';
 
@@ -8,7 +8,8 @@ import { IoPlayCircleOutline, IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoClo
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
 
 
-function MainPlayer({ show, setShowMainPlayer }) {
+function MainPlayer({ show, setShowMainPlayer, song }) {
+
 
     const [playing, setPlaying] = useState(false);
 
@@ -26,6 +27,8 @@ function MainPlayer({ show, setShowMainPlayer }) {
                     <EQ />
                 </div>
                 <div className="song-details">
+                    <h1>{song && song.title}</h1>
+                    <h2>{song && song.artist}</h2>
                 </div>
             </div>
             <div className="control-container">
