@@ -45,7 +45,7 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos setCurrentSong={setCurrentSong} setShowPlayer={setShowPlayer} />
+            <MyDemos currentSong={currentSong} setCurrentSong={setCurrentSong} setShowPlayer={setShowPlayer} />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />

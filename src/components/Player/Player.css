@@ -20,6 +20,14 @@
     /* Standard */
 }
 
+.sticky-player .arrow-up {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    font-size: 30px;
+    color: var(--custom-dark-green);
+}
+
 .container {
     height: 100%;
     padding-left: 10px;
@@ -35,6 +43,8 @@
     cursor: pointer;
     border: none;
     background: none;
+    font-size: 32px;
+    color: var(--custom-text-white);
 }
 
 
@@ -51,4 +61,6 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    line-height: 22px;
+    /* margin-top: 20px; */
 }

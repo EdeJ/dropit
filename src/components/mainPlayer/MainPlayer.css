@@ -33,12 +33,31 @@
 }
 
 .song-container {
+    /* display: flex;
+    justify-content: center; */
+}
+
+.song-container .eq {
+    width: 100%;
     display: flex;
     justify-content: center;
 }
 
 .song-container svg {
     fill: var(--custom-brown);
+}
+
+.song-container .song-details {
+    min-height: 200px;
+    background-color: white;
+    padding: 20px;
+    margin: 40px;
+    border-radius: var(--custom-border-radius);
+    color: var(--custom-brown);
+}
+
+.song-container .song-details h1 {
+    font-size: 16px;
 }
 
 
