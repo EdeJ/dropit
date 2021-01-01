@@ -12,6 +12,7 @@ import { IoChevronUpSharp, IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
 import './Player.css'
 // import SideDrawer from '../sideDrawer/SideDrawer';
 import MainPlayer from '../mainPlayer/MainPlayer';
+import SmallPlayer from '../mainPlayer/smallPlayer/SmallPlayer';
 
 function Player({ song }) {
 
@@ -28,35 +29,23 @@ function Player({ song }) {
     }
 
     return (
-        <div className="sticky-player">
-            <MainPlayer
-                song={song}
-                show={showMainPlayer}
-                setShowMainPlayer={setShowMainPlayer}
-            />
-            <div onClick={() => {
-                setShowMainPlayer(true);
-            }}
-                className="container"
-            >
-                {/* <IoChevronUpSharp className="arrow-up" /> */}
-                {song && (
-                    <div className="song-details">
-                        <strong>{song.title}</strong>
-                        <p>{song.artist}</p>
-                    </div>
-                )}
-                <button onClick={(e) => {
-                    e.stopPropagation();
-                    // setTogglePLay(!togglePlay);
-                    play();
-                }}
-                    type="button">
-                    {togglePlay ? <IoPlaySharp /> : <IoPauseSharp />}
-                    {/* {togglePlay ? <PlayIcon /> : <PauseIcon />} */}
-                </button>
-            </div>
-        </div>
+        <>
+            {!showMainPlayer ? (
+                <SmallPlayer
+                    song={song}
+                    onClick={() => {
+                        setShowMainPlayer(true);
+                    }}
+                />
+            ) : (
+                    <MainPlayer
+                        song={song}
+                        show={showMainPlayer}
+                        setShowMainPlayer={setShowMainPlayer}
+                    />
+                )
+            }
+        </>
     )
 }
 
