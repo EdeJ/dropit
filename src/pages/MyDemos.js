@@ -25,7 +25,7 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, setShow
                 <ul>
                     {songs.map(song => (
                         <li
-                            className="current-song"
+                            className={song === currentSong ? 'current-song' : ''}
                             key={song.id}>
                             <IoEllipsisHorizontal
                                 onClick={() => console.log("go to settings")}
