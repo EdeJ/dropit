@@ -13,12 +13,20 @@ import MyProfile from './pages/MyProfile';
 
 import './App.css';
 
+// export const ACTIONS = {
+//   PLAY: 'play',
+//   PAUSE: 'pause',
+//   STOP: 'stop'
+// }
+
 
 function App() {
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [showPlayer, setShowPlayer] = useState(true);
   const [currentSong, setCurrentSong] = useState();
+  const [showMainPlayer, setShowMainPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   const drawerToggleClickHandler = () => {
     setSideDrawerOpen(!sideDrawerOpen);
@@ -27,7 +35,6 @@ function App() {
   const backdropClickHandler = () => {
     setSideDrawerOpen(false);
   }
-
 
   return (
     <>
@@ -45,7 +52,13 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos currentSong={currentSong} setCurrentSong={setCurrentSong} setShowPlayer={setShowPlayer} />
+            <MyDemos
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+              setShowMainPlayer={setShowMainPlayer}
+            />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />
@@ -58,7 +71,15 @@ function App() {
           </Route>
         </Switch>
       </div>
-      {showPlayer && <Player song={currentSong} />}
+      {currentSong && (
+        <Player
+          currentSong={currentSong}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          showMainPlayer={showMainPlayer}
+          setShowMainPlayer={setShowMainPlayer}
+        />
+      )}
     </>
   )
 }

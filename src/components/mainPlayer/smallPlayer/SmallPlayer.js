@@ -1,35 +1,25 @@
-import React, { useState } from 'react'
-import { IoChevronUpSharp, IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
+import React from 'react'
+import { IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
 
-function SmallPlayer({ song, onClick }) {
-
-    const [togglePlay, setTogglePlay] = useState(false);
-
-    function play() {
-        setTogglePlay(!togglePlay)
-    }
+function SmallPlayer({ currentSong, isPlaying, setIsPlaying, setShowMainPlayer }) {
 
     return (
         <div className="sticky-player">
             <div
-                onClick={onClick}
-                className="container"
-            >
-                {/* <IoChevronUpSharp className="arrow-up" /> */}
-                {song && (
+                onClick={() => setShowMainPlayer(true)}
+                className="container">
+                {currentSong && (
                     <div className="song-details">
-                        <strong>{song.title}</strong>
-                        <p>{song.artist}</p>
+                        <strong>{currentSong.title}</strong>
+                        <p>{currentSong.artist}</p>
                     </div>
                 )}
                 <button onClick={(e) => {
                     e.stopPropagation();
-                    // setTogglePlay(!togglePlay);
-                    play();
+                    setIsPlaying(!isPlaying);
                 }}
                     type="button">
-                    {togglePlay ? <IoPlaySharp /> : <IoPauseSharp />}
-                    {/* {togglePlay ? <PlayIcon /> : <PauseIcon />} */}
+                    {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
             </div>
         </div>

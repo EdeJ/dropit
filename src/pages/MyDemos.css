@@ -18,13 +18,27 @@
     cursor: pointer;
 }
 
+.demo-list button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
 .demo-list li div {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100px;
-    color: var(--custom-brown);
+}
+
+.demo-list li button {
+    width: 60px;
+    height: 60px;
     font-size: 36px;
+    color: var(--custom-brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .demo-list li .song-details {
@@ -52,6 +66,13 @@
     text-overflow: ellipsis;
 }
 
-.demo-list svg {
-    /* fill: var(--custom-green); */
+.current-song {
+    border: 1px solid var(--custom-green);
+}
+
+.demo-list .settings-btn {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 30px;
 }

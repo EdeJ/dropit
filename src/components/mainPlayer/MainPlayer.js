@@ -1,20 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { ReactComponent as CloseIcon } from '../../assets/images/close-icon.svg';
-import './MainPlayer.css';
-
-// import SkipNextOutlinedIcon from '@material-ui/icons/SkipNextOutline;
-// import { FiSkipBack, FiSkipForward, FiPlayCircle } from "react-icons/fi";
+import React from 'react'
 import { IoPlayCircleOutline, IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoCloseOutline, IoPauseCircleOutline } from 'react-icons/io5'
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
+import './MainPlayer.css';
 
-
-function MainPlayer({ show, setShowMainPlayer, song }) {
-
-
-    const [playing, setPlaying] = useState(false);
+function MainPlayer({ currentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
 
     return (
-        <div className={`main-player ${show ? 'open' : ''}`}>
+        <div className={`main-player ${showMainPlayer ? 'open' : ''}`} >
             <div className="header-container">
                 <button className="close-btn"
                     onClick={() => setShowMainPlayer(false)}
@@ -27,8 +19,8 @@ function MainPlayer({ show, setShowMainPlayer, song }) {
                     <EQ />
                 </div>
                 <div className="song-details">
-                    <h1>{song && song.title}</h1>
-                    <h2>{song && song.artist}</h2>
+                    <h2>{currentSong && currentSong.title}</h2>
+                    <span>{currentSong && currentSong.artist}</span>
                 </div>
             </div>
             <div className="control-container">
@@ -36,9 +28,8 @@ function MainPlayer({ show, setShowMainPlayer, song }) {
                     <button><IoPlaySkipBackSharp /></button>
                     <button
                         className="play"
-                        onClick={() => setPlaying(!playing)}
-                    >
-                        {playing ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
+                        onClick={() => setIsPlaying(!isPlaying)}>
+                        {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
                     </button>
                     <button><IoPlaySkipForwardSharp /></button>
                 </div>

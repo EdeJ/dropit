@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { ReactComponent as PlayIcon } from '../assets/images/play-icon.svg'
-import SideDrawer from '../components/sideDrawer/SideDrawer'
-import { IoPlayOutline, IoDiscSharp } from 'react-icons/io5'
+import React from 'react'
+// import { ReactComponent as PlayIcon } from '../assets/images/play-icon.svg'
+// import SideDrawer from '../components/sideDrawer/SideDrawer'
+import { IoPlayOutline, IoDiscSharp, IoEllipsisHorizontal, IoPauseSharp } from 'react-icons/io5'
 import songs from '../assets/audio/songs'
 import './MyDemos.css'
 
-// TODO border current selected song
 
-function MyDemos({ currentSong, setCurrentSong, setShowPlayer }) {
+function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, setShowMainPlayer }) {
 
-    // const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-
-    useEffect(() => {
-        console.log(songs);
-        setShowPlayer(false);
-    }, [setShowPlayer])
-
+    function play(song) {
+        if (song === currentSong) {
+            setIsPlaying(!isPlaying);
+        } else {
+            setIsPlaying(true);
+            setCurrentSong(song);
+        }
+    }
 
     return (
         <div className="full-page">
@@ -25,16 +25,20 @@ function MyDemos({ currentSong, setCurrentSong, setShowPlayer }) {
                 <ul>
                     {songs.map(song => (
                         <li
-                            style={{ border: `1px solid ${song === currentSong ? 'var(--custom-green)' : 'var(--custom-brown'}` }}
-                            key={song.id}
-                            onClick={() => {
-                                setShowPlayer(true);
-                                setCurrentSong(song);
-                            }}>
+                            className="current-song"
+                            key={song.id}>
+                            <IoEllipsisHorizontal
+                                onClick={() => console.log("go to settings")}
+                                className="settings-btn"
+                            />
                             <div>
-                                {song === currentSong ? <IoDiscSharp /> : <IoPlayOutline />}
+                                <button type="button"
+                                    onClick={() => play(song)}>
+                                    {song === currentSong && isPlaying ? <IoPauseSharp /> : <IoPlayOutline />}
+                                </button>
                             </div>
-                            <div className="song-details">
+                            <div className="song-details"
+                                onClick={() => setShowMainPlayer(true)}>
                                 <strong>{song.title}</strong>
                                 <span>{song.artist}</span>
                             </div>
