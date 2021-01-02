@@ -74,6 +74,7 @@ function App() {
       {currentSong && (
         <Player
           currentSong={currentSong}
+          setCurrentSong={setCurrentSong}
           isPlaying={isPlaying}
           setIsPlaying={setIsPlaying}
           showMainPlayer={showMainPlayer}
