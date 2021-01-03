@@ -13,6 +13,9 @@ import MyProfile from './pages/MyProfile';
 
 import './App.css';
 import MenuLinks from './components/MenuLinks';
+import WriteComment from './pages/WriteComment';
+import ViewComment from './pages/ViewComment';
+import EditComment from './pages/EditComment';
 
 // export const ACTIONS = {
 //   PLAY: 'play',
@@ -88,6 +91,15 @@ function App() {
           </Route>
           <Route path="/login">
             <Login />
+          </Route>
+          <Route path="/write-comment/:songId">
+            <WriteComment />
+          </Route>
+          <Route path="/view-comment/:songId">
+            <ViewComment />
+          </Route>
+          <Route path="/edit-comment/:songId">
+            <EditComment />
           </Route>
         </Switch>
       </div>

@@ -2,8 +2,8 @@ import React from 'react';
 
 function AddDemo() {
     return (
-        <div>
-            <h1>ADD NEW DEMO</h1>
+        <div className="full-page">
+            <h3>Add new demo</h3>
         </div>
     )
 }
