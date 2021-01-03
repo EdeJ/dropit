@@ -67,12 +67,6 @@
     font-size: 18px;
 }
 
-
-
-
-
-
-
 .control-container {
     display: flex;
     justify-content: center;
@@ -107,8 +101,8 @@
 
 
 
-@media (min-width: 769px) {
+/* @media (min-width: 769px) {
     .main-player {
         display: none;
     }
-}
+} */

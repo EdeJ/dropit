@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import SideDrawer from './components/sideDrawer/SideDrawer';
 import Toolbar from './components/toolbar/Toolbar';
 import Player from './components/player/Player';
@@ -12,6 +12,7 @@ import AddDemo from './pages/AddDemo';
 import MyProfile from './pages/MyProfile';
 
 import './App.css';
+import MenuLinks from './components/MenuLinks';
 
 // export const ACTIONS = {
 //   PLAY: 'play',
@@ -22,25 +23,43 @@ import './App.css';
 
 function App() {
 
+  const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
+  { path: '/sign-in', label: 'Sign in' },
+  { path: '/my-demos', label: 'My demos' },
+  { path: '/add-new-demo', label: 'Add new demo' },
+  { path: '/my-profile', label: 'My profile' },
+  { path: '/sign-out', label: 'Sign out' }
+  ]
+
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [showPlayer, setShowPlayer] = useState(true);
   const [currentSong, setCurrentSong] = useState();
   const [showMainPlayer, setShowMainPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
 
-  const drawerToggleClickHandler = () => {
-    setSideDrawerOpen(!sideDrawerOpen);
-  }
+  // const drawerToggleClickHandler = () => {
+  //   setSideDrawerOpen(!sideDrawerOpen);
+  // }
 
-  const backdropClickHandler = () => {
-    setSideDrawerOpen(false);
-  }
+  // const backdropClickHandler = () => {
+  //   setSideDrawerOpen(false);
+  // }
 
   return (
     <>
       <div className="app" style={{ height: '100%' }}>
-        <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
-        <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
+        <Toolbar
+          sideDrawerOpen={sideDrawerOpen}
+          setSideDrawerOpen={setSideDrawerOpen}
+        >
+          <MenuLinks links={mainLinks} setSideDrawerOpen={setSideDrawerOpen} />
+        </Toolbar>
+        <SideDrawer
+          sideDrawerOpen={sideDrawerOpen}
+          setSideDrawerOpen={setSideDrawerOpen}
+        >
+          <MenuLinks links={mainLinks} setSideDrawerOpen={setSideDrawerOpen} />
+        </SideDrawer>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -57,6 +76,7 @@ function App() {
               setCurrentSong={setCurrentSong}
               isPlaying={isPlaying}
               setIsPlaying={setIsPlaying}
+              showMainPlayer={showMainPlayer}
               setShowMainPlayer={setShowMainPlayer}
             />
           </Route>

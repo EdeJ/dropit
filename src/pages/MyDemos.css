@@ -2,7 +2,6 @@
 
 .demo-list ul {
     display: flex;
-    /* justify-content: space-between; */
     flex-wrap: wrap;
     list-style-type: none;
     margin: 20px 0 110px 0;
@@ -75,4 +74,14 @@ li.current-song {
     top: 0;
     right: 10px;
     font-size: 30px;
+}
+
+.demo-list ul.overlay {
+    display: none;
+}
+
+@media (min-width: 769px) {
+    .demo-list ul.overlay {
+        display: flex;
+    }
 }

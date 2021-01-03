@@ -6,7 +6,7 @@ import songs from '../assets/audio/songs'
 import './MyDemos.css'
 
 
-function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, setShowMainPlayer }) {
+function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMainPlayer, setShowMainPlayer }) {
 
     function play(song) {
         if (song === currentSong) {
@@ -22,7 +22,7 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, setShow
 
             <h3>My Demos</h3>
             <div className="demo-list">
-                <ul>
+                <ul className={showMainPlayer ? 'overlay' : ''}>
                     {songs.map(song => (
                         <li
                             className={song === currentSong ? 'current-song' : ''}
