@@ -38,7 +38,10 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, setShow
                                 </button>
                             </div>
                             <div className="song-details"
-                                onClick={() => setShowMainPlayer(true)}>
+                                onClick={() => {
+                                    setCurrentSong(song);
+                                    setShowMainPlayer(true);
+                                }}>
                                 <strong>{song.title}</strong>
                                 <span>{song.artist}</span>
                             </div>

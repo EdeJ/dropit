@@ -6,15 +6,21 @@ import songs from '../../assets/audio/songs'
 
 function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
 
+    const [index, setIndex] = useState();
+
+    useEffect(() => {
+        setIndex(songs.map(song => song.id).indexOf(currentSong.id));
+    }, [currentSong.id]);
+
     function previous() {
-        let index = songs.map(song => song.id).indexOf(currentSong.id);
+        // let index = songs.map(song => song.id).indexOf(currentSong.id);
         if (index > 0) {
             setCurrentSong(songs[index - 1]);
         }
     }
 
     function next() {
-        let index = songs.map(song => song.id).indexOf(currentSong.id);
+        // let index = songs.map(song => song.id).indexOf(currentSong.id);
         if (index < songs.length - 1) {
             setCurrentSong(songs[index + 1]);
         }
