@@ -42,14 +42,6 @@ function App() {
   const [isPlaying, setIsPlaying] = useState(false);
   const [isAdmin, setIsAdmin] = useState(true);
 
-  // const drawerToggleClickHandler = () => {
-  //   setSideDrawerOpen(!sideDrawerOpen);
-  // }
-
-  // const backdropClickHandler = () => {
-  //   setSideDrawerOpen(false);
-  // }
-
   return (
     <>
       <div className="app" style={{ height: '100%' }}>
