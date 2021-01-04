@@ -43,6 +43,9 @@
     width: 80px;
 }
 
+/* .song-container {
+    position: relative;
+} */
 
 .song-container .eq {
     width: 100%;
@@ -97,7 +100,14 @@
 .control-btns svg {
     color: var(--custom-green);
 }
-
+.settings-btn {
+    position: absolute;
+    font-size: 40px;
+    color: var(--custom-brown);
+    top: 70px;
+    right:  0;
+    padding: 20px;
+}
 
 
 

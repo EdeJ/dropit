@@ -85,6 +85,10 @@ li.current-song {
     display: none;
 }
 
+.demo-list img {
+    width: 40px;
+}
+
 @media (min-width: 769px) {
     .demo-list ul.overlay {
         display: flex;

@@ -40,6 +40,12 @@ function DemoOptions({ isAdmin }) {
                             <Link to={`/view-comment/${songId}`}>View comment</Link>
                         </li>
                         {adminLinks()}
+                        {/* <li>
+                            <Link to={`/#`}>View comment</Link>
+                        </li> */}
+                        <li>
+                            <Link to={`#`}>Delete demo</Link>
+                        </li>
                     </>
                 )}
             </MenuPanel>

@@ -13,16 +13,20 @@
 }
 
 .menuPanel a {
+    box-sizing: border-box;
+    position: relative;
+    padding:  18px 26px;
     color: var(--custom-brown);
     text-decoration: none;
-    padding: 18px 0;
     float: left;
     width: 100%;
-    margin-left: 20px;
 }
 
 
 .menuPanel a svg {
+    position: absolute;
+    top:18px;
+    left:0;
     color: var(--custom-green);
     font-size: 20px;
     margin-right: 10px;

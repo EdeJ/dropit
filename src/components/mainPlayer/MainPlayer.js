@@ -5,17 +5,18 @@ import './MainPlayer.css';
 import songs from '../../assets/audio/songs'
 import { IoPlayOutline, IoDiscSharp, IoEllipsisHorizontal, IoPauseSharp } from 'react-icons/io5'
 import comments from '../../assets/comments';
+import { Link } from 'react-router-dom';
 
 function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
 
     const [index, setIndex] = useState();
-        const [currentSongSettings, setCurrentSongSettings] = useState({});
-            const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-                const [songLinks, setSongLinks] = useState([]);
+    const [currentSongSettings, setCurrentSongSettings] = useState({});
+    const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
+    const [songLinks, setSongLinks] = useState([]);
 
-    useEffect(() => {
-        setIndex(songs.map(song => song.id).indexOf(currentSong.id));
-    }, [currentSong.id]);
+    // useEffect(() => {
+    //     setIndex(songs.map(song => song.id).indexOf(currentSong.id));
+    // }, [currentSong.id]);
 
     function previous() {
         if (index > 0) {
@@ -29,25 +30,25 @@ function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, show
         }
     }
 
-    function setSongOptions(song) {
-    console.log("TEST");
-    setShowMainPlayer(false);
-    setCurrentSongSettings(song);
-    setSideDrawerOpen(true);
+    // function setSongOptions(song) {
+    // console.log("TEST");
+    // setShowMainPlayer(false);
+    // setCurrentSongSettings(song);
+    // setSideDrawerOpen(true);
 
-    const comment = comments.find(c=> c.songId === song.id);
+    // const comment = comments.find(c=> c.songId === song.id);
 
-    const links = [];
+    // const links = [];
 
-    if (comment.message !== '') {
-        links.push({ path: `/view-comment/${comment.songId}`, label: 'view comment' });
-    } else {
-        links.push({ path: `/write-comment/${comment.songId}`, label: 'Write comment' });
-    }
-    // links.push({ path: '/play-demo', label: 'Play demo' })
+    // if (comment.message !== '') {
+    //     links.push({ path: `/view-comment/${comment.songId}`, label: 'view comment' });
+    // } else {
+    //     links.push({ path: `/write-comment/${comment.songId}`, label: 'Write comment' });
+    // }
+    // // links.push({ path: '/play-demo', label: 'Play demo' })
 
-    setSongLinks(links);
-}
+    // setSongLinks(links);
+    // }
 
     return (
         <div className={`main-player ${showMainPlayer ? 'open' : ''}`} >
@@ -58,14 +59,12 @@ function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, show
                     <IoCloseOutline />
                 </button>
             </div>
+            <Link className="settings-btn" to={`/demo-options/${currentSong.id}`}
+                onClick={() => setShowMainPlayer(false)}
+            >
+                <IoEllipsisHorizontal />
+            </Link>
             <div className="song-container">
-                 <IoEllipsisHorizontal size={30}
-                                onClick={() => {
-                                    console.log("TEST!");
-                                    setSongOptions(currentSong);
-                                }}
-                                className="settings-btn"
-                            />
                 <div className="eq">
                     <EQ />
                 </div>
