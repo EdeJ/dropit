@@ -65,6 +65,8 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMai
                                 isSelected={song === currentSong}
                                 isPlaying={isPlaying}
                                 play={play}
+                                // setCurrentSong={setCurrentSong}
+                                setShowMainPlayer={setShowMainPlayer}
                             />
                         </li>
                     ))}

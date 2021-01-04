@@ -2,14 +2,15 @@ import React from 'react'
 import { IoEllipsisHorizontal, IoPlayOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
 import vinyl from '../assets/images/turning-vinyl.gif'
+import styles from './SongCard.module.css';
 
-function SongCard({ song, isSelected, isPlaying, play }) {
+function SongCard({ song, isSelected, isPlaying, play, setShowMainPlayer }) {
     return (
-        <div className={isSelected ? 'current-song' : ''}>
+        <div className={styles.songCard + ' ' + (isSelected ? styles.selected : '')}>
             <Link style={{ padding: 0 }} className="settings-btn" to={`/demo-options/${song.id}`}>
                 <IoEllipsisHorizontal />
             </Link>
-            <div>
+            <div className={styles.container}>
                 <button type="button"
                     onClick={() => play(song)}>
                     {isSelected && isPlaying ? (
@@ -19,11 +20,11 @@ function SongCard({ song, isSelected, isPlaying, play }) {
                         )}
                 </button>
             </div>
-            <div className="song-details"
-            // onClick={() => {
-            //     setCurrentSong(song);
-            //     setShowMainPlayer(true);
-            // }}
+            <div className={styles.songDetails}
+                onClick={() => {
+                    play(song);
+                    setShowMainPlayer(true);
+                }}
             >
                 <strong>{song.title}</strong>
                 <span>{song.artist}</span>
