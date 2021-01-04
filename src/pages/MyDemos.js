@@ -8,6 +8,7 @@ import SideDrawer from '../components/sideDrawer/SideDrawer';
 import './MyDemos.css'
 
 import comments from '../assets/comments'
+import { Link } from 'react-router-dom';
 
 
 function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMainPlayer, setShowMainPlayer }) {
@@ -31,40 +32,26 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMai
         }
     }
 
-function setSongOptions(song) {
-    setCurrentSongSettings(song);
-    setSideDrawerOpen(true);
+    function setSongOptions(song) {
+        setCurrentSongSettings(song);
+        setSideDrawerOpen(true);
 
-    const comment = comments.find(c=> c.songId === song.id);
+        const comment = comments.find(c => c.songId === song.id);
 
-    const links = [];
+        const links = [];
 
-    if (comment.message !== '') {
-        links.push({ path: `/view-comment/${comment.songId}`, label: 'view comment' });
-    } else {
-        links.push({ path: `/write-comment/${comment.songId}`, label: 'Write comment' });
+        if (comment.message !== '') {
+            links.push({ path: `/view-comment/${comment.songId}`, label: 'view comment' });
+        } else {
+            links.push({ path: `/write-comment/${comment.songId}`, label: 'Write comment' });
+        }
+        // links.push({ path: '/play-demo', label: 'Play demo' })
+
+        setSongLinks(links);
     }
-    // links.push({ path: '/play-demo', label: 'Play demo' })
-
-    setSongLinks(links);
-}
 
     return (
         <div className="full-page">
-            <SideDrawer
-                sideDrawerOpen={sideDrawerOpen}
-                setSideDrawerOpen={setSideDrawerOpen}
-            >
-                <h2>{currentSongSettings.title}</h2>
-                {/* {viewComment && (
-                    <p>{comments[currentSongSettings.id].message}</p>
-                )} */}
-                <MenuLinks
-                    links={songLinks}
-                    setSideDrawerOpen={setSideDrawerOpen}
-                />
-            </SideDrawer>
-
             <h3>My Demos</h3>
             <div className="demo-list">
                 <ul className={showMainPlayer ? 'overlay' : ''}>
@@ -72,12 +59,7 @@ function setSongOptions(song) {
                         <li
                             className={song === currentSong ? 'current-song' : ''}
                             key={song.id}>
-                            <IoEllipsisHorizontal
-                                onClick={() => {
-                                    setSongOptions(song);
-                                }}
-                                className="settings-btn"
-                            />
+                            <Link className="settings-btn" to={`/demo-options/${song.id}`}><IoEllipsisHorizontal /></Link>
                             <div>
                                 <button type="button"
                                     onClick={() => play(song)}>

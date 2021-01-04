@@ -74,6 +74,11 @@ li.current-song {
     top: 0;
     right: 10px;
     font-size: 30px;
+    color: var(--custom-brown);
+}
+
+.demo-list a.settings-btn:hover {
+    color: var(--custom-green);
 }
 
 .demo-list ul.overlay {

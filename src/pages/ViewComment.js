@@ -7,7 +7,6 @@ import { IoPencilSharp } from 'react-icons/io5'
 
 function ViewComment() {
 
-
     const { songId } = useParams();
     const [comment, setComment] = useState(null);
     const [song, setSong] = useState(null);

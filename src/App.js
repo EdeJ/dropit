@@ -16,6 +16,7 @@ import MenuLinks from './components/MenuLinks';
 import WriteComment from './pages/WriteComment';
 import ViewComment from './pages/ViewComment';
 import EditComment from './pages/EditComment';
+import DemoOptions from './pages/DemoOptions';
 
 // export const ACTIONS = {
 //   PLAY: 'play',
@@ -39,6 +40,7 @@ function App() {
   const [currentSong, setCurrentSong] = useState();
   const [showMainPlayer, setShowMainPlayer] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   // const drawerToggleClickHandler = () => {
   //   setSideDrawerOpen(!sideDrawerOpen);
@@ -100,6 +102,9 @@ function App() {
           </Route>
           <Route path="/edit-comment/:songId">
             <EditComment />
+          </Route>
+          <Route path="/demo-options/:songId">
+            <DemoOptions isAdmin={isAdmin} />
           </Route>
         </Switch>
       </div>
