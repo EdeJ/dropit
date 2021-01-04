@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
+import { PlayerContext } from '../../context/PlayerContextProvider';
 
-function SmallPlayer({ currentSong, isPlaying, setIsPlaying, setShowMainPlayer }) {
+function SmallPlayer() {
+
+    const { currentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
 
     return (
         <div className="sticky-player">

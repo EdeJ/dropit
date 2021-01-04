@@ -5,25 +5,12 @@ import './Player.css'
 
 // TODO kies een audio library en verwijder wat niet wordt gebruikt van de package.json file.
 
-function Player({ currentSong, setCurrentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
-
+function Player() {
 
     return (
         <>
-            <SmallPlayer
-                currentSong={currentSong}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
-                setShowMainPlayer={setShowMainPlayer}
-            />
-            <MainPlayer
-                currentSong={currentSong}
-                setCurrentSong={setCurrentSong}
-                isPlaying={isPlaying}
-                setIsPlaying={setIsPlaying}
-                showMainPlayer={showMainPlayer}
-                setShowMainPlayer={setShowMainPlayer}
-            />
+            <SmallPlayer />
+            <MainPlayer />
         </>
     )
 }

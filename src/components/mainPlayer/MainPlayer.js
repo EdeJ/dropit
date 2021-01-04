@@ -1,13 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IoPlayCircleOutline, IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoCloseOutline, IoPauseCircleOutline } from 'react-icons/io5'
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
 import './MainPlayer.css';
 import songs from '../../assets/audio/songs'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { Link } from 'react-router-dom';
+import { PlayerContext } from '../context/PlayerContextProvider';
 
-function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
+function MainPlayer() {
 
+    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
     const [index, setIndex] = useState();
 
     useEffect(() => {

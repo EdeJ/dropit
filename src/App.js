@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
 import SideDrawer from './components/sideDrawer/SideDrawer';
 import Toolbar from './components/toolbar/Toolbar';
@@ -17,6 +17,7 @@ import WriteComment from './pages/WriteComment';
 import ViewComment from './pages/ViewComment';
 import EditComment from './pages/EditComment';
 import DemoOptions from './pages/DemoOptions';
+import { PlayerContext } from './components/context/PlayerContextProvider';
 
 // export const ACTIONS = {
 //   PLAY: 'play',
@@ -27,6 +28,8 @@ import DemoOptions from './pages/DemoOptions';
 
 function App() {
 
+  const { currentSong } = useContext(PlayerContext);
+
   const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
   { path: '/sign-in', label: 'Sign in' },
   { path: '/my-demos', label: 'My demos' },
@@ -35,11 +38,12 @@ function App() {
   { path: '/sign-out', label: 'Sign out' }
   ]
 
+
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [showPlayer, setShowPlayer] = useState(true);
-  const [currentSong, setCurrentSong] = useState();
-  const [showMainPlayer, setShowMainPlayer] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  // const [currentSong, setCurrentSong] = useState();
+  // const [showMainPlayer, setShowMainPlayer] = useState(false);
+  // const [isPlaying, setIsPlaying] = useState(false);
   const [isAdmin, setIsAdmin] = useState(true);
 
   return (
@@ -68,14 +72,7 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos
-              currentSong={currentSong}
-              setCurrentSong={setCurrentSong}
-              isPlaying={isPlaying}
-              setIsPlaying={setIsPlaying}
-              showMainPlayer={showMainPlayer}
-              setShowMainPlayer={setShowMainPlayer}
-            />
+            <MyDemos />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />
@@ -101,14 +98,7 @@ function App() {
         </Switch>
       </div>
       {currentSong && (
-        <Player
-          currentSong={currentSong}
-          setCurrentSong={setCurrentSong}
-          isPlaying={isPlaying}
-          setIsPlaying={setIsPlaying}
-          showMainPlayer={showMainPlayer}
-          setShowMainPlayer={setShowMainPlayer}
-        />
+        <Player />
       )}
     </>
   )
