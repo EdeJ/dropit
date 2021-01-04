@@ -11,6 +11,7 @@ import vinyl from '../assets/images/turning-vinyl.gif'
 
 import comments from '../assets/comments'
 import { Link } from 'react-router-dom';
+import SongCard from '../components/SongCard';
 
 
 function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMainPlayer, setShowMainPlayer }) {
@@ -58,30 +59,13 @@ function MyDemos({ currentSong, isPlaying, setIsPlaying, setCurrentSong, showMai
             <div className="demo-list">
                 <ul className={showMainPlayer ? 'overlay' : ''}>
                     {songs.map(song => (
-                        <li
-                            className={song === currentSong ? 'current-song' : ''}
-                            key={song.id}>
-                            <Link style={{ padding: 0 }} className="settings-btn" to={`/demo-options/${song.id}`}><IoEllipsisHorizontal /></Link>
-                            <div>
-                                <button type="button"
-                                    onClick={() => play(song)}>
-                                    {song === currentSong && isPlaying ? (
-                                        <img src={vinyl} alt="vinyl" />
-                                    ) : (
-                                            <IoPlayOutline />
-                                        )}
-
-                                    {/* {song === currentSong && isPlaying ? <IoPauseSharp /> : <IoPlayOutline />} */}
-                                </button>
-                            </div>
-                            <div className="song-details"
-                                onClick={() => {
-                                    setCurrentSong(song);
-                                    setShowMainPlayer(true);
-                                }}>
-                                <strong>{song.title}</strong>
-                                <span>{song.artist}</span>
-                            </div>
+                        <li>
+                            <SongCard
+                                song={song}
+                                isSelected={song === currentSong}
+                                isPlaying={isPlaying}
+                                play={play}
+                            />
                         </li>
                     ))}
                 </ul>
