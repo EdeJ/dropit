@@ -1,0 +1,33 @@
+@import url('../custom-vars.css');
+
+.menuPanel {
+    /* margin-top: 80px; */
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.menuPanel li {
+    border-bottom: 1px solid var(--custom-border-beige);
+}
+
+.menuPanel a {
+    box-sizing: border-box;
+    position: relative;
+    padding:  18px 26px;
+    color: var(--custom-brown);
+    text-decoration: none;
+    float: left;
+    width: 100%;
+}
+
+
+.menuPanel a svg {
+    position: absolute;
+    top:18px;
+    left:0;
+    color: var(--custom-green);
+    font-size: 20px;
+    margin-right: 10px;
+}

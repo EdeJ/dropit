@@ -1,0 +1,53 @@
+.songCard {
+    position: relative;
+    width: 144px;
+    height: 144px;
+    border: 1px solid var(--custom-border-beige);
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+
+.songCard button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    color: var(--custom-brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.songDetails {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 5px 10px;
+    height: 40px;
+    font-size: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.songDetails strong,
+.songDetails span {
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.selected {
+    border: 1px solid var(--custom-green);
+}

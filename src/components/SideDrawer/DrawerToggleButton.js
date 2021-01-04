@@ -2,9 +2,9 @@ import React from 'react';
 
 import './DrawerToggleButton.css';
 
-function DrawerToggleButton({ drawerToggleClickHandler }) {
+function DrawerToggleButton({ setSideDrawerOpen }) {
     return (
-        <button type="button" className="toggle-button" onClick={drawerToggleClickHandler}>
+        <button type="button" className="toggle-button" onClick={setSideDrawerOpen}>
             <div className="toggle-button-line"></div>
             <div className="toggle-button-line"></div>
             <div className="toggle-button-line"></div>

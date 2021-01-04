@@ -1,14 +1,13 @@
 import React from 'react';
 import { ReactComponent as CloseIcon } from '../../assets/images/close-icon.svg';
-import MenuLinks from '../MenuLinks';
 import './SideDrawer.css';
 
-function SideDrawer({ show, backdropClickHandler }) {
+function SideDrawer({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     return (
-        <nav className={`side-drawer ${show ? 'open' : ''}`}>
-            <button onClick={backdropClickHandler} type="button"><CloseIcon /></button>
-            <MenuLinks backdropClickHandler={backdropClickHandler} />
+        <nav className={`side-drawer ${sideDrawerOpen ? 'open' : ''}`}>
+            <button onClick={() => setSideDrawerOpen(false)} type="button"><CloseIcon /></button>
+            {children}
         </nav>
     )
 }

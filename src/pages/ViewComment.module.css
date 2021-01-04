@@ -1,0 +1,82 @@
+@import url('../custom-vars.css');
+
+.fullPage {
+    padding: 0 20px;
+    margin-bottom: 160px;
+}
+
+.fullPage h3 {
+    margin-bottom: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: flex-end;
+    height: 60px;
+}
+
+.edit {
+    color: var(--custom-brown);
+    font-size: 20px;
+    cursor: pointer;
+    padding: 20px;
+}
+
+.comment {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+
+.linkList {
+    height: 100%;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.linkList li {
+    border-bottom: 1px solid var(--custom-border-beige);
+}
+
+.linkList a {
+    color: var(--custom-brown);
+    text-decoration: none;
+    padding: 18px 0;
+    float: left;
+    width: 100%;
+}
+
+.linkList a:hover {
+    color: var(--custom-dark-green);
+}
+
+.comment textarea {
+    margin-top: 20px;
+    box-sizing: border-box;
+    border-radius: var(--custom-border-radius);
+    border: 1px solid var(--custom-border-beige);
+    padding: 20px;
+    width: 100%;
+    min-height: 300px;
+    resize: vertical;
+}
+
+.save {
+    margin-top: 20px;
+    background-color: var(--custom-green);
+    border-radius: 5px;
+    color: #fff;
+    cursor: pointer;
+    display: inline-block;
+    min-width: 6.4rem;
+    font-size: inherit;
+    font-weight: 700;
+    line-height: 44px;
+    outline: none;
+    text-align: center;
+    text-decoration: none;
+    border: none;
+    width: 100%;
+    transition: background .1s;
+}

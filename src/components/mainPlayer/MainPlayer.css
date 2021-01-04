@@ -4,7 +4,6 @@
     position: relative;
     height: 100%;
     background-color: var(--custom-background);
-    /* background-origin: 1px 0 5px rgba(0, 0, 0, 0.5); */
     position: fixed;
     bottom: 0;
     left: 0;
@@ -12,47 +11,108 @@
     z-index: 200;
     transform: translateY(100%);
     transition: transform 0.2s ease-out;
-    /* border-top: 80px solid var(--custom-green); */
-    box-sizing: border-box;
-    /* padding: 20px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.main-player button {
+    cursor: pointer;
+    border: none;
+    background: none;
 }
 
 .main-player.open {
     transform: translateY(0);
 }
 
-.btn-container {
+.header-container {
     position: relative;
     height: 80px;
     background-color: var(--custom-green);
+    display: flex;
+    justify-content: flex-end;
 }
-.main-player .close-btn {
-    /* fill: var(--custom-green); */
-    /* background: none;
-    border: none; */
-    cursor: pointer; 
-    position: absolute;
-    right: 0;
-    top: 0;
+
+.header-container .close-btn {
+    font-size: 40px;
+    color: var(--custom-text-white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+}
+
+/* .song-container {
+    position: relative;
+} */
+
+.song-container .eq {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.song-container .eq svg {
+    fill: var(--custom-brown);
+}
+
+.song-container .song-details {
+    min-height: 200px;
+    background-color: white;
     padding: 20px;
+    margin: 40px;
+    border-radius: var(--custom-border-radius);
+    color: var(--custom-brown);
 }
+
+.song-container .song-details h2 {
+    font-size: 18px;
+}
+
 .control-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
+
 .control-btns {
     display: flex;
     align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 400px;
 }
 
- 
+.control-btns button {
+    /* width: 80px;
+    height: 80px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+}
 
-@media (min-width: 769px) {
+.control-btns button.play {
+    font-size: 100px;
+}
+
+.control-btns svg {
+    color: var(--custom-green);
+}
+.settings-btn {
+    position: absolute;
+    font-size: 40px;
+    color: var(--custom-brown);
+    top: 70px;
+    right:  0;
+    padding: 20px;
+}
+
+
+
+/* @media (min-width: 769px) {
     .main-player {
         display: none;
     }
-}
+} */

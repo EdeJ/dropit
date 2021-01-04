@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { NavLink, Route, Switch } from 'react-router-dom';
 import SideDrawer from './components/sideDrawer/SideDrawer';
 import Toolbar from './components/toolbar/Toolbar';
 import Player from './components/player/Player';
@@ -12,28 +12,51 @@ import AddDemo from './pages/AddDemo';
 import MyProfile from './pages/MyProfile';
 
 import './App.css';
+import MenuLinks from './components/MenuLinks';
+import WriteComment from './pages/WriteComment';
+import ViewComment from './pages/ViewComment';
+import EditComment from './pages/EditComment';
+import DemoOptions from './pages/DemoOptions';
+
+// export const ACTIONS = {
+//   PLAY: 'play',
+//   PAUSE: 'pause',
+//   STOP: 'stop'
+// }
 
 
 function App() {
 
+  const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
+  { path: '/sign-in', label: 'Sign in' },
+  { path: '/my-demos', label: 'My demos' },
+  { path: '/add-new-demo', label: 'Add new demo' },
+  { path: '/my-profile', label: 'My profile' },
+  { path: '/sign-out', label: 'Sign out' }
+  ]
+
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
   const [showPlayer, setShowPlayer] = useState(true);
   const [currentSong, setCurrentSong] = useState();
-
-  const drawerToggleClickHandler = () => {
-    setSideDrawerOpen(!sideDrawerOpen);
-  }
-
-  const backdropClickHandler = () => {
-    setSideDrawerOpen(false);
-  }
-
+  const [showMainPlayer, setShowMainPlayer] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(true);
 
   return (
     <>
       <div className="app" style={{ height: '100%' }}>
-        <Toolbar drawerToggleClickHandler={drawerToggleClickHandler} backdropClickHandler={backdropClickHandler} />
-        <SideDrawer show={sideDrawerOpen} backdropClickHandler={backdropClickHandler} />
+        <Toolbar
+          sideDrawerOpen={sideDrawerOpen}
+          setSideDrawerOpen={setSideDrawerOpen}
+        >
+          <MenuLinks links={mainLinks} setSideDrawerOpen={setSideDrawerOpen} />
+        </Toolbar>
+        <SideDrawer
+          sideDrawerOpen={sideDrawerOpen}
+          setSideDrawerOpen={setSideDrawerOpen}
+        >
+          <MenuLinks links={mainLinks} setSideDrawerOpen={setSideDrawerOpen} />
+        </SideDrawer>
         <Switch>
           <Route exact path="/">
             <Home />
@@ -45,7 +68,14 @@ function App() {
             <SignIn />
           </Route>
           <Route path="/my-demos">
-            <MyDemos setCurrentSong={setCurrentSong} setShowPlayer={setShowPlayer} />
+            <MyDemos
+              currentSong={currentSong}
+              setCurrentSong={setCurrentSong}
+              isPlaying={isPlaying}
+              setIsPlaying={setIsPlaying}
+              showMainPlayer={showMainPlayer}
+              setShowMainPlayer={setShowMainPlayer}
+            />
           </Route>
           <Route path="/add-new-demo">
             <AddDemo />
@@ -56,9 +86,30 @@ function App() {
           <Route path="/login">
             <Login />
           </Route>
+          <Route path="/write-comment/:songId">
+            <WriteComment />
+          </Route>
+          <Route path="/view-comment/:songId">
+            <ViewComment />
+          </Route>
+          <Route path="/edit-comment/:songId">
+            <EditComment />
+          </Route>
+          <Route path="/demo-options/:songId">
+            <DemoOptions />
+          </Route>
         </Switch>
       </div>
-      {showPlayer && <Player song={currentSong} />}
+      {currentSong && (
+        <Player
+          currentSong={currentSong}
+          setCurrentSong={setCurrentSong}
+          isPlaying={isPlaying}
+          setIsPlaying={setIsPlaying}
+          showMainPlayer={showMainPlayer}
+          setShowMainPlayer={setShowMainPlayer}
+        />
+      )}
     </>
   )
 }

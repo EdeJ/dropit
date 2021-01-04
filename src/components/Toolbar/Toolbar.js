@@ -6,7 +6,7 @@ import MenuLinks from '../MenuLinks';
 import { ReactComponent as Logo } from '../../assets/images/logo.svg';
 import './Toolbar.css';
 
-function Toolbar({ drawerToggleClickHandler, backdropClickHandler }) {
+function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     // const location = useLocation();
 
@@ -21,11 +21,13 @@ function Toolbar({ drawerToggleClickHandler, backdropClickHandler }) {
                     {/* )} */}
                 </div>
                 <div className="toggle-button">
-                    <DrawerToggleButton drawerToggleClickHandler={drawerToggleClickHandler} />
+                    <DrawerToggleButton setSideDrawerOpen={() => setSideDrawerOpen(!sideDrawerOpen)} />
                 </div>
                 {/* <div className="spacer"></div> */}
                 <div className="toolbar-navigation-items">
-                    <MenuLinks backdropClickHandler={backdropClickHandler} />
+                    {/* <MenuLinks backdropClickHandler={backdropClickHandler} /> */}
+                    <ul>                    {children}</ul>
+
                 </div>
             </nav>
         </header>
