@@ -104,7 +104,7 @@ function App() {
             <EditComment />
           </Route>
           <Route path="/demo-options/:songId">
-            <DemoOptions isAdmin={isAdmin} />
+            <DemoOptions />
           </Route>
         </Switch>
       </div>

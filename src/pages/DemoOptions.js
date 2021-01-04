@@ -5,6 +5,7 @@ import styles from './DemoOptions.module.css'
 import comments from '../assets/comments.json'
 import { IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
+import SongCard from '../components/SongCard'
 
 
 function DemoOptions({ isAdmin }) {
