@@ -84,7 +84,13 @@ li.current-song {
     width: 40px;
 } */
 
+/* @media(min-width: 576px) {
+        .demo-list ul { 
+    }
+} */
+
 @media (min-width: 769px) {
+
     .demo-list ul.overlay {
         display: flex;
     }

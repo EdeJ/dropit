@@ -1,11 +1,12 @@
 .songCard {
     position: relative;
     width: 144px;
+    /* flex-basis: 144px; */
     height: 144px;
     border: 1px solid var(--custom-border-beige);
     border-radius: 5px;
     margin: 10px;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .container {
@@ -14,27 +15,6 @@
     align-items: center;
     height: 70%;
 }
-
-.songCard button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    width: 60px;
-    height: 60px;
-    font-size: 36px;
-    color: var(--custom-brown);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.songCard button:focus {
-    outline: 0;
-}
-
-/* .songCard button img {
-    width: 40px;
-} */
 
 .songDetails {
     box-sizing: border-box;
@@ -58,8 +38,12 @@
     text-overflow: ellipsis;
 }
 
-.selected {
+div.selected {
     border: 1px solid var(--custom-green);
+}
+ strong.selected {
+     color: var(--custom-green);
+
 }
 
 .settings {
@@ -68,23 +52,4 @@
     right: 10px;
     font-size: 30px;
     color: var(--custom-brown);
-}
-
-.songCard button {
-    background-size: 36px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.songCard button.play {
-    background-image: url('../assets/images/play-icon-brown.svg');
-}
-
-.songCard button.vinyl {
-    background-image: url('../assets/images/turning-vinyl.gif');
-
-}
-
-.songCard button.vinyl:hover {
-    background-image: url('../assets/images/pause-icon-brown.svg');
 }

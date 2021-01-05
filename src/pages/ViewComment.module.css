@@ -1,8 +1,15 @@
 @import url('../custom-vars.css');
 
+.center {
+display: flex;
+justify-content: center;
+}
+
 .fullPage {
     padding: 0 20px;
     margin-bottom: 160px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .fullPage h3 {
@@ -78,5 +85,5 @@
     text-decoration: none;
     border: none;
     width: 100%;
-    transition: background .1s;
+    /* transition: background .1s; */
 }

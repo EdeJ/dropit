@@ -3,7 +3,10 @@ import { Link, NavLink, useParams } from 'react-router-dom'
 import comments from '../assets/comments'
 import songs from '../assets/audio/songs'
 import styles from './ViewComment.module.css'
-import { IoPencilSharp } from 'react-icons/io5'
+import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
+import MenuPanel from '../components/MenuPanel'
+// import PlayButton from '../components/PlayButton'
+import SongPanel from '../components/SongPanel'
 
 function ViewComment() {
 
@@ -18,29 +21,37 @@ function ViewComment() {
     }, [songId])
 
     return (
-        <div className={styles.fullPage}>
-            <h3 style={{ marginBottom: 60 }}>View comment</h3>
-            {song && (
-                <div>
-                    <strong>{song.title}</strong>
-                    <p>Artist: {song.artist}</p>
+        <div className={styles.center}>
+            <div className={styles.fullPage}>
+                <h3 style={{ marginBottom: 60 }}>View comment</h3>
+                {song && <SongPanel song={song} />}
+                <div className={styles.container}>
+                    <Link
+                        className={styles.edit}
+                        to={`/edit-comment/${songId}`}
+                        title="edit comment"
+                    >
+                        <IoPencilSharp />
+                    </Link>
                 </div>
-            )}
-            <div className={styles.container}>
-                <Link
-                    className={styles.edit}
-                    to={`/edit-comment/${songId}`}
-                    title="edit comment"
-                >
-                    <IoPencilSharp />
-                </Link>
-            </div>
-            <p className={styles.comment}>
-                {comment && comment.message}
-            </p>
-            <ul className={styles.linkList}>
+                <p className={styles.comment}>
+                    {comment && comment.message}
+                </p>
+                {/* <ul className={styles.linkList}>
                 <li><NavLink to='/my-demos'>My demos</NavLink></li>
-            </ul>
+            </ul> */}
+                <MenuPanel>
+                    <li>
+                        <Link to="/my-demos"><IoReturnUpBack />Back to all demos</Link>
+                    </li>
+                    <li>
+                        <Link to={`/edit-comment/${songId}`} >Edit comment</Link>
+                    </li>
+                    <li>
+                        <Link to={`#`}>Delete demo</Link>
+                    </li>
+                </MenuPanel>
+            </div>
         </div>
     )
 }

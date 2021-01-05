@@ -2,17 +2,19 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
-import SongCard from '../components/SongCard'
+// import SongCard from '../components/SongCard'
 import songs from '../assets/audio/songs'
 import { IoReturnUpBack } from 'react-icons/io5'
 import styles from './DemoOptions.module.css'
+import PlayButton from '../components/PlayButton'
+import SongPanel from '../components/SongPanel'
 
 
 function DemoOptions({ isAdmin }) {
 
     const { songId } = useParams()
     const [comment, setComment] = useState()
-    const [song, setSong] = useState();
+    const [song, setSong] = useState()
 
     useEffect(() => {
         setSong(songs.find(s => s.id === parseInt(songId)))
@@ -34,14 +36,13 @@ function DemoOptions({ isAdmin }) {
         <div className={styles.page}>
             <div className={styles.container}>
                 <h3>Demo options</h3>
-                <div className={styles.center}>
-                    {song &&
+                {/* {song &&
                         <SongCard
                             song={song}
                             size={{ width: '100%', height: 180 }}
                             settingBtn={false}
-                        />}
-                </div>
+                        />} */}
+                {song && <SongPanel song={song} />}
                 <MenuPanel>
                     <li><Link to="/my-demos">
                         <IoReturnUpBack />Back to all demos</Link>
