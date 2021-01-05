@@ -64,13 +64,13 @@ li.current-song {
     /* border: 1px solid var(--custom-green); */
 }
 
-.demo-list .settings-btn {
+/* .demo-list .settings-btn {
     position: absolute;
     top: 0;
     right: 10px;
     font-size: 30px;
     color: var(--custom-brown);
-}
+} */
 
 .demo-list a.settings-btn:hover {
     color: var(--custom-green);
@@ -80,9 +80,9 @@ li.current-song {
     display: none;
 }
 
-.demo-list img {
+/* .demo-list img {
     width: 40px;
-}
+} */
 
 @media (min-width: 769px) {
     .demo-list ul.overlay {
