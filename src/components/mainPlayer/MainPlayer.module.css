@@ -1,6 +1,7 @@
 @import url('../../custom-vars.css');
 
-.main-player {
+.mainPlayer {
+    background-color: red;
     position: relative;
     height: 100%;
     background-color: var(--custom-background);
@@ -15,18 +16,17 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
-.main-player button {
+.mainPlayer button {
     cursor: pointer;
     border: none;
     background: none;
 }
 
-.main-player.open {
+.open {
     transform: translateY(0);
 }
 
-.header-container {
+.headerContainer {
     position: relative;
     height: 80px;
     background-color: var(--custom-green);
@@ -34,7 +34,7 @@
     justify-content: flex-end;
 }
 
-.header-container .close-btn {
+.closeButton {
     font-size: 40px;
     color: var(--custom-text-white);
     display: flex;
@@ -43,40 +43,64 @@
     width: 80px;
 }
 
-/* .song-container {
+.songContainer {
     position: relative;
-} */
+    width: 100%;
+    max-width: 600px;
+}
 
-.song-container .eq {
+.eq {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.song-container .eq svg {
+.eq svg {
     fill: var(--custom-brown);
 }
 
-.song-container .song-details {
+.songDetails {
     min-height: 200px;
     background-color: white;
-    padding: 20px;
+    padding: 40px 20px 20px 20px;
     margin: 40px;
     border-radius: var(--custom-border-radius);
     color: var(--custom-brown);
+    position: relative;
 }
 
-.song-container .song-details h2 {
+.songDetails h2 {
     font-size: 18px;
 }
 
-.control-container {
+
+.center {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
+    position: absolute;
+    font-size: 40px;
+    color: var(--custom-brown);
+    top: 0;
+    right:  0;
+    padding: 0 10px 0 20px;
+}
+
+.controlContainer {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.control-btns {
+.controlContainer button {
+    /* font-size: 60px; */
+    color: var(--custom-green);
+}
+
+.controlBtns {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -84,35 +108,13 @@
     max-width: 400px;
 }
 
-.control-btns button {
-    /* width: 80px;
-    height: 80px; */
+.controlBtns button {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 40px;
 }
 
-.control-btns button.play {
+button.play {
     font-size: 100px;
 }
-
-.control-btns svg {
-    color: var(--custom-green);
-}
-.settings-btn {
-    position: absolute;
-    font-size: 40px;
-    color: var(--custom-brown);
-    top: 70px;
-    right:  0;
-    padding: 20px;
-}
-
-
-
-/* @media (min-width: 769px) {
-    .main-player {
-        display: none;
-    }
-} */

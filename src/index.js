@@ -3,11 +3,14 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+import PlayerContextProvider from './components/context/PlayerContextProvider';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <App />
+      <PlayerContextProvider>
+        <App />
+      </PlayerContextProvider>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')

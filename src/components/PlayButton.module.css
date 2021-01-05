@@ -1,0 +1,39 @@
+.playButton button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    font-size: 36px;
+    color: var(--custom-brown);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.playButton button:focus {
+    outline: 0;
+}
+
+.playButton button {
+    background-size: 34px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.playButton button.play {
+    background-image: url('../assets/images/play-icon-brown.svg');
+}
+
+.playButton button.play:hover {
+    background-image: url('../assets/images/play-icon-green.svg');
+}
+
+.playButton button.vinyl {
+    background-image: url('../assets/images/turning-vinyl.gif');
+
+}
+
+.playButton button.vinyl:hover {
+    background-image: url('../assets/images/pause-icon-brown.svg');
+}

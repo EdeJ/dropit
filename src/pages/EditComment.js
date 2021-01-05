@@ -3,6 +3,7 @@ import { Link, NavLink, useHistory, useParams } from 'react-router-dom'
 import comments from '../assets/comments'
 import songs from '../assets/audio/songs'
 import styles from './ViewComment.module.css'
+import SongPanel from '../components/SongPanel'
 
 function EditComment() {
 
@@ -28,27 +29,24 @@ function EditComment() {
     }
 
     return (
-        <div className={styles.fullPage}>
-            <h3>Edit comment</h3>
-            {song && (
-                <div>
-                    <strong>{song.title}</strong>
-                    <p>Artist: {song.artist}</p>
-                </div>
-            )}
-            <p className={styles.comment}>
-                {comment && (
-                    <textarea
-                        value={comment.message}
-                        onChange={handleChange}
-                    />
-                )}
-            </p>
-            <button
-                className={styles.save}
-                type="button"
-                onClick={handleSave}
-            >Save comment</button>
+        <div className={styles.center}>
+            <div className={styles.fullPage}>
+                <h3>Edit comment</h3>
+                {song && <SongPanel song={song} />}
+                <p className={styles.comment}>
+                    {comment && (
+                        <textarea
+                            value={comment.message}
+                            onChange={handleChange}
+                        />
+                    )}
+                </p>
+                <button
+                    className={styles.save}
+                    type="button"
+                    onClick={handleSave}
+                >Save comment</button>
+            </div>
         </div>
     )
 }

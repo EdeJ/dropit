@@ -1,13 +1,21 @@
-import React, { useEffect, useState } from 'react'
-import { IoPlayCircleOutline, IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoCloseOutline, IoPauseCircleOutline } from 'react-icons/io5'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
-import './MainPlayer.css';
 import songs from '../../assets/audio/songs'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
-import { Link } from 'react-router-dom';
+import { PlayerContext } from '../context/PlayerContextProvider'
+import styles from './MainPlayer.module.css'
+import {
+    IoPlayCircleOutline,
+    IoPlaySkipBackSharp,
+    IoPlaySkipForwardSharp,
+    IoCloseOutline,
+    IoPauseCircleOutline
+} from 'react-icons/io5'
 
-function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, showMainPlayer, setShowMainPlayer }) {
+function MainPlayer() {
 
+    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
     const [index, setIndex] = useState();
 
     useEffect(() => {
@@ -27,38 +35,45 @@ function MainPlayer({ currentSong, setCurrentSong, isPlaying, setIsPlaying, show
     }
 
     return (
-        <div className={`main-player ${showMainPlayer ? 'open' : ''}`} >
-            <div className="header-container">
-                <button className="close-btn"
+        <div className={`${styles.mainPlayer} ${showMainPlayer ? styles.open : ''}`} >
+            <div className={styles.headerContainer}>
+                <button className={styles.closeButton}
                     onClick={() => setShowMainPlayer(false)}
                     type="button">
                     <IoCloseOutline />
                 </button>
             </div>
-            <Link className="settings-btn" to={`/demo-options/${currentSong.id}`}
-                onClick={() => setShowMainPlayer(false)}
-            >
-                <IoEllipsisHorizontal />
-            </Link>
-            <div className="song-container">
-                <div className="eq">
-                    <EQ />
-                </div>
-                <div className="song-details">
-                    <h2>{currentSong && currentSong.title}</h2>
-                    <span>{currentSong && currentSong.artist}</span>
-                </div>
-            </div>
-            <div className="control-container">
-                <div className="control-btns">
-                    {/* {songs[songs.map(song => song.id).indexOf(currentSong.id)].id} */}
-                    <button onClick={previous}><IoPlaySkipBackSharp /></button>
-                    <button
-                        className="play"
-                        onClick={() => setIsPlaying(!isPlaying)}>
-                        {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
-                    </button>
-                    <button onClick={next} ><IoPlaySkipForwardSharp /></button>
+            <div className={styles.center}>
+                <div className={styles.songContainer}>
+                    <div className={styles.eq}>
+                        <EQ />
+                    </div>
+                    <div className={styles.songDetails}>
+                        <h2>{currentSong && currentSong.title}</h2>
+                        <span>{currentSong && currentSong.artist}</span>
+                        <Link className={styles.settings} to={`/demo-options/${currentSong.id}`}
+                            onClick={() => setShowMainPlayer(false)}
+                        >
+                            <IoEllipsisHorizontal />
+                        </Link>
+                    </div>
+                    <div className={styles.controlContainer}>
+                        <div className={styles.controlBtns}>
+
+                            <button onClick={previous}>
+                                <IoPlaySkipBackSharp />
+                            </button>
+                            <button
+                                className={styles.play}
+                                onClick={() => setIsPlaying(!isPlaying)}
+                            >
+                                {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
+                            </button>
+                            <button onClick={next} >
+                                <IoPlaySkipForwardSharp />
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

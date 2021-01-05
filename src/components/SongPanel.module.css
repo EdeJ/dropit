@@ -1,0 +1,20 @@
+@import url('../custom-vars.css');
+
+.song {
+    display: flex;
+    border: 1px solid var(--custom-brown);
+    border-radius: var(--custom-border-radius);
+    margin-bottom: 20px;
+    
+}
+
+.songDetails {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    line-height: 22px;
+}
+
+.isPlaying {
+    color: var(--custom-green);
+}

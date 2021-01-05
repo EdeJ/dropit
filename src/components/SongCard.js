@@ -1,32 +1,28 @@
-import React from 'react'
-import { IoEllipsisHorizontal, IoPlayOutline } from 'react-icons/io5';
-import { Link } from 'react-router-dom';
-import vinyl from '../assets/images/turning-vinyl.gif'
-import styles from './SongCard.module.css';
+import React, { useContext } from 'react'
+import { Link } from 'react-router-dom'
+import { PlayerContext } from './context/PlayerContextProvider'
+import { IoEllipsisHorizontal } from 'react-icons/io5'
+import styles from './SongCard.module.css'
+import PlayButton from './PlayButton'
 
-function SongCard({ song, isSelected, isPlaying, play, setShowMainPlayer }) {
+function SongCard({ song, size }) {
+
+    const { currentSong } = useContext(PlayerContext)
+
     return (
-        <div className={styles.songCard + ' ' + (isSelected ? styles.selected : '')}>
-            <Link style={{ padding: 0 }} className="settings-btn" to={`/demo-options/${song.id}`}>
+        <div className={`${styles.songCard} ${currentSong === song ? styles.selected : ''}`}
+            style={{ width: size.width, height: size.height }}
+        >
+            <Link className={styles.settings} to={`/demo-options/${song.id}`}>
                 <IoEllipsisHorizontal />
             </Link>
             <div className={styles.container}>
-                <button type="button"
-                    onClick={() => play(song)}>
-                    {isSelected && isPlaying ? (
-                        <img src={vinyl} alt="vinyl" />
-                    ) : (
-                            <IoPlayOutline />
-                        )}
-                </button>
+                <PlayButton song={song} />
             </div>
             <div className={styles.songDetails}
-                onClick={() => {
-                    play(song);
-                    setShowMainPlayer(true);
-                }}
+                style={{ with: size }}
             >
-                <strong>{song.title}</strong>
+                <strong className={currentSong === song ? styles.selected : ''}>{song.title}</strong>
                 <span>{song.artist}</span>
             </div>
         </div>
