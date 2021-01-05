@@ -18,7 +18,7 @@ function MyDemos() {
                         <li key={song.id}>
                             <SongCard
                                 song={song}
-                                isSelected={song === currentSong}
+                                // isSelected={song === currentSong}
                                 size={{ width: 144, height: 144 }}
                             />
                         </li>

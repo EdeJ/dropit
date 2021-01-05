@@ -1,11 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { IoPlayCircleOutline, IoPlaySkipBackSharp, IoPlaySkipForwardSharp, IoCloseOutline, IoPauseCircleOutline } from 'react-icons/io5'
+import { Link } from 'react-router-dom'
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
 import './MainPlayer.css';
 import songs from '../../assets/audio/songs'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
-import { Link } from 'react-router-dom';
 import { PlayerContext } from '../context/PlayerContextProvider';
+import {
+    IoPlayCircleOutline,
+    IoPlaySkipBackSharp,
+    IoPlaySkipForwardSharp,
+    IoCloseOutline,
+    IoPauseCircleOutline
+} from 'react-icons/io5'
 
 function MainPlayer() {
 

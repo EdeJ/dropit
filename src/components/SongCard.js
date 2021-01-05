@@ -4,7 +4,7 @@ import { PlayerContext } from './context/PlayerContextProvider'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import styles from './SongCard.module.css';
 
-function SongCard({ song, isSelected, size, settingBtn = true }) {
+function SongCard({ song, size, settingBtn = true }) {
 
     const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
 
@@ -26,7 +26,7 @@ function SongCard({ song, isSelected, size, settingBtn = true }) {
     }
 
     return (
-        <div className={`${styles.songCard} ${currentSong.id === song.id ? styles.selected : ''}`}
+        <div className={`${styles.songCard} ${currentSong === song ? styles.selected : ''}`}
             style={{ width: size.width, height: size.height }}
         >
             {settingBtn && (

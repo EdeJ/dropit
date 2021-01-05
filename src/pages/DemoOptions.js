@@ -38,7 +38,6 @@ function DemoOptions({ isAdmin }) {
                     {song &&
                         <SongCard
                             song={song}
-                            isSelected={false}
                             size={{ width: '100%', height: 180 }}
                             settingBtn={false}
                         />}

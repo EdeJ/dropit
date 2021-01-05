@@ -19,13 +19,6 @@ import EditComment from './pages/EditComment';
 import DemoOptions from './pages/DemoOptions';
 import { PlayerContext } from './components/context/PlayerContextProvider';
 
-// export const ACTIONS = {
-//   PLAY: 'play',
-//   PAUSE: 'pause',
-//   STOP: 'stop'
-// }
-
-
 function App() {
 
   const { currentSong } = useContext(PlayerContext);
