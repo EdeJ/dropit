@@ -39,9 +39,3 @@ body,
 .action-btns a:hover {
     color: var(--custom-dark-green);
 }
-
-/* @media (min-width: 600px) {
-    main {
-        background-size: 40%;
-    }
-} */
