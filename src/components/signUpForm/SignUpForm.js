@@ -1,7 +1,8 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom';
-import { axiosConfigured } from '../../axios/axios';
+import { axiosConfig } from '../../axios/axiosConfig';
+
 import { TextInput } from '../TextInput';
 
 import './SignUpForm.css';
@@ -16,7 +17,7 @@ export const SignUpForm = () => {
 
         async function addUser(userData) {
             try {
-                const response = await axiosConfigured.post('users', userData);
+                const response = await axiosConfig.post('users', userData);
                 console.log(response);
             } catch (error) {
                 console.error(error);
