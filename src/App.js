@@ -4,7 +4,7 @@ import SideDrawer from './components/sideDrawer/SideDrawer';
 import Toolbar from './components/toolbar/Toolbar';
 import Player from './components/player/Player';
 import Home from './pages/Home';
-import Login from './pages/Login';
+// import Login from './pages/Login';
 import MyDemos from './pages/MyDemos';
 import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
@@ -72,9 +72,6 @@ function App() {
           </Route>
           <Route path="/my-profile">
             <MyProfile />
-          </Route>
-          <Route path="/login">
-            <Login />
           </Route>
           <Route path="/write-comment/:songId">
             <WriteComment />

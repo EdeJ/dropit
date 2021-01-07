@@ -1,7 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link } from 'react-router-dom';
+import { axiosConfigured } from '../../axios/axios';
 import { TextInput } from '../TextInput';
 
 import './SignUpForm.css';
@@ -12,29 +12,21 @@ export const SignUpForm = () => {
     const currentPassword = methods.watch("password");
 
 
+    const onSuccess = (formData) => {
 
+        async function addUser(userData) {
+            try {
+                const response = await axiosConfigured.post('users', userData);
+                console.log(response);
+            } catch (error) {
+                console.error(error);
+            }
+        }
 
-    // const onSuccess = (formData) => {
+        addUser(formData)
 
-    //     async function addUser(request) {
-    //         try {
-
-    //             const response = await axios.(request);
-    //             console.log(response);
-    //         } catch (error) {
-    //             console.error(error);
-    //         }
-    //     }
-
-    // //    addUser({
-    // //     method: 'post',
-    // //     url: 'localhost:8080/users',
-    // //     data: {
-    // //       email: 'Fred',
-    // //       password: 'Flintstone'
-    // //     })
-    //     console.log(formData)
-    // }
+        console.log(formData)
+    }
 
     const onError = (errorList) => {
         console.log(errorList);
