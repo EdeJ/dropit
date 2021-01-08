@@ -1,14 +1,12 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-// import { useLocation } from 'react-router-dom';
-import DrawerToggleButton from '../sideDrawer/DrawerToggleButton';
-import MenuLinks from '../MenuLinks';
-import { ReactComponent as Logo } from '../../assets/images/logo.svg';
-import './Toolbar.css';
+import React from 'react'
+import { NavLink } from 'react-router-dom'
+import DrawerToggleButton from '../sideDrawer/DrawerToggleButton'
+import { ReactComponent as Logo } from '../../assets/images/logo.svg'
+import './Toolbar.css'
 
 function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
-    // const location = useLocation();
+    // const location = useLocation()
 
     return (
         <header className="toolbar">

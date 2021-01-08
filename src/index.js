@@ -4,12 +4,15 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
 import PlayerContextProvider from './components/context/PlayerContextProvider';
+import { AuthProvider } from './hooks/authentication';
 
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
       <PlayerContextProvider>
-        <App />
+        <AuthProvider>
+          <App />
+        </AuthProvider>
       </PlayerContextProvider>
     </BrowserRouter>
   </React.StrictMode>,

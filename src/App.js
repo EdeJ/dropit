@@ -1,43 +1,42 @@
-import { useContext, useState } from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import SideDrawer from './components/sideDrawer/SideDrawer';
-import Toolbar from './components/toolbar/Toolbar';
-import Player from './components/player/Player';
-import Home from './pages/Home';
-// import Login from './pages/Login';
-import MyDemos from './pages/MyDemos';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import AddDemo from './pages/AddDemo';
-import MyProfile from './pages/MyProfile';
+import { useContext, useState } from 'react'
+import { Route, Switch } from 'react-router-dom'
+import SideDrawer from './components/sideDrawer/SideDrawer'
+import Toolbar from './components/toolbar/Toolbar'
+import Player from './components/player/Player'
+import MenuLinks from './components/MenuLinks'
+import Home from './pages/Home'
+import MyDemos from './pages/MyDemos'
+import SignIn from './pages/SignIn'
+import SignUp from './pages/SignUp'
+import AddDemo from './pages/AddDemo'
+import MyProfile from './pages/MyProfile'
+import WriteComment from './pages/WriteComment'
+import ViewComment from './pages/ViewComment'
+import EditComment from './pages/EditComment'
+import DemoOptions from './pages/DemoOptions'
+import { PlayerContext } from './components/context/PlayerContextProvider'
+import PrivateRoute from './components/PrivateRoute'
 
-import './App.css';
-import MenuLinks from './components/MenuLinks';
-import WriteComment from './pages/WriteComment';
-import ViewComment from './pages/ViewComment';
-import EditComment from './pages/EditComment';
-import DemoOptions from './pages/DemoOptions';
-import { PlayerContext } from './components/context/PlayerContextProvider';
+import './App.css'
 
 function App() {
 
-  const { currentSong } = useContext(PlayerContext);
+  const { currentSong } = useContext(PlayerContext)
 
   const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
   { path: '/sign-in', label: 'Sign in' },
   { path: '/my-demos', label: 'My demos' },
   { path: '/add-new-demo', label: 'Add new demo' },
-  { path: '/my-profile', label: 'My profile' },
-  { path: '/sign-out', label: 'Sign out' }
+  { path: '/my-profile', label: 'My profile' }
   ]
 
 
-  const [sideDrawerOpen, setSideDrawerOpen] = useState(false);
-  const [showPlayer, setShowPlayer] = useState(true);
-  // const [currentSong, setCurrentSong] = useState();
-  // const [showMainPlayer, setShowMainPlayer] = useState(false);
-  // const [isPlaying, setIsPlaying] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(true);
+  const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
+  const [showPlayer, setShowPlayer] = useState(true)
+  // const [currentSong, setCurrentSong] = useState()
+  // const [showMainPlayer, setShowMainPlayer] = useState(false)
+  // const [isPlaying, setIsPlaying] = useState(false)
+  const [isAdmin, setIsAdmin] = useState(true)
 
   return (
     <>
@@ -64,9 +63,9 @@ function App() {
           <Route path="/sign-in">
             <SignIn />
           </Route>
-          <Route path="/my-demos">
+          <PrivateRoute path="/my-demos">
             <MyDemos />
-          </Route>
+          </PrivateRoute>
           <Route path="/add-new-demo">
             <AddDemo />
           </Route>
@@ -94,4 +93,4 @@ function App() {
   )
 }
 
-export default App;
+export default App

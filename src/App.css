@@ -67,6 +67,9 @@ form .small-text {
   align-items: center;
   width: 100%;
 }
+a.active {
+  color: var(--custom-green);
+}
 
 @media (min-width: 600px) {
   h2 {

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useHistory, useParams } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import comments from '../assets/comments'
 import songs from '../assets/audio/songs'
 import styles from './ViewComment.module.css'
@@ -7,24 +7,24 @@ import SongPanel from '../components/SongPanel'
 
 function EditComment() {
 
-    const { songId } = useParams();
-    const [comment, setComment] = useState(null);
-    const [song, setSong] = useState(null);
-    const history = useHistory();
+    const { songId } = useParams()
+    const [comment, setComment] = useState(null)
+    const [song, setSong] = useState(null)
+    const history = useHistory()
 
     useEffect(() => {
-        setComment(comments.find(c => c.songId === parseInt(songId)));
-        setSong(songs.find(s => s.id === parseInt(songId)));
+        setComment(comments.find(c => c.songId === parseInt(songId)))
+        setSong(songs.find(s => s.id === parseInt(songId)))
 
     }, [songId])
 
     function handleChange(event) {
-        setComment({ ...comment, message: event.target.value });
+        setComment({ ...comment, message: event.target.value })
     }
 
     function handleSave() {
-        console.log("write update to Database");
-        history.push(`/view-comment/${songId}`);
+        console.log("write update to Database")
+        history.push(`/view-comment/${songId}`)
 
     }
 

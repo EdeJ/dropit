@@ -1,7 +1,10 @@
 import React from 'react'
 import { NavLink } from "react-router-dom"
+import { useAuthentication } from '../hooks/authentication'
 
 function MenuLinks({ links, setSideDrawerOpen }) {
+
+    const { isAuthenticated, logout } = useAuthentication()
     return (
         <ul>{links.map(link => (
             <li
@@ -11,6 +14,7 @@ function MenuLinks({ links, setSideDrawerOpen }) {
                 <NavLink to={link.path}>{link.label}</NavLink>
             </li>
         ))}
+            {isAuthenticated && <li onClick={logout}>Sign out</li>}
         </ul>
     )
 }
