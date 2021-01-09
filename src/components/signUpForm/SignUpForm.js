@@ -9,7 +9,7 @@ import './SignUpForm.css';
 
 export const SignUpForm = () => {
 
-    const { ...methods } = useForm();
+    const { ...methods } = useForm({ mode: 'onBlur' });
     const currentPassword = methods.watch("password");
 
 
@@ -33,6 +33,15 @@ export const SignUpForm = () => {
         console.log(errorList);
     }
 
+    const checkEmailAvailable = async (email) => {
+        try {
+            await axiosConfig.get(`users/signup-check/${email}`)
+            return false
+        } catch (error) {
+            return true
+        }
+    }
+
     return (
         <FormProvider {...methods} >
             <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
@@ -43,6 +52,10 @@ export const SignUpForm = () => {
                     name="email"
                     fieldRef={methods.register({
                         required: "Your e-mail address is required",
+                        validate: {
+                            emailAvailable: async value => await checkEmailAvailable(value)
+
+                        },
                         pattern: {
                             value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
                             message: "Invalid e-mail address"

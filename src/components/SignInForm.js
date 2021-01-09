@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, Redirect } from 'react-router-dom'
 import { TextInput } from './TextInput'
 import './signUpForm/SignUpForm.css'
 import { useAuthentication } from '../hooks/authentication'
+import { axiosConfig } from '../axios/axiosConfig'
 
 export const SignInForm = () => {
 

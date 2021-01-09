@@ -15,7 +15,12 @@ export const TextInput = ({ name, label, type, fieldRef }) => {
                 name={name}
                 ref={fieldRef}
             />
-            {errors[name] && <p className="error-message">{errors[name].message || "Error"}</p>}
+            {errors[name] &&
+                <p className="error-message">
+                    {errors[name].message}
+                    {errors[name].type === "emailAvailable" && <span>Email is invalid or already taken</span>}
+                </p>
+            }
         </div>
     )
 }
