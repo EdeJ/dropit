@@ -1,10 +1,17 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
+import ReactAudioPlayer from 'react-audio-player';
 import { IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
 import { PlayerContext } from '../../context/PlayerContextProvider';
 
 function SmallPlayer() {
 
     const { currentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
+
+    // useEffect(() => {
+
+    // }, [currentSong])
+
+
 
     return (
         <div className="sticky-player">
@@ -24,6 +31,14 @@ function SmallPlayer() {
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
+                {currentSong && (
+                    <ReactAudioPlayer
+                        src={currentSong.fileName}
+                        playing={isPlaying}
+                        autoPlay
+                        controls
+                    />)
+                }
             </div>
         </div>
     )
