@@ -10,29 +10,29 @@ function PlayerContextProvider({ children }) {
     const [currentSong, setCurrentSong2] = useState()
     const [showPlayer, setShowPlayer] = useState(false);
     const [showMainPlayer, setShowMainPlayer] = useState(false);
-    const [isPlaying, setIsPlaying] = useState(false);
+    const [isPlaying, setIsPlaying2] = useState(false);
+
+    // const [audio] = useState(new Audio('fly-me-to-the-moon.mp3'))
+    const audio = 0;
 
     function setCurrentSong(currentSong) {
-
-        // render(
-
-        // )
-        // let audio = new Audio("/2.mp3")
-
-
-        console.log("change song!")
-
-        // var sound = new Howl({
-        //     src: ['/1.mp3']
-        // })
-
-        // sound.play()
-        // audio.play()
+        // audio.pause()
+        // audio.src = currentSong.fileName
+        // audio.load()
+        // audio.oncanplay = setIsPlaying(true)
         setCurrentSong2(currentSong)
+
     }
 
+    function setIsPlaying(param) {
+
+        // param ? audio.play() : audio.pause()
+
+        // setIsPlaying2(param)
+    }
 
     const data = {
+        audio,
         currentSong,
         setCurrentSong,
         showPlayer, setShowPlayer,

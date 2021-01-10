@@ -40,7 +40,7 @@
     align-items: center; */
 }
 
-.side-drawer a {
+.side-drawer a, .side-drawer span {
     color: var(--custom-brown);
     text-decoration: none;
     padding: 18px 0;

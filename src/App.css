@@ -67,6 +67,11 @@ form .small-text {
   align-items: center;
   width: 100%;
 }
+
+.toolbar-logo a {
+  text-decoration: none;
+}
+
 a.active {
   color: var(--custom-green);
 }

@@ -14,7 +14,7 @@ function MenuLinks({ links, setSideDrawerOpen }) {
                 <NavLink to={link.path}>{link.label}</NavLink>
             </li>
         ))}
-            {isAuthenticated && <li onClick={logout}>Sign out</li>}
+            {isAuthenticated && <li onClick={logout}><span to={'#'}>Sign out</span></li>}
         </ul>
     )
 }
