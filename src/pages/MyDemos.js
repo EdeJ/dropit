@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import songs from '../assets/audio/songs'
 import './MyDemos.css'
 import SongCard from '../components/SongCard';
@@ -7,7 +7,12 @@ import { PlayerContext } from '../components/context/PlayerContextProvider';
 
 function MyDemos() {
 
-    const { showMainPlayer } = useContext(PlayerContext);
+    const { showMainPlayer, setCurrentSong } = useContext(PlayerContext)
+
+    // useEffect(() => {
+    //     console.log(songs[0]);
+    //     setCurrentSong(songs[0])
+    // }, [setCurrentSong])
 
     return (
         <div className="full-page">

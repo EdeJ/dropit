@@ -1,21 +1,12 @@
-import React, { useContext } from 'react'
-import MainPlayer from '../mainPlayer/MainPlayer'
+import React from 'react'
 import SmallPlayer from '../mainPlayer/smallPlayer/SmallPlayer'
-import { PlayerContext } from '../context/PlayerContextProvider'
 import './Player.css'
 
 // TODO kies een audio library en verwijder wat niet wordt gebruikt van de package.json file.
 
 function Player() {
 
-    const { showMainPlayer } = useContext(PlayerContext);
-
-    return (
-        <>
-            {!showMainPlayer && <SmallPlayer />}
-            {showMainPlayer && <MainPlayer />}
-        </>
-    )
+    return <SmallPlayer />
 }
 
 export default Player

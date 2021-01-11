@@ -11,14 +11,19 @@ function SmallPlayer() {
 
     const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext)
 
-    const player = useRef()
-
-
-    const [index, setIndex] = useState();
+    const audio = useRef()
+    // const [audio] = useState(new Audio());
+    const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        setIndex(songs.map(song => song.id).indexOf(currentSong.id));
-    }, [currentSong.id]);
+        audio.current.src = currentSong.fileName
+        audio.current.play()
+    }, [currentSong])
+
+    useEffect(() => {
+        isPlaying ? audio.current.play() : audio.current.pause()
+    }, [isPlaying])
+
 
     function previous() {
         if (index > 0) {
@@ -32,23 +37,10 @@ function SmallPlayer() {
         }
     }
 
-
-    // const [audio] = useState(new Audio(currentSong.fileName))
-
-
-    {/* <ReactAudioPlayer ref={this.player} /> */ }
-
-
-    // useEffect(() => {
-    //     // isPlaying ? audio.play() : audio.pause()
-    //     // isPlaying ? player.current.audio.current.play() : player.current.audio.current.pause()
-    // }, [currentSong, isPlaying])
-
-
-    // const Player = () => (
-
-    // )
-
+    // function play() {
+    //     isPlaying ? audio.current.pause() : audio.current.play()
+    //     setIsPlaying(!isPlaying)
+    // }
 
     return (
         <div className="sticky-player">
@@ -62,13 +54,17 @@ function SmallPlayer() {
                     </div>
                 )}
                 <button onClick={(e) => {
-                    e.stopPropagation()
+                    // e.stopPropagation()
+                    // play()
                     setIsPlaying(!isPlaying)
                 }}
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
-                {player.current && (
+                <audio ref={audio}>
+                    <source src={currentSong.fileName} type="audio/mpeg" />
+                </audio>
+                {/* {player.current && (
                     <div>
                         <AudioSpectrum
                             id="audio-canvas"
@@ -85,9 +81,9 @@ function SmallPlayer() {
                             ]}
                         />
                     </div>
-                )}
+                )} */}
 
-                {currentSong && (
+                {/* {currentSong && (
                     <AudioPlayer style={{ background: 'none' }}
                         ref={player}
                         autoPlay
@@ -101,7 +97,7 @@ function SmallPlayer() {
                         onClickNext={next}
                         layout='stacked-reverse'
                     />
-                )}
+                )} */}
 
             </div>
 

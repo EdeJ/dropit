@@ -40,7 +40,7 @@ function App() {
 
   return (
     <>
-      <div className="app" style={{ height: '100%' }}>V4
+      <div className="app" style={{ height: '100%' }}>V5
         <Toolbar
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}

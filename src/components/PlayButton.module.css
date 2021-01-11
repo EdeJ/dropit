@@ -15,13 +15,18 @@
     outline: 0;
 }
 
-.playButton button {
+/* .playButton button {
     background-size: 34px;
     background-repeat: no-repeat;
     background-position: center;
+} */
+
+.playButton img {
+    width: 36px;
+    height: 36px;
 }
 
-.playButton button.play {
+/* .playButton button.play {
     background-image: url('../assets/images/play-icon-brown.svg');
 }
 
@@ -36,4 +41,4 @@
 
 .playButton button.vinyl:hover {
     background-image: url('../assets/images/pause-icon-brown.svg');
-}
+} */
