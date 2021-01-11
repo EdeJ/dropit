@@ -9,11 +9,6 @@ function MyDemos() {
 
     const { showMainPlayer, setCurrentSong } = useContext(PlayerContext)
 
-    // useEffect(() => {
-    //     console.log(songs[0]);
-    //     setCurrentSong(songs[0])
-    // }, [setCurrentSong])
-
     return (
         <div className="full-page">
             <h3>My Demos</h3>

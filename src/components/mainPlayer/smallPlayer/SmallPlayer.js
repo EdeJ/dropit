@@ -12,7 +12,6 @@ function SmallPlayer() {
     const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext)
 
     const audio = useRef()
-    // const [audio] = useState(new Audio());
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
@@ -64,24 +63,22 @@ function SmallPlayer() {
                 <audio ref={audio}>
                     <source src={currentSong.fileName} type="audio/mpeg" />
                 </audio>
-                {/* {player.current && (
-                    <div>
-                        <AudioSpectrum
-                            id="audio-canvas"
-                            height={200}
-                            width={100}
-                            audioEle={player.current.audio.current}
-                            meterWidth={10}
-                            gap={2}
-                            capColor={''}
-                            meterColor={[
-                                { stop: 0, color: '#69BA5E' },
-                                { stop: 0.5, color: '#69BA5E' },
-                                // { stop: 1, color: 'red' }
-                            ]}
-                        />
-                    </div>
-                )} */}
+                {/* <div>
+                    <AudioSpectrum
+                        id="audio-canvas"
+                        height={200}
+                        width={100}
+                        audioEle={audio.current}
+                        meterWidth={10}
+                        gap={2}
+                        capColor={''}
+                        meterColor={[
+                            { stop: 0, color: '#69BA5E' },
+                            { stop: 0.5, color: '#69BA5E' },
+                            // { stop: 1, color: 'red' }
+                        ]}
+                    />
+                </div> */}
 
                 {/* {currentSong && (
                     <AudioPlayer style={{ background: 'none' }}
