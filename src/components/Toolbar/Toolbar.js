@@ -14,7 +14,7 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
             <nav className="toolbar-navigation">
                 <div className="toolbar-logo" >
                     {/* {location.pathname !== '/' && ( */}
-                    <Link exact to={isAuthenticated ? 'my-demos' : '/'}>
+                    <Link to={isAuthenticated ? 'my-demos' : '/'}>
                         <Logo title="dropit" />
                     </Link>
                     {/* )} */}

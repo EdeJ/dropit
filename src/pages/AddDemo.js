@@ -1,16 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { axiosConfig } from '../axios/axiosConfig'
+import FlashMessage from 'react-flash-message'
 
 function AddDemo() {
 
     const { register, handleSubmit } = useForm()
+    const [message, setMessage] = useState()
 
-    const onSubmit = async (data) => {
-        console.log(data)
+    async function onSubmit(data) {
+        setMessage()
 
         const formData = new FormData()
-        formData.append("file", data.file[0]);
+        formData.append("file", data.file[0])
 
         try {
             const result = await axiosConfig.post('/files', formData, {
@@ -19,15 +21,16 @@ function AddDemo() {
                 }
             })
             console.log(result.data)
+            setMessage({ text: result.data, type: 'success' })
         } catch (error) {
-            console.log(error);
+            console.log(error)
+            setMessage({ text: 'Error in file upload', type: 'error' })
         }
     }
 
     return (
         <div className="full-page">
             <h3>Add new demo</h3>
-            {/* <FileUpload /> */}
             <form onSubmit={handleSubmit(onSubmit)}>
                 <input
                     ref={register}
@@ -36,7 +39,12 @@ function AddDemo() {
                 />
                 <button>upload</button>
             </form>
-        </div>
+            {message && (
+                <FlashMessage duration={5000} className={message.type}>
+                    <strong>{message.text}</strong>
+                </FlashMessage>
+            )}
+        </div >
 
     )
 }

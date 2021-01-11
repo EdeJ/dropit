@@ -14,7 +14,7 @@ export const SignUpForm = () => {
 
 
     const onSuccess = (formData) => {
-
+        //TODO hier kan misschien één functio voor gebruikt worden, samen met het upload formulier.
         async function addUser(userData) {
             try {
                 const response = await axiosConfig.post('users', userData);
