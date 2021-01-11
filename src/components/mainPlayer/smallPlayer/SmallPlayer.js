@@ -16,7 +16,13 @@ function SmallPlayer() {
 
     useEffect(() => {
         audio.current.src = currentSong.fileName
-        audio.current.play()
+        audio.current.load()
+
+        audio.current.addEventListener("canplaythrough", event => {
+            /* the audio is now playable; play it if permissions allow */
+            audio.current.play()
+        })
+
     }, [currentSong])
 
     useEffect(() => {
@@ -61,7 +67,7 @@ function SmallPlayer() {
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
                 <audio ref={audio}>
-                    <source src={currentSong.fileName} type="audio/mpeg" />
+                    <source src={currentSong.fileName || 'michael-jackson-off-the-wall.mp3'} type="audio/mpeg" />
                 </audio>
                 {/* <div>
                     <AudioSpectrum
