@@ -15,8 +15,9 @@ function SmallPlayer() {
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
+        audio.current.pause()
         audio.current.src = currentSong.fileName
-        audio.current.load()
+        // audio.current.load()
 
         audio.current.addEventListener("canplaythrough", event => {
             /* the audio is now playable; play it if permissions allow */
