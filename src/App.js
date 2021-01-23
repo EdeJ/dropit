@@ -62,12 +62,12 @@ function App() {
           <PrivateRoute path="/my-demos">
             <MyDemos />
           </PrivateRoute>
-          <Route path="/add-new-demo">
+          <PrivateRoute path="/add-new-demo">
             <AddDemo />
-          </Route>
-          <Route path="/my-profile">
+          </PrivateRoute>
+          <PrivateRoute path="/my-profile">
             <MyProfile />
-          </Route>
+          </PrivateRoute>
           <Route path="/write-comment/:songId">
             <WriteComment />
           </Route>

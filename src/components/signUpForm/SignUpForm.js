@@ -17,7 +17,10 @@ export const SignUpForm = () => {
         //TODO hier kan misschien één functio voor gebruikt worden, samen met het upload formulier.
         async function addUser(userData) {
             try {
-                const response = await axiosConfig.post('users', userData);
+                const response = await axiosConfig.post('api/auth/signup', {
+                    "username": userData.email,
+                    "password": userData.password
+                });
                 console.log(response);
             } catch (error) {
                 console.error(error);
@@ -35,7 +38,7 @@ export const SignUpForm = () => {
 
     const checkEmailAvailable = async (email) => {
         try {
-            await axiosConfig.get(`users/signup-check/${email}`)
+            await axiosConfig.get(`api/users/check-up/${email}`)
             return false
         } catch (error) {
             return true

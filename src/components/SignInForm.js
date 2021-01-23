@@ -1,28 +1,34 @@
-import React, { useEffect } from 'react'
+import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, Redirect } from 'react-router-dom'
 import { TextInput } from './TextInput'
 import './signUpForm/SignUpForm.css'
 import { useAuthentication } from '../hooks/authentication'
-import { axiosConfig } from '../axios/axiosConfig'
+import axios from 'axios'
 
 export const SignInForm = () => {
 
     const { ...methods } = useForm()
     const { login, isAuthenticated } = useAuthentication()
+    const [message, setMessage] = useState();
 
-    const onSuccess = ({ email, password }) => {
-        login(email, password)
+    const onSuccess = async ({ email, password }) => {
+        const result = await login(email, password)
+        if (!result) {
+            setMessage("Incorrect username or password");
+        }
+
     }
 
     const onError = (errorList) => {
+        console.log("ON ERROR");
         console.log(errorList)
     }
 
     return (
         <>
             {isAuthenticated ? (
-                <Redirect to={'/my-demos'} /> //location.state.from || '/blog'
+                <Redirect to={'/my-demos'} />
             ) : (
                     <FormProvider {...methods} >
                         <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
@@ -33,10 +39,6 @@ export const SignInForm = () => {
                                 name="email"
                                 fieldRef={methods.register({
                                     required: "Your e-mail address is required",
-                                    pattern: {
-                                        value: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
-                                        message: "Invalid e-mail address"
-                                    }
                                 })}
                             />
                             <TextInput
@@ -50,8 +52,9 @@ export const SignInForm = () => {
                                     }
                                 })}
                             />
+                            {message && <p className="error-message">{message}</p>}
                             <button type="submit">Sign In</button>
-                            <p className="small-text card">New to dropit? &nbsp<Link to="/sign-up"> Create an account</Link></p>
+                            <p className="small-text card"><span>New to dropit?</span> <Link to="/sign-up">Create an account</Link></p>
                         </form>
                     </FormProvider>
                 )}

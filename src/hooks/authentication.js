@@ -1,4 +1,5 @@
 import React, { useState, useContext, createContext } from "react"
+import { axiosConfig } from "../axios/axiosConfig"
 import users from '../data/users.json'
 
 const AuthContext = createContext({})
@@ -6,25 +7,64 @@ const AuthContext = createContext({})
 export const AuthProvider = ({ children }) => {
 
   const [isAuthenticated, setIsAuthenticated] = useState(
-    Boolean(localStorage.getItem("auth"))
+    Boolean(localStorage.getItem("user"))
   )
 
-  const login = (username, passphrase) => {
-    const user = users.find(({ name, password }) => name === username && password === passphrase)
+  const [user, setUser] = useState({
+    username: '',
+    password: '',
+    accessToken: ''
+  })
 
-    if (user) {
-      localStorage.setItem("auth", "1")
+  const login = async (username, password) => {
+
+
+    console.log("AXIOS signIn POST");
+    try {
+      const response = await axiosConfig.post('api/auth/signin', {
+        "username": username,
+        "password": password
+      });
+
+      const newUser = {}
+      newUser.username = response.data.username
+      newUser.accessToken = 'Bearer ' + response.data.accessToken
+
+      localStorage.setItem("user", JSON.stringify(user))
       setIsAuthenticated(true)
-    } else {
-      alert('Error bij inloggen')
-      setIsAuthenticated(false)
+      setUser(newUser)
+      console.log('const user = ', newUser);
+      return true;
+    } catch (error) {
+      console.error(error);
+      return false;
     }
+
+
+
+
+
+
+
+
+    // if (user) {
+    //   // localStorage.setItem("auth", "1")
+    //   localStorage.setItem("user", JSON.stringify(user))
+    //   setIsAuthenticated(true)
+    //   setUser(user)
+    //   // console.log('User = ', user)
+    // } else {
+    //   alert('Error bij inloggen')
+    //   setIsAuthenticated(false)
+    // }
 
   }
 
   const logout = async () => {
-    localStorage.removeItem("auth")
+    // localStorage.removeItem("auth")
+    localStorage.removeItem('user')
     setIsAuthenticated(false)
+    // setUser(null)
   }
 
   return (
@@ -32,7 +72,8 @@ export const AuthProvider = ({ children }) => {
       value={{
         isAuthenticated,
         login,
-        logout
+        logout,
+        user
       }}
     >
       {children}
