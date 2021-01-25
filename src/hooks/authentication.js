@@ -1,6 +1,5 @@
-import React, { useState, useContext, createContext } from "react"
+import React, { useState, useContext, createContext, useEffect } from "react"
 import { axiosConfig } from "../axios/axiosConfig"
-import users from '../data/users.json'
 
 const AuthContext = createContext({})
 
@@ -16,8 +15,14 @@ export const AuthProvider = ({ children }) => {
     accessToken: ''
   })
 
-  const login = async (username, password) => {
+  useEffect(() => {
+    if (isAuthenticated) {
+      setUser(JSON.parse(localStorage.getItem("user")))
+    }
+  }, [])
 
+
+  const login = async (username, password) => {
 
     console.log("AXIOS signIn POST");
     try {
@@ -31,10 +36,12 @@ export const AuthProvider = ({ children }) => {
       newUser.accessToken = 'Bearer ' + response.data.accessToken
 
       localStorage.setItem("user", JSON.stringify(user))
+
       setIsAuthenticated(true)
       setUser(newUser)
-      console.log('const user = ', newUser);
+
       return true;
+
     } catch (error) {
       console.error(error);
       return false;
