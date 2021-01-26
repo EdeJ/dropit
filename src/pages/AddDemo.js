@@ -12,17 +12,18 @@ function AddDemo() {
     const [message, setMessage] = useState()
     const { user } = useAuthentication()
 
-    console.log("user: ", user);
-
     async function onSubmit(data) {
         setMessage()
+        console.log(user.userId);
 
         const formData = new FormData()
         formData.append('file', data.file[0])
-        formData.append('fileName', 'come-fly-with-me.mp3')
-        formData.append('songTitle', 'Come Fly With Me!')
-        formData.append('artist', 'Frank Sinatra')
-        formData.append('userId', '1')
+        formData.append('userId', user.userId)
+        formData.append('fileName', data.file[0].name)
+        formData.append('songTitle', data.songTitle)
+        formData.append('artist', data.artist)
+
+        console.log(formData);
 
         try {
             const result = await axiosConfig.post('api/files', formData, {
@@ -43,7 +44,8 @@ function AddDemo() {
         <div className="full-page">
             <h3>Add new demo</h3>
             <FormProvider errors={errors} >
-                <form onSubmit={handleSubmit(onSubmit)}>
+                <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
+                    {/* // TODO form className   */}
                     <input
                         ref={register}
                         type="file"
@@ -53,6 +55,12 @@ function AddDemo() {
                         type="text"
                         label="Song title"
                         name="songTitle"
+                        fieldRef={register}
+                    />
+                    <TextInput
+                        type="text"
+                        label="Artist"
+                        name="artist"
                         fieldRef={register}
                     />
                     <button>upload</button>

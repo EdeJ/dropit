@@ -9,22 +9,17 @@ export const AuthProvider = ({ children }) => {
     Boolean(localStorage.getItem("user"))
   )
 
-  const [user, setUser] = useState({
-    username: '',
-    password: '',
-    accessToken: ''
-  })
+  const [user, setUser] = useState()
 
   useEffect(() => {
     if (isAuthenticated) {
       setUser(JSON.parse(localStorage.getItem("user")))
     }
-  }, [])
+  }, [isAuthenticated])
 
 
   const login = async (username, password) => {
 
-    console.log("AXIOS signIn POST");
     try {
       const response = await axiosConfig.post('api/auth/signin', {
         "username": username,
@@ -32,13 +27,13 @@ export const AuthProvider = ({ children }) => {
       });
 
       const newUser = {}
+      newUser.userId = response.data.id
       newUser.username = response.data.username
       newUser.accessToken = 'Bearer ' + response.data.accessToken
 
-      localStorage.setItem("user", JSON.stringify(user))
-
+      localStorage.setItem("user", JSON.stringify(newUser))
       setIsAuthenticated(true)
-      setUser(newUser)
+      // setUser(newUser)
 
       return true;
 
