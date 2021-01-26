@@ -6,15 +6,19 @@ import { IoPlayOutline } from 'react-icons/io5'
 
 function PlayButton({ song }) {
 
+    console.log("song: ", song);
+
     const { currentSong, setCurrentSong, isPlaying, setIsPlaying } = useContext(PlayerContext)
 
-    const setIcon = () => {
-        if (song === currentSong && isPlaying) {
-            return styles.vinyl
-        } else {
-            return styles.play
-        }
-    }
+    // console.log('currentSong = ', currentSong);
+    // console.log('song = ', song);
+    // const setIcon = () => {
+    //     if (song === currentSong && isPlaying) {
+    //         return styles.vinyl
+    //     } else {
+    //         return styles.play
+    //     }
+    // }
 
     const play = () => {
         if (song === currentSong) {
@@ -31,7 +35,7 @@ function PlayButton({ song }) {
                 type="button"
                 onClick={() => play()}
             >
-                {(song === currentSong && isPlaying) ? <img src={TurningRecord} alt="vinyl" /> : <IoPlayOutline />}
+                {(currentSong && song.id === currentSong.id && isPlaying) ? <img src={TurningRecord} alt="vinyl" /> : <IoPlayOutline />}
             </button>
         </div>
     )

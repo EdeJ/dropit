@@ -11,23 +11,28 @@ function SmallPlayer() {
 
     const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext)
 
-    const audio = useRef()
+    const [audio] = useState(new Audio);
+
     const [index, setIndex] = useState(0);
 
     useEffect(() => {
-        audio.current.pause()
-        audio.current.src = currentSong.fileName
-        // audio.current.load()
+        //audio.pause()
+        audio.src = `${process.env.REACT_APP_BASE_URL}api/files/${currentSong.fileName}`
+        audio.play()
+        // audio.load()
+        // // audio.play()
 
-        audio.current.addEventListener("canplaythrough", event => {
-            /* the audio is now playable; play it if permissions allow */
-            audio.current.play()
-        })
+
+        // audio.addEventListener("canplaythrough", event => {
+        //     console.log("ready to play audio");
+        //     /* the audio is now playable; play it if permissions allow */
+        //     audio.play()
+        // })
 
     }, [currentSong])
 
     useEffect(() => {
-        isPlaying ? audio.current.play() : audio.current.pause()
+        isPlaying ? audio.play() : audio.pause()
     }, [isPlaying])
 
 
@@ -55,7 +60,7 @@ function SmallPlayer() {
                 className="container">
                 {currentSong && (
                     <div className="song-details">
-                        <strong>{currentSong.title}</strong>
+                        <strong>{currentSong.songTitle}</strong>
                         <p>{currentSong.artist}</p>
                     </div>
                 )}
@@ -67,9 +72,9 @@ function SmallPlayer() {
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
-                <audio ref={audio}>
-                    <source src={currentSong.fileName || 'michael-jackson-off-the-wall.mp3'} type="audio/mpeg" />
-                </audio>
+                {/* <audio ref={audio}> */}
+                {/* <source src={`${process.env.REACT_APP_BASE_URL}api/files/${currentSong.fileName}`} type="audio/mpeg" /> */}
+                {/* </audio> */}
                 {/* <div>
                     <AudioSpectrum
                         id="audio-canvas"

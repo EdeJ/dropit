@@ -4,6 +4,8 @@ import comments from '../assets/comments'
 import songs from '../assets/audio/songs'
 import styles from './ViewComment.module.css'
 import SongPanel from '../components/SongPanel'
+import { axiosConfig } from '../axios/axiosConfig'
+import { useAuthentication } from '../hooks/authentication'
 
 function EditComment() {
 
@@ -11,11 +13,20 @@ function EditComment() {
     const [comment, setComment] = useState(null)
     const [song, setSong] = useState(null)
     const history = useHistory()
+    const { user } = useAuthentication()
 
     useEffect(() => {
-        setComment(comments.find(c => c.songId === parseInt(songId)))
-        setSong(songs.find(s => s.id === parseInt(songId)))
+        fetchData();
+        async function fetchData() {
+            try {
+                const result = await axiosConfig.get(`/api/demos/${songId}`, { headers: { Authorization: user.accessToken } })
+                console.log(result);
+                setSong(result.data)
+                setComment(comments.find(c => c.songId === parseInt(result.data.id)));
+            } catch (error) {
 
+            }
+        }
     }, [songId])
 
     function handleChange(event) {

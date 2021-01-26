@@ -18,7 +18,7 @@ function MyDemos() {
         async function fetchData() {
             try {
                 console.log("useId: ", user);
-                const result = await axiosConfig.get(`/api/demos/${user.userId}`, { headers: { Authorization: user.accessToken } })
+                const result = await axiosConfig.get(`/api/demos/by-user/${user.userId}`, { headers: { Authorization: user.accessToken } })
                 console.log(result);
                 setSongs(result.data)
             } catch (error) {

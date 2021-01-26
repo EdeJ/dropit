@@ -22,7 +22,7 @@ function SongCard({ song, size }) {
             <div className={styles.songDetails}
                 style={{ with: size }}
             >
-                <strong className={currentSong === song ? styles.selected : ''}>{song.title}</strong>
+                <strong className={currentSong === song ? styles.selected : ''}>{song.songTitle}</strong>
                 <span>{song.artist}</span>
             </div>
         </div>

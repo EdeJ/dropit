@@ -6,6 +6,8 @@ import songs from '../assets/audio/songs'
 import { IoReturnUpBack } from 'react-icons/io5'
 import styles from './DemoOptions.module.css'
 import SongPanel from '../components/SongPanel'
+import { useAuthentication } from '../hooks/authentication'
+import { axiosConfig } from '../axios/axiosConfig'
 
 
 function DemoOptions({ isAdmin }) {
@@ -13,6 +15,27 @@ function DemoOptions({ isAdmin }) {
     const { songId } = useParams()
     const [comment, setComment] = useState()
     const [song, setSong] = useState()
+    const { user } = useAuthentication()
+
+
+    useEffect(() => {
+        fetchData();
+        async function fetchData() {
+            try {
+                const result = await axiosConfig.get(`/api/demos/${songId}`, { headers: { Authorization: user.accessToken } })
+                console.log(result);
+                const newSong = {
+                    title: result.data.songTitle,
+                    artist: result.data.artist,
+                    fileName: result.data.fileName
+                }
+                setSong(result.data)
+            } catch (error) {
+
+            }
+        }
+    }, [songId])
+
 
     useEffect(() => {
         setSong(songs.find(s => s.id === parseInt(songId)))
