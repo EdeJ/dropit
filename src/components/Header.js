@@ -1,13 +1,17 @@
-import React from 'react'
-import { ReactComponent as Logo } from '../assets/images/logo.svg';
+// import React from 'react'
+// import { ReactComponent as Logo } from '../assets/images/logo.svg';
+// import { useAuthentication } from '../hooks/authentication';
 
-function Header() {
-    return (
-        <div>
-            <Logo />
-                Header
-        </div>
-    )
-}
+// function Header() {
 
-export default Header
+//     const {user} = useAuthentication()
+
+//     return (
+//         <div>
+//             <Logo />
+//                 Header
+//         </div>
+//     )
+// }
+
+// export default Header

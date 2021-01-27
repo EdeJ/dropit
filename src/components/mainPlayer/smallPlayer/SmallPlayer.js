@@ -9,31 +9,13 @@ import 'react-h5-audio-player/lib/styles.css'
 
 function SmallPlayer() {
 
-    const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext)
-
-    const [audio] = useState(new Audio);
+    const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying, play, pause } = useContext(PlayerContext)
 
     const [index, setIndex] = useState(0);
 
-    useEffect(() => {
-        //audio.pause()
-        audio.src = `${process.env.REACT_APP_BASE_URL}api/files/${currentSong.fileName}`
-        audio.play()
-        // audio.load()
-        // // audio.play()
-
-
-        // audio.addEventListener("canplaythrough", event => {
-        //     console.log("ready to play audio");
-        //     /* the audio is now playable; play it if permissions allow */
-        //     audio.play()
-        // })
-
-    }, [currentSong])
-
-    useEffect(() => {
-        isPlaying ? audio.play() : audio.pause()
-    }, [isPlaying])
+    // useEffect(() => {
+    //     isPlaying ? audio.play() : audio.pause()
+    // }, [isPlaying])
 
 
     function previous() {
@@ -48,11 +30,6 @@ function SmallPlayer() {
         }
     }
 
-    // function play() {
-    //     isPlaying ? audio.current.pause() : audio.current.play()
-    //     setIsPlaying(!isPlaying)
-    // }
-
     return (
         <div className="sticky-player">
             <div
@@ -64,11 +41,7 @@ function SmallPlayer() {
                         <p>{currentSong.artist}</p>
                     </div>
                 )}
-                <button onClick={(e) => {
-                    // e.stopPropagation()
-                    // play()
-                    setIsPlaying(!isPlaying)
-                }}
+                <button onClick={play}
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>

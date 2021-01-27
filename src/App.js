@@ -18,7 +18,6 @@ import { PlayerContext } from './components/context/PlayerContextProvider'
 import PrivateRoute from './components/PrivateRoute'
 
 import './App.css'
-import { useAuthentication } from './hooks/authentication'
 
 function App() {
 
@@ -32,7 +31,6 @@ function App() {
   ]
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(true)
 
   return (
     <>
@@ -71,9 +69,9 @@ function App() {
           <Route path="/write-comment/:songId">
             <WriteComment />
           </Route>
-          <Route path="/view-comment/:songId">
+          <PrivateRoute path="/view-comment/:songId">
             <ViewComment />
-          </Route>
+          </PrivateRoute>
           <Route path="/edit-comment/:songId">
             <EditComment />
           </Route>
@@ -82,7 +80,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-      {currentSong && (
+      {currentSong !== null && (
         <Player />
       )}
     </>

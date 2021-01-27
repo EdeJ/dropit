@@ -1,41 +1,29 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useParams } from 'react-router-dom'
-import comments from '../assets/comments'
-import songs from '../assets/audio/songs'
+import { Link, useParams } from 'react-router-dom'
 import styles from './ViewComment.module.css'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
-// import PlayButton from '../components/PlayButton'
 import SongPanel from '../components/SongPanel'
-import { axiosConfig } from '../axios/axiosConfig'
-import { useAuthentication } from '../hooks/authentication'
+import { getDemoByUserId } from '../axios/axiosConfig'
 
 function ViewComment() {
 
-    const { songId } = useParams();
-    const [comment, setComment] = useState(null);
-    const [song, setSong] = useState(null);
-    const { user } = useAuthentication()
+    const { songId } = useParams()
+    const [comment, setComment] = useState()
+    const [song, setSong] = useState(null)
 
     useEffect(() => {
-        fetchData();
-        async function fetchData() {
-            try {
-                const result = await axiosConfig.get(`/api/demos/${songId}`, { headers: { Authorization: user.accessToken } })
-                console.log(result);
-                setSong(result.data)
-                setComment(comments.find(c => c.songId === parseInt(result.data.id)));
-            } catch (error) {
 
-            }
+        fetchData()
+
+        async function fetchData() {
+
+            const { data } = await getDemoByUserId(songId)
+            setSong(data)
+            setComment(data.comment.message)
+
         }
     }, [songId])
-
-    // useEffect(() => {
-    //     setComment(comments.find(c => c.songId === parseInt(songId)));
-    //     setSong(songs.find(s => s.id === parseInt(songId)));
-
-    // }, [songId])
 
     return (
         <div className={styles.center}>
@@ -52,7 +40,7 @@ function ViewComment() {
                     </Link>
                 </div>
                 <p className={styles.comment}>
-                    {comment && comment.message}
+                    {comment}
                 </p>
                 {/* <ul className={styles.linkList}>
                 <li><NavLink to='/my-demos'>My demos</NavLink></li>

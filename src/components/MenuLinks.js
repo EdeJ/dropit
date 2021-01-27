@@ -1,11 +1,14 @@
-import React from 'react'
-import { NavLink, Redirect, useHistory } from "react-router-dom"
+import React, { useContext } from 'react'
+import { Link, NavLink, useHistory } from "react-router-dom"
 import { useAuthentication } from '../hooks/authentication'
+import { PlayerContext } from './context/PlayerContextProvider'
 
 function MenuLinks({ links, setSideDrawerOpen }) {
 
     const { isAuthenticated, logout } = useAuthentication()
+    const { pause, setCurrentSong } = useContext(PlayerContext)
     const history = useHistory()
+
     return (
         <ul>{links.map(link => (
             <li
@@ -17,11 +20,13 @@ function MenuLinks({ links, setSideDrawerOpen }) {
         ))}
             {isAuthenticated && <li onClick={() => {
                 logout()
+                pause()
+                setCurrentSong(null)
                 setSideDrawerOpen(false)
                 history.push('/')
 
             }
-            }><span to={'#'}>Sign out</span></li>}
+            }><Link to={'/'}>Sign out</Link></li>}
         </ul>
     )
 }

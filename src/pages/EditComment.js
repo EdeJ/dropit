@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import comments from '../assets/comments'
-import songs from '../assets/audio/songs'
+
 import styles from './ViewComment.module.css'
 import SongPanel from '../components/SongPanel'
-import { axiosConfig } from '../axios/axiosConfig'
-import { useAuthentication } from '../hooks/authentication'
+import { getDemoByUserId } from '../axios/axiosConfig'
+
 
 function EditComment() {
 
@@ -13,19 +12,17 @@ function EditComment() {
     const [comment, setComment] = useState(null)
     const [song, setSong] = useState(null)
     const history = useHistory()
-    const { user } = useAuthentication()
 
     useEffect(() => {
-        fetchData();
-        async function fetchData() {
-            try {
-                const result = await axiosConfig.get(`/api/demos/${songId}`, { headers: { Authorization: user.accessToken } })
-                console.log(result);
-                setSong(result.data)
-                setComment(comments.find(c => c.songId === parseInt(result.data.id)));
-            } catch (error) {
 
-            }
+        fetchData()
+
+        async function fetchData() {
+
+            const { data } = await getDemoByUserId(songId)
+            setSong(data)
+            setComment(data.comment.message)
+
         }
     }, [songId])
 

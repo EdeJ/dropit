@@ -9,6 +9,7 @@ export const AuthProvider = ({ children }) => {
     Boolean(localStorage.getItem("user"))
   )
 
+  const [isAdmin, setIsAdmin] = useState(false)
   const [user, setUser] = useState()
 
   useEffect(() => {
@@ -30,6 +31,8 @@ export const AuthProvider = ({ children }) => {
       newUser.userId = response.data.id
       newUser.username = response.data.username
       newUser.accessToken = 'Bearer ' + response.data.accessToken
+      newUser.roles = response.data.roles
+      setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
 
       localStorage.setItem("user", JSON.stringify(newUser))
       setIsAuthenticated(true)
@@ -42,30 +45,13 @@ export const AuthProvider = ({ children }) => {
       return false;
     }
 
-
-
-
-
-
-
-
-    // if (user) {
-    //   // localStorage.setItem("auth", "1")
-    //   localStorage.setItem("user", JSON.stringify(user))
-    //   setIsAuthenticated(true)
-    //   setUser(user)
-    //   // console.log('User = ', user)
-    // } else {
-    //   alert('Error bij inloggen')
-    //   setIsAuthenticated(false)
-    // }
-
   }
 
   const logout = async () => {
     // localStorage.removeItem("auth")
     localStorage.removeItem('user')
     setIsAuthenticated(false)
+    setIsAdmin(false)
     // setUser(null)
   }
 
@@ -73,6 +59,7 @@ export const AuthProvider = ({ children }) => {
     <AuthContext.Provider
       value={{
         isAuthenticated,
+        isAdmin,
         login,
         logout,
         user
