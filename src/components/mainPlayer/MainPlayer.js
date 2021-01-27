@@ -1,10 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as EQ } from '../../assets/images/eq.svg'
-import songs from '../../assets/audio/songs'
+import AudioSpectrum from 'react-audio-spectrum'
+import songs from '../../assets/audio/songs.json'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { PlayerContext } from '../context/PlayerContextProvider'
 import styles from './MainPlayer.module.css'
+
+import AudioPlayer from 'react-h5-audio-player'
+
+
 import {
     IoPlayCircleOutline,
     IoPlaySkipBackSharp,
@@ -15,12 +20,19 @@ import {
 
 function MainPlayer() {
 
-    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
+    const player = useRef()
+
+    const [newPlayer, setNewPlayer] = useState(new Audio())
+
+    const { audio, currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, setIsPlaying } = useContext(PlayerContext);
     const [index, setIndex] = useState();
 
     useEffect(() => {
         setIndex(songs.map(song => song.id).indexOf(currentSong.id));
-    }, [currentSong.id]);
+
+        setNewPlayer(player);
+
+    }, [currentSong]);
 
     function previous() {
         if (index > 0) {
@@ -46,7 +58,23 @@ function MainPlayer() {
             <div className={styles.center}>
                 <div className={styles.songContainer}>
                     <div className={styles.eq}>
-                        <EQ />
+                        {/* <EQ /> */}
+                        {newPlayer && (
+                            <AudioSpectrum
+                                id="audio-canvas"
+                                height={200}
+                                width={300}
+                                audioEle={player.current.audio.current}
+                                meterWidth={10}
+                                gap={2}
+                                capColor={''}
+                                meterColor={[
+                                    { stop: 0, color: '#69BA5E' },
+                                    { stop: 0.5, color: '#69BA5E' },
+                                    // { stop: 1, color: 'red' }
+                                ]}
+                            />
+                        )}
                     </div>
                     <div className={styles.songDetails}>
                         <h2>{currentSong && currentSong.title}</h2>
@@ -74,6 +102,22 @@ function MainPlayer() {
                             </button>
                         </div>
                     </div>
+                    {currentSong && (
+
+                        <AudioPlayer style={{ background: 'none' }}
+                            ref={player}
+                            autoPlay
+                            src={currentSong.fileName}
+                            onPlay={e => console.log("onPlay")}
+                            showSkipControls={true}
+                            showJumpControls={false}
+                            showDownloadProgress={true}
+                            autoPlayAfterSrcChange={true}
+                            onClickPrevious={previous}
+                            onClickNext={next}
+                            layout='stacked-reverse'
+                        />
+                    )}
                 </div>
             </div>
         </div>

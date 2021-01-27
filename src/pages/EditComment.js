@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import comments from '../assets/comments'
-import songs from '../assets/audio/songs'
+
 import styles from './ViewComment.module.css'
 import SongPanel from '../components/SongPanel'
+import { getDemoByUserId } from '../axios/axiosConfig'
+
 
 function EditComment() {
 
@@ -13,9 +14,16 @@ function EditComment() {
     const history = useHistory()
 
     useEffect(() => {
-        setComment(comments.find(c => c.songId === parseInt(songId)))
-        setSong(songs.find(s => s.id === parseInt(songId)))
 
+        fetchData()
+
+        async function fetchData() {
+
+            const { data } = await getDemoByUserId(songId)
+            setSong(data)
+            setComment(data.comment.message)
+
+        }
     }, [songId])
 
     function handleChange(event) {

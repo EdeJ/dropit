@@ -1,5 +1,4 @@
 import React from 'react'
-import MainPlayer from '../mainPlayer/MainPlayer'
 import SmallPlayer from '../mainPlayer/smallPlayer/SmallPlayer'
 import './Player.css'
 
@@ -7,12 +6,7 @@ import './Player.css'
 
 function Player() {
 
-    return (
-        <>
-            <SmallPlayer />
-            <MainPlayer />
-        </>
-    )
+    return <SmallPlayer />
 }
 
 export default Player

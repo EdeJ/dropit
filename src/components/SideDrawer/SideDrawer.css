@@ -40,12 +40,13 @@
     align-items: center; */
 }
 
-.side-drawer a {
+.side-drawer a, .side-drawer span {
     color: var(--custom-brown);
     text-decoration: none;
     padding: 18px 0;
     float: left;
     width: 100%;
+    cursor: pointer;
     /* font-size: 1.2rem; */
 }
 

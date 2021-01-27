@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react'
-import { Link, NavLink, useParams } from 'react-router-dom'
-import comments from '../assets/comments'
-import songs from '../assets/audio/songs'
+import { Link, useParams } from 'react-router-dom'
 import styles from './ViewComment.module.css'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
-// import PlayButton from '../components/PlayButton'
 import SongPanel from '../components/SongPanel'
+import { getDemoByUserId } from '../axios/axiosConfig'
 
 function ViewComment() {
 
-    const { songId } = useParams();
-    const [comment, setComment] = useState(null);
-    const [song, setSong] = useState(null);
+    const { songId } = useParams()
+    const [comment, setComment] = useState()
+    const [song, setSong] = useState(null)
 
     useEffect(() => {
-        setComment(comments.find(c => c.songId === parseInt(songId)));
-        setSong(songs.find(s => s.id === parseInt(songId)));
 
+        fetchData()
+
+        async function fetchData() {
+
+            const { data } = await getDemoByUserId(songId)
+            setSong(data)
+            setComment(data.comment.message)
+
+        }
     }, [songId])
 
     return (
@@ -35,7 +40,7 @@ function ViewComment() {
                     </Link>
                 </div>
                 <p className={styles.comment}>
-                    {comment && comment.message}
+                    {comment}
                 </p>
                 {/* <ul className={styles.linkList}>
                 <li><NavLink to='/my-demos'>My demos</NavLink></li>

@@ -21,7 +21,7 @@ import './App.css'
 
 function App() {
 
-  const { currentSong } = useContext(PlayerContext)
+  const { currentSong, setShowPlayer } = useContext(PlayerContext)
 
   const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
   { path: '/sign-in', label: 'Sign in' },
@@ -30,17 +30,11 @@ function App() {
   { path: '/my-profile', label: 'My profile' }
   ]
 
-
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
-  const [showPlayer, setShowPlayer] = useState(true)
-  // const [currentSong, setCurrentSong] = useState()
-  // const [showMainPlayer, setShowMainPlayer] = useState(false)
-  // const [isPlaying, setIsPlaying] = useState(false)
-  const [isAdmin, setIsAdmin] = useState(true)
 
   return (
     <>
-      <div className="app" style={{ height: '100%' }}>
+      <div className="app" >
         <Toolbar
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}
@@ -66,18 +60,18 @@ function App() {
           <PrivateRoute path="/my-demos">
             <MyDemos />
           </PrivateRoute>
-          <Route path="/add-new-demo">
+          <PrivateRoute path="/add-new-demo">
             <AddDemo />
-          </Route>
-          <Route path="/my-profile">
+          </PrivateRoute>
+          <PrivateRoute path="/my-profile">
             <MyProfile />
-          </Route>
+          </PrivateRoute>
           <Route path="/write-comment/:songId">
             <WriteComment />
           </Route>
-          <Route path="/view-comment/:songId">
+          <PrivateRoute path="/view-comment/:songId">
             <ViewComment />
-          </Route>
+          </PrivateRoute>
           <Route path="/edit-comment/:songId">
             <EditComment />
           </Route>
@@ -86,7 +80,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-      {currentSong && (
+      {currentSong !== null && (
         <Player />
       )}
     </>

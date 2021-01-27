@@ -118,6 +118,10 @@
     margin-left: 10px;
 }
 
+.sign-up-form .small-text a {
+margin-left: 10px;
+}
+
 main {
     height: auto;
 }

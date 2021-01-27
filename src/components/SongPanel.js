@@ -11,7 +11,7 @@ function SongPanel({ song }) {
         <div className={`${styles.song} `}>
             <PlayButton song={song} />
             <div className={styles.songDetails}>
-                <strong className={isPlaying ? styles.isPlaying : ''}>{song.title}</strong>
+                <strong className={isPlaying ? styles.isPlaying : ''}>{song.songTitle}</strong>
                 <span>{song.artist}</span>
             </div>
         </div>

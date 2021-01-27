@@ -1,13 +1,27 @@
-import React, { useContext } from 'react'
-import songs from '../assets/audio/songs'
+import React, { useContext, useEffect, useState } from 'react'
 import './MyDemos.css'
 import SongCard from '../components/SongCard';
 import { PlayerContext } from '../components/context/PlayerContextProvider';
+import { getAllDemosByUserId } from '../axios/axiosConfig';
+import { useAuthentication } from '../hooks/authentication';
 
 
 function MyDemos() {
 
-    const { showMainPlayer } = useContext(PlayerContext);
+    const { user } = useAuthentication()
+    const { showMainPlayer } = useContext(PlayerContext)
+    const [songs, setSongs] = useState()
+
+    useEffect(() => {
+        fetchData();
+        async function fetchData() {
+            try {
+                const { data } = await getAllDemosByUserId(user.userId)
+                setSongs(data)
+            } catch (error) {
+            }
+        }
+    }, [])
 
     return (
         <div className="full-page">
@@ -15,7 +29,7 @@ function MyDemos() {
             <div className="demo-list">
                 {!showMainPlayer && (
                     <ul>
-                        {songs.map(song => (
+                        {songs && songs.map(song => (
                             <li key={song.id}>
                                 <SongCard
                                     song={song}

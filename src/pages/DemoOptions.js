@@ -2,10 +2,12 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
-import songs from '../assets/audio/songs'
+// import songs from '../assets/audio/songs'
 import { IoReturnUpBack } from 'react-icons/io5'
 import styles from './DemoOptions.module.css'
 import SongPanel from '../components/SongPanel'
+import { useAuthentication } from '../hooks/authentication'
+import { axiosConfig, getDemoByUserId } from '../axios/axiosConfig'
 
 
 function DemoOptions({ isAdmin }) {
@@ -13,11 +15,25 @@ function DemoOptions({ isAdmin }) {
     const { songId } = useParams()
     const [comment, setComment] = useState()
     const [song, setSong] = useState()
+    const { user } = useAuthentication()
 
     useEffect(() => {
-        setSong(songs.find(s => s.id === parseInt(songId)))
-        setComment(comments.find(c => c.songId === parseInt(songId)))
+
+        fetchData()
+
+        async function fetchData() {
+            const { data } = await getDemoByUserId(songId)
+            setSong(data)
+            console.log(song);
+        }
+
     }, [songId])
+
+
+    // useEffect(() => {
+    //     setSong(songs.find(s => s.id === parseInt(songId)))
+    //     setComment(comments.find(c => c.songId === parseInt(songId)))
+    // }, [songId])
 
 
     const adminLinks = () => {
@@ -45,7 +61,7 @@ function DemoOptions({ isAdmin }) {
                     <li><Link to="/my-demos">
                         <IoReturnUpBack />Back to all demos</Link>
                     </li>
-                    {comment && (
+                    {(song && song.comment) && (
                         <>
                             <li>
                                 <Link to={`/view-comment/${songId}`}>View comment</Link>
