@@ -7,7 +7,7 @@ function PrivateRoute({ children, ...rest }) {
     const { adminOnly } = rest;
 
 
-    const { isAuthenticated, isAdmin } = useAuthentication()
+    const { user, isAdmin } = useAuthentication()
     const [isAllowed, setIsAllowed] = useState(false)
 
     console.log("adminOnly: ", adminOnly);
@@ -15,7 +15,7 @@ function PrivateRoute({ children, ...rest }) {
 
     useEffect(() => {
         let isAllowed = false
-        if (isAuthenticated) {
+        if (user) {
             isAllowed = true
         }
         if (adminOnly) {
@@ -32,7 +32,7 @@ function PrivateRoute({ children, ...rest }) {
             <Route
                 {...rest}
                 render={({ location }) =>
-                    isAuthenticated ? (children) : (
+                    user ? (children) : (
                         <Redirect
                             to={{
                                 pathname: "/sign-in",

@@ -9,7 +9,7 @@ import axios from 'axios'
 export const SignInForm = () => {
 
     const { ...methods } = useForm()
-    const { login, isAuthenticated } = useAuthentication()
+    const { login, user } = useAuthentication()
     const [message, setMessage] = useState();
 
     const onSuccess = async ({ email, password }) => {
@@ -27,7 +27,7 @@ export const SignInForm = () => {
 
     return (
         <>
-            {isAuthenticated ? (
+            {user ? (
                 <Redirect to={'/my-demos'} />
             ) : (
                     <FormProvider {...methods} >

@@ -8,7 +8,7 @@ import { getUser } from '../../functions/helperFunctions'
 
 function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
-    const { isAdmin, isAuthenticated } = useAuthentication()
+    const { user, isAdmin, isAuthenticated } = useAuthentication()
 
 
     useEffect(() => {
@@ -23,6 +23,10 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     return (
         <header className="toolbar">
+            <>
+                {user ? <p>{user.username} is logged in</p> : <p>NO USER</p>}
+                {isAdmin ? <p>ROLE = isAdmin</p> : <p>ROLE = USER</p>}
+            </>
             <nav className="toolbar-navigation">
                 <div className="toolbar-logo" >
                     {/* {location.pathname !== '/' && ( */}

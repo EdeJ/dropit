@@ -9,7 +9,7 @@ import { axiosConfig } from '../../axios/axiosConfig'
 export const SignInForm = () => {
 
     const { ...methods } = useForm()
-    const { login, isAuthenticated } = useAuthentication()
+    const { login, user } = useAuthentication()
 
     const onSuccess = ({ email, password }) => {
         login(email, password)
@@ -21,7 +21,7 @@ export const SignInForm = () => {
 
     return (
         <>
-            {isAuthenticated ? (
+            {user ? (
                 <Redirect to={'/my-demos'} /> //location.state.from || '/blog'
             ) : (
                     <FormProvider {...methods} >
