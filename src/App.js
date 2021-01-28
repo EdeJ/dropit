@@ -18,6 +18,7 @@ import { PlayerContext } from './components/context/PlayerContextProvider'
 import PrivateRoute from './components/PrivateRoute'
 
 import './App.css'
+import AllDemos from './pages/AllDemos'
 
 function App() {
 
@@ -59,6 +60,9 @@ function App() {
           </Route>
           <PrivateRoute path="/my-demos">
             <MyDemos />
+          </PrivateRoute>
+          <PrivateRoute path="/all-demos" adminOnly={true}>
+            <AllDemos />
           </PrivateRoute>
           <PrivateRoute path="/add-new-demo">
             <AddDemo />

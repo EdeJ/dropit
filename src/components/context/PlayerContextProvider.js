@@ -1,6 +1,4 @@
 import React, { createContext, useState } from 'react'
-// import { Howl, Howler } from 'howler'
-// import ReactAudioPlayer from 'react-audio-player'
 
 export const PlayerContext = createContext()
 
