@@ -1,49 +1,41 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import DrawerToggleButton from '../sideDrawer/DrawerToggleButton'
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
 import './Toolbar.css'
 import { useAuthentication } from '../../hooks/authentication'
-import { getUser } from '../../functions/helperFunctions'
+import { roles } from '../../helpers/roles'
+import { IoMenu, IoPersonCircleOutline } from 'react-icons/io5'
 
 function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
-    const { user, isAdmin, isAuthenticated } = useAuthentication()
+    const { user } = useAuthentication()
 
 
-    useEffect(() => {
-
-        getData()
-        async function getData() {
-            const newUser = await getUser()
-            console.log('newUser', newUser);
-        }
-
-    }, [])
+    function getColor() {
+        return user.roles.includes(roles.ADMIN) ? '#CB2431' : '#69BA5E'
+    }
 
     return (
         <header className="toolbar">
-            <>
-                {user ? <p>{user.username} is logged in</p> : <p>NO USER</p>}
-                {isAdmin ? <p>ROLE = isAdmin</p> : <p>ROLE = USER</p>}
-            </>
+            {user && (
+                <div style={{ fontSize: '10px' }}>
+                    <p>USERNAME: {user.username}</p>
+                    <p>ROLES: {user.roles.map(role => <span>{role}, </span>)}</p>
+                </div>
+            )}
             <nav className="toolbar-navigation">
                 <div className="toolbar-logo" >
-                    {/* {location.pathname !== '/' && ( */}
-                    <Link to={isAuthenticated ? 'my-demos' : '/'}>
+                    <Link to={user && user.roles.includes(roles.USER) ? '/my-demos' : '/'}>
                         <Logo title="dropit" />
                     </Link>
-                    {/* )} */}
-                    {isAdmin && <h5>ADMIN</h5>}
                 </div>
-                <div className="toggle-button">
-                    <DrawerToggleButton setSideDrawerOpen={() => setSideDrawerOpen(!sideDrawerOpen)} />
-                </div>
-                {/* <div className="spacer"></div> */}
-                <div className="toolbar-navigation-items">
-                    {/* <MenuLinks backdropClickHandler={backdropClickHandler} /> */}
-                    <ul>                    {children}</ul>
-
+                <div className="header-buttons">
+                    {user && (
+                        <Link to="/my-profile">
+                            <IoPersonCircleOutline className="profile-icon" color={getColor()} />
+                        </Link>
+                    )}
+                    <IoMenu className="toggle-menu-btn" onClick={() => setSideDrawerOpen(!sideDrawerOpen)} />
                 </div>
             </nav>
         </header>

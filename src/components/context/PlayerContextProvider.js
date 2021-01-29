@@ -1,10 +1,11 @@
-import React, { createContext, useState } from 'react'
+import React, { createContext, useRef, useState } from 'react'
 
 export const PlayerContext = createContext()
 
 function PlayerContextProvider({ children }) {
 
-    const [audio] = useState(new Audio())
+    // const [audio] = useState(new Audio())
+    const audio = useRef()
     const [currentSong, setSong] = useState(null)
     const [showPlayer, setShowPlayer] = useState(false)
     const [showMainPlayer, setShowMainPlayer] = useState(false)
@@ -13,23 +14,24 @@ function PlayerContextProvider({ children }) {
     function setCurrentSong(song) {
         setSong(song)
         if (song) {
-            audio.src = `${process.env.REACT_APP_BASE_URL}api/files/${song.fileName}`
-            audio.play()
+            audio.current.src = `${process.env.REACT_APP_BASE_URL}api/files/${song.fileName}`
+            audio.current.play()
             setIsPlaying(true)
         }
     }
 
     function play() {
-        isPlaying ? audio.pause() : audio.play()
+        isPlaying ? audio.current.pause() : audio.current.play()
         setIsPlaying(!isPlaying)
     }
 
     function pause() {
-        audio.pause()
+        audio.current.pause()
         setIsPlaying(false)
     }
 
     const data = {
+        audio,
         currentSong, setCurrentSong,
         showPlayer, setShowPlayer,
         showMainPlayer, setShowMainPlayer,
@@ -38,6 +40,7 @@ function PlayerContextProvider({ children }) {
     }
     return (
         <PlayerContext.Provider value={data}>
+            <audio crossorigin="anonymous" id="audio-element" ref={audio} ></audio>
             {children}
         </PlayerContext.Provider>
     )

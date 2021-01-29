@@ -14,7 +14,6 @@ function AddDemo() {
 
     async function onSubmit(data) {
         setMessage()
-        console.log(user.userId);
 
         const formData = new FormData()
         formData.append('file', data.file[0])
@@ -22,8 +21,6 @@ function AddDemo() {
         formData.append('fileName', data.file[0].name)
         formData.append('songTitle', data.songTitle)
         formData.append('artist', data.artist)
-
-        console.log(formData);
 
         try {
             const result = await axiosConfig.post('api/files', formData, {

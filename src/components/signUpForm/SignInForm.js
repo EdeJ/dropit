@@ -4,7 +4,6 @@ import { Link, Redirect } from 'react-router-dom'
 import { TextInput } from '../TextInput'
 import './SignUpForm.css'
 import { useAuthentication } from '../../hooks/authentication'
-import axios from 'axios'
 
 export const SignInForm = () => {
 
@@ -28,7 +27,7 @@ export const SignInForm = () => {
     return (
         <>
             {user ? (
-                <Redirect to={'/my-demos'} />
+                <Redirect to={'/'} />
             ) : (
                     <FormProvider {...methods} >
                         <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>

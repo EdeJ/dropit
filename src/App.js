@@ -19,15 +19,21 @@ import PrivateRoute from './components/PrivateRoute'
 
 import './App.css'
 import AllDemos from './pages/AllDemos'
+import { roles } from './helpers/roles'
+import MusicPlayer from './pages/MusicPlayer'
+import MainPlayer from './components/mainPlayer/MainPlayer'
+import AudioVisualizer from './components/AudioVisualizer'
 
 function App() {
 
-  const { currentSong, setShowPlayer } = useContext(PlayerContext)
+  const { currentSong, setShowPlayer, showMainPlayer } = useContext(PlayerContext)
 
   const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
   { path: '/sign-in', label: 'Sign in' },
   { path: '/my-demos', label: 'My demos' },
+  { path: '/all-demos', label: 'All demos' },
   { path: '/add-new-demo', label: 'Add new demo' },
+  { path: '/music-player', label: 'Music Player' },
   { path: '/my-profile', label: 'My profile' }
   ]
 
@@ -58,22 +64,22 @@ function App() {
           <Route path="/sign-in">
             <SignIn />
           </Route>
-          <PrivateRoute path="/my-demos">
+          <PrivateRoute path="/my-demos" permittedRoles={[roles.USER]}>
             <MyDemos />
           </PrivateRoute>
-          <PrivateRoute path="/all-demos" adminOnly={true}>
+          <PrivateRoute path="/all-demos" permittedRoles={[roles.ADMIN]}>
             <AllDemos />
           </PrivateRoute>
-          <PrivateRoute path="/add-new-demo">
+          <PrivateRoute path="/add-new-demo" permittedRoles={[roles.USER]}>
             <AddDemo />
           </PrivateRoute>
-          <PrivateRoute path="/my-profile">
+          <PrivateRoute path="/my-profile" permittedRoles={[roles.USER, roles.ADMIN]}>
             <MyProfile />
           </PrivateRoute>
-          <Route path="/write-comment/:songId">
+          <PrivateRoute path="/write-comment/:songId" permittedRoles={[roles.USER]}>
             <WriteComment />
-          </Route>
-          <PrivateRoute path="/view-comment/:songId">
+          </PrivateRoute>
+          <PrivateRoute path="/view-comment/:songId" permittedRoles={[roles.USER]}>
             <ViewComment />
           </PrivateRoute>
           <Route path="/edit-comment/:songId">
@@ -82,10 +88,16 @@ function App() {
           <Route path="/demo-options/:songId">
             <DemoOptions />
           </Route>
+          {/* <Route path="/music-player">
+            <MusicPlayer />
+          </Route> */}
         </Switch>
       </div>
       {currentSong !== null && (
-        <Player />
+        <>
+          {!showMainPlayer && <Player />}
+          <MainPlayer />
+        </>
       )}
     </>
   )

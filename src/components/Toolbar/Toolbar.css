@@ -44,6 +44,25 @@
 .toolbar-navigation-items a:active {
     color: var(--custom-green);
 }
+.toolbar .header-buttons {
+    display: flex;
+}
+
+.toolbar .header-buttons svg {
+    color: var(--custom-green);
+    cursor: pointer;
+}
+
+.toolbar .toggle-menu-btn {
+    width: 40px;
+    height: 40px;
+}
+
+.toolbar .profile-icon {
+    margin-right: 20px;
+    width: 40px;
+    height: 40px;
+}
 
 @media (max-width: 768px) {
     .toolbar-navigation-items {
@@ -52,7 +71,7 @@
 }
 
 @media (min-width: 769px) {
-    .toolbar .toggle-button {
+    .toolbar .header-buttons {
         display: none;
     }
 

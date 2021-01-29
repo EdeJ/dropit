@@ -6,37 +6,40 @@ import { PlayerContext } from '../../context/PlayerContextProvider'
 import songs from '../../../assets/audio/songs.json'
 import AudioSpectrum from 'react-audio-spectrum'
 import 'react-h5-audio-player/lib/styles.css'
+import { useHistory } from 'react-router-dom'
 
 function SmallPlayer() {
 
     const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying, play, pause } = useContext(PlayerContext)
 
-    const [index, setIndex] = useState(0);
-
-    // useEffect(() => {
-    //     isPlaying ? audio.play() : audio.pause()
-    // }, [isPlaying])
+    const [index, setIndex] = useState(0)
+    const history = useHistory()
 
 
     function previous() {
         if (index > 0) {
-            setCurrentSong(songs[index - 1]);
+            setCurrentSong(songs[index - 1])
         }
     }
 
     function next() {
         if (index < songs.length - 1) {
-            setCurrentSong(songs[index + 1]);
+            setCurrentSong(songs[index + 1])
         }
     }
 
     return (
         <div className="sticky-player">
             <div
-                // onClick={() => setShowMainPlayer(true)}
+                // history.push('/music-player')
+
                 className="container">
                 {currentSong && (
-                    <div className="song-details">
+                    <div
+                        className="song-details"
+                        onClick={() => setShowMainPlayer(true)}
+                        style={{ width: '100%', height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+                    >
                         <strong>{currentSong.songTitle}</strong>
                         <p>{currentSong.artist}</p>
                     </div>
@@ -45,42 +48,6 @@ function SmallPlayer() {
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>
-                {/* <audio ref={audio}> */}
-                {/* <source src={`${process.env.REACT_APP_BASE_URL}api/files/${currentSong.fileName}`} type="audio/mpeg" /> */}
-                {/* </audio> */}
-                {/* <div>
-                    <AudioSpectrum
-                        id="audio-canvas"
-                        height={200}
-                        width={100}
-                        audioEle={audio.current}
-                        meterWidth={10}
-                        gap={2}
-                        capColor={''}
-                        meterColor={[
-                            { stop: 0, color: '#69BA5E' },
-                            { stop: 0.5, color: '#69BA5E' },
-                            // { stop: 1, color: 'red' }
-                        ]}
-                    />
-                </div> */}
-
-                {/* {currentSong && (
-                    <AudioPlayer style={{ background: 'none' }}
-                        ref={player}
-                        autoPlay
-                        src={currentSong.fileName}
-                        onPlay={e => console.log("onPlay")}
-                        showSkipControls={true}
-                        showJumpControls={false}
-                        showDownloadProgress={true}
-                        autoPlayAfterSrcChange={true}
-                        onClickPrevious={previous}
-                        onClickNext={next}
-                        layout='stacked-reverse'
-                    />
-                )} */}
-
             </div>
 
         </div>
