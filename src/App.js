@@ -76,7 +76,7 @@ function App() {
           <PrivateRoute path="/my-profile" permittedRoles={[roles.USER, roles.ADMIN]}>
             <MyProfile />
           </PrivateRoute>
-          <PrivateRoute path="/write-comment/:songId" permittedRoles={[roles.USER]}>
+          <PrivateRoute path="/write-comment/:songId" permittedRoles={[roles.ADMIN]}>
             <WriteComment />
           </PrivateRoute>
           <PrivateRoute path="/view-comment/:songId" permittedRoles={[roles.USER]}>

@@ -20,7 +20,6 @@ export const AuthProvider = ({ children }) => {
     if (user) {
       setIsAdmin(user.roles.includes('ROLE_ADMIN'))
     }
-
   }, [])
 
 

@@ -7,10 +7,12 @@ import { IoReturnUpBack } from 'react-icons/io5'
 import styles from './DemoOptions.module.css'
 import SongPanel from '../components/SongPanel'
 import { useAuthentication } from '../hooks/authentication'
-import { axiosConfig, deleteDemoById, getDemoByUserId } from '../axios/axiosConfig'
+import { axiosConfig, deleteDemoById, getDemoById } from '../axios/axiosConfig'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
 import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
 import SideDrawer from '../components/sideDrawer/SideDrawer'
+import OptionsList from '../components/OptionsList'
+import { roles } from '../helpers/roles'
 
 
 function DemoOptions({ isAdmin }) {
@@ -21,29 +23,20 @@ function DemoOptions({ isAdmin }) {
     const { setCurrentSong } = useContext(PlayerContext)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
+    const { user } = useAuthentication()
 
     useEffect(() => {
 
         fetchData()
 
         async function fetchData() {
-            const { data } = await getDemoByUserId(songId)
+            const { data } = await getDemoById(songId)
             setSong(data)
             console.log(song);
         }
 
     }, [songId])
 
-
-    const adminLinks = () => {
-        if (isAdmin) {
-            if (comment.message === '') {
-                return <li><Link to={`/write-comment/${songId}`}>Write new comment</Link></li>
-            } else {
-                return <li><Link to={`/edit-comment/${songId}`}>Edit comment</Link></li>
-            }
-        }
-    }
 
     async function modalAction(allowAction) {
         setShowModal(false)
@@ -58,23 +51,22 @@ function DemoOptions({ isAdmin }) {
 
     return (
         <>
-            {showModal && <ConfirmationModal action={modalAction} />}
+            {showModal && (
+                <ConfirmationModal
+                    action={modalAction}
+                    message="Are you sure you want to delete this demo?"
+                />
+            )}
             <div className={styles.page}>
                 <div className={styles.container}>
                     <h3>Demo options</h3>
                     {song && <SongPanel song={song} />}
                     <MenuPanel>
                         <li><Link to="/my-demos">
+                            {/* TODO back met history? omdat de admin vanaf allDemos komt */}
                             <IoReturnUpBack />Back to all demos</Link>
                         </li>
-                        {(song && song.comment) && (
-                            <>
-                                <li>
-                                    <Link to={`/view-comment/${songId}`}>View comment</Link>
-                                </li>
-                                {adminLinks()}
-                            </>
-                        )}
+                        {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />}
                         <li>
                             <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
                         </li>

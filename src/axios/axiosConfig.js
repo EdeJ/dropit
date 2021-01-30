@@ -5,14 +5,22 @@ export const axiosConfig = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL
 })
 
-export const getDemoByUserId = async (demoId) => {
+export const getAllDemos = async () => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.get(`/api/demos`, { headers: { Authorization: accessToken } })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getDemoById = async (demoId) => {
     const { accessToken } = getUser()
     try {
         return await axiosConfig.get(`/api/demos/${demoId}`, { headers: { Authorization: accessToken } })
     } catch (error) {
         console.log(error)
     }
-
 }
 
 export const getAllDemosByUserId = async (userId) => {
@@ -22,7 +30,6 @@ export const getAllDemosByUserId = async (userId) => {
     } catch (error) {
         console.log(error)
     }
-
 }
 
 export const deleteDemoById = async (demoId) => {
@@ -32,7 +39,6 @@ export const deleteDemoById = async (demoId) => {
     } catch (error) {
         console.log(error)
     }
-
 }
 
 
