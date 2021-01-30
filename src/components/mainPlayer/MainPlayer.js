@@ -50,7 +50,7 @@ function MainPlayer() {
                         <AudioVisualizer />
                     </div>
                     <div className={styles.songDetails}>
-                        <h2>{currentSong && currentSong.title}</h2>
+                        <h2>{currentSong && currentSong.songTitle}</h2>
                         <span>{currentSong && currentSong.artist}</span>
                         <Link className={styles.settings} to={`/demo-options/${currentSong.id}`}
                             onClick={() => setShowMainPlayer(false)}

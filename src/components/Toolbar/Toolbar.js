@@ -37,6 +37,10 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
                     )}
                     <IoMenu className="toggle-menu-btn" onClick={() => setSideDrawerOpen(!sideDrawerOpen)} />
                 </div>
+                <div className="toolbar-navigation-items">
+                    <ul>{children}</ul>
+
+                </div>
             </nav>
         </header>
     )

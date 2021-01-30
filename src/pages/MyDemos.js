@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import './MyDemos.css'
 import SongCard from '../components/SongCard';
 import { PlayerContext } from '../components/context/PlayerContextProvider';
-import { getAllDemosByUserId } from '../axios/axiosConfig';
+import { deleteDemoById, getAllDemosByUserId } from '../axios/axiosConfig';
 import { useAuthentication } from '../hooks/authentication';
 
 
@@ -13,6 +13,7 @@ function MyDemos() {
     const [songs, setSongs] = useState()
 
     useEffect(() => {
+        console.log("my-demos LOADED!");
         fetchData();
         async function fetchData() {
             try {
@@ -21,7 +22,11 @@ function MyDemos() {
             } catch (error) {
             }
         }
-    }, [])
+    }, [user])
+
+    // function deleteDemo(demoId) {
+    //     deleteDemoById(demoId)
+    // }
 
     return (
         <div className="full-page">

@@ -1,7 +1,7 @@
 
 
 export async function getUser() {
-    return await JSON.parse(localStorage.getItem("user"))
+    JSON.parse(localStorage.getItem("user"))
 }
 
 export function setUser(user) {

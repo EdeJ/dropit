@@ -6,7 +6,7 @@ export const axiosConfig = axios.create({
 })
 
 export const getDemoByUserId = async (demoId) => {
-    const { accessToken } = await getUser()
+    const { accessToken } = getUser()
     try {
         return await axiosConfig.get(`/api/demos/${demoId}`, { headers: { Authorization: accessToken } })
     } catch (error) {
@@ -16,9 +16,19 @@ export const getDemoByUserId = async (demoId) => {
 }
 
 export const getAllDemosByUserId = async (userId) => {
-    const { accessToken } = await getUser()
+    const { accessToken } = getUser()
     try {
-        return await axiosConfig.get(`/api/demos/by-user/${userId}`, { headers: { Authorization: accessToken } })
+        return await axiosConfig.get(`/api/users/${userId}/demos`, { headers: { Authorization: accessToken } })
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+export const deleteDemoById = async (demoId) => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.delete(`/api/demos/${demoId}`, { headers: { Authorization: accessToken } })
     } catch (error) {
         console.log(error)
     }

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { Link, useHistory, useParams } from 'react-router-dom'
 import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
 // import songs from '../assets/audio/songs'
@@ -7,7 +7,10 @@ import { IoReturnUpBack } from 'react-icons/io5'
 import styles from './DemoOptions.module.css'
 import SongPanel from '../components/SongPanel'
 import { useAuthentication } from '../hooks/authentication'
-import { axiosConfig, getDemoByUserId } from '../axios/axiosConfig'
+import { axiosConfig, deleteDemoById, getDemoByUserId } from '../axios/axiosConfig'
+import { PlayerContext } from '../components/context/PlayerContextProvider'
+import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
+import SideDrawer from '../components/sideDrawer/SideDrawer'
 
 
 function DemoOptions({ isAdmin }) {
@@ -15,7 +18,9 @@ function DemoOptions({ isAdmin }) {
     const { songId } = useParams()
     const [comment, setComment] = useState()
     const [song, setSong] = useState()
-    const { user } = useAuthentication()
+    const { setCurrentSong } = useContext(PlayerContext)
+    const history = useHistory()
+    const [showModal, setShowModal] = useState(false)
 
     useEffect(() => {
 
@@ -30,12 +35,6 @@ function DemoOptions({ isAdmin }) {
     }, [songId])
 
 
-    // useEffect(() => {
-    //     setSong(songs.find(s => s.id === parseInt(songId)))
-    //     setComment(comments.find(c => c.songId === parseInt(songId)))
-    // }, [songId])
-
-
     const adminLinks = () => {
         if (isAdmin) {
             if (comment.message === '') {
@@ -46,35 +45,43 @@ function DemoOptions({ isAdmin }) {
         }
     }
 
+    async function modalAction(allowAction) {
+        setShowModal(false)
+        if (allowAction) {
+            setCurrentSong(null)
+            const result = await deleteDemoById(songId)
+            if (result) {
+                history.push('/my-demos')
+            }
+        }
+    }
+
     return (
-        <div className={styles.page}>
-            <div className={styles.container}>
-                <h3>Demo options</h3>
-                {/* {song &&
-                        <SongCard
-                            song={song}
-                            size={{ width: '100%', height: 180 }}
-                            settingBtn={false}
-                        />} */}
-                {song && <SongPanel song={song} />}
-                <MenuPanel>
-                    <li><Link to="/my-demos">
-                        <IoReturnUpBack />Back to all demos</Link>
-                    </li>
-                    {(song && song.comment) && (
-                        <>
-                            <li>
-                                <Link to={`/view-comment/${songId}`}>View comment</Link>
-                            </li>
-                            {adminLinks()}
-                            <li>
-                                <Link to={`#`}>Delete demo</Link>
-                            </li>
-                        </>
-                    )}
-                </MenuPanel>
+        <>
+            {showModal && <ConfirmationModal action={modalAction} />}
+            <div className={styles.page}>
+                <div className={styles.container}>
+                    <h3>Demo options</h3>
+                    {song && <SongPanel song={song} />}
+                    <MenuPanel>
+                        <li><Link to="/my-demos">
+                            <IoReturnUpBack />Back to all demos</Link>
+                        </li>
+                        {(song && song.comment) && (
+                            <>
+                                <li>
+                                    <Link to={`/view-comment/${songId}`}>View comment</Link>
+                                </li>
+                                {adminLinks()}
+                            </>
+                        )}
+                        <li>
+                            <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
+                        </li>
+                    </MenuPanel>
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

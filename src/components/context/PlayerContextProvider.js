@@ -17,6 +17,8 @@ function PlayerContextProvider({ children }) {
             audio.current.src = `${process.env.REACT_APP_BASE_URL}api/files/${song.fileName}`
             audio.current.play()
             setIsPlaying(true)
+        } else {
+            audio.current.pause()
         }
     }
 
