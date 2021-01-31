@@ -5,12 +5,15 @@ import FlashMessage from 'react-flash-message'
 import { useAuthentication } from '../hooks/authentication'
 import { TextInput } from '../components/TextInput'
 import '../components/signUpForm/SignUpForm.css'
+import FileInput from '../components/FileInput'
+import { useHistory } from 'react-router-dom'
 
 function AddDemo() {
 
     const { register, handleSubmit, errors } = useForm()
     const [message, setMessage] = useState()
     const { user } = useAuthentication()
+    const history = useHistory()
 
     async function onSubmit(data) {
         setMessage()
@@ -29,8 +32,8 @@ function AddDemo() {
                     'Authorization': user.accessToken
                 }
             })
-            // console.log(result.data)
             setMessage({ text: result.data, type: 'success' })
+            history.push('/my-demos')
         } catch (error) {
             console.log(error)
             setMessage({ text: 'Error in file upload', type: 'error' })
@@ -43,7 +46,7 @@ function AddDemo() {
             <FormProvider errors={errors} >
                 <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
                     {/* // TODO form className   */}
-                    <input
+                    <FileInput
                         type="file"
                         name="file"
                         fieldRef={register({

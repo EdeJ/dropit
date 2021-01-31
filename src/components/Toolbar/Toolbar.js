@@ -11,19 +11,18 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     const { user } = useAuthentication()
 
-
     function getColor() {
         return user.roles.includes(roles.ADMIN) ? '#CB2431' : '#69BA5E'
     }
 
     return (
         <header className="toolbar">
-            {user && (
+            {/* {user && (
                 <div style={{ fontSize: '10px' }}>
                     <p key="1">USERNAME: {user.username}</p>
                     <p key="2">ROLES: {user.roles.map(role => <span>{role}, </span>)}</p>
                 </div>
-            )}
+            )} */}
             <nav className="toolbar-navigation">
                 <div className="toolbar-logo" >
                     <Link to="/">

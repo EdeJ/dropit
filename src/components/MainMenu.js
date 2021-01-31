@@ -1,54 +1,75 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Link, NavLink, useHistory } from "react-router-dom"
 import { useAuthentication } from '../hooks/authentication'
+import ConfirmationModal from './confirmationModal/ConfirmationModal'
 import { PlayerContext } from './context/PlayerContextProvider'
 
 function MainMenu({ setSideDrawerOpen }) {
 
     const { user, isAdmin, logout } = useAuthentication()
     const { pause, setCurrentSong } = useContext(PlayerContext)
+    const [showModal, setShowModal] = useState(false)
     const history = useHistory()
 
+    function handleLogOut(allowAction) {
+        setShowModal(false)
+        if (allowAction) {
+            logout()
+            pause()
+            setCurrentSong(null)
+            setSideDrawerOpen(false)
+            history.push('/')
+        }
+    }
+
     return (
-        <ul onClick={() => setSideDrawerOpen(false)}>
-            {user && (
-                <li key="myProfile">
-                    <NavLink to='/my-profile'>My profile</NavLink>
-                </li>
+        <div>
+            {showModal && (
+                <ConfirmationModal
+                    action={handleLogOut}
+                    message="Are you sure you want to sign out?"
+                />
             )}
-            {!user && (
-                <>
-                    <li key="signUp">
-                        <NavLink to='/sign-up'>Sign up</NavLink>
+            <ul>
+                {/* <ul> */}
+                {user && (
+                    <li key="myProfile" onClick={() => setSideDrawerOpen(false)}>
+                        <NavLink to='/my-profile'>My profile</NavLink>
                     </li>
-                    <li key="signIn">
-                        <NavLink to='/sign-in'>Sign in</NavLink>
+                )}
+                {!user && (
+                    <>
+                        <li key="signUp" onClick={() => setSideDrawerOpen(false)}>
+                            <NavLink to='/sign-up'>Sign up</NavLink>
+                        </li>
+                        <li key="signIn" onClick={() => setSideDrawerOpen(false)}>
+                            <NavLink to='/sign-in'>Sign in</NavLink>
+                        </li>
+                    </>
+                )}
+                {user && !isAdmin() && (
+                    <>
+                        <li key="myDemos" onClick={() => setSideDrawerOpen(false)}>
+                            <NavLink to='/my-demos'>My demos</NavLink>
+                        </li>
+                        <li key="addNewDemo" onClick={() => setSideDrawerOpen(false)}>
+                            <NavLink to='add-new-demo'>Add new demo</NavLink>
+                        </li>
+                    </>
+                )}
+                {isAdmin() && (
+                    <li key="allDemos" onClick={() => setSideDrawerOpen(false)}>
+                        <NavLink to='/all-demos'>All demos</NavLink>
                     </li>
-                </>
-            )}
-            {user && !isAdmin() && (
-                <>
-                    <li key="myDemos">
-                        <NavLink to='/my-demos'>My demos</NavLink>
+                )}
+                {/* // TODO weet je zeker dat je wilt uitloggen? */}
+                {user && (
+                    <li key="signOut" onClick={setShowModal}>
+                        <Link to={'#'}>Sign out</Link>
                     </li>
-                    <li key="addNewDemo">
-                        <NavLink to='add-new-demo'>Add new demo</NavLink>
-                    </li>
-                </>
-            )}
-            {isAdmin() && (
-                <li key="allDemos">
-                    <NavLink to='all-demos'>All demos</NavLink>
-                </li>
-            )}
-            {user && <li key="signOut" onClick={() => {
-                logout()
-                pause()
-                setCurrentSong(null)
-                history.push('/')
-            }
-            }><Link to={'#'}>Sign out</Link></li>}
-        </ul>
+                )}
+            </ul>
+        </div>
     )
 }
 

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { axiosConfig } from '../../axios/axiosConfig';
 import { TextInput } from '../TextInput';
 
@@ -10,6 +10,7 @@ export const SignUpForm = () => {
 
     const { ...methods } = useForm({ mode: 'onBlur' });
     const currentPassword = methods.watch("password");
+    const history = useHistory()
 
 
     const onSuccess = (formData) => {
@@ -20,7 +21,8 @@ export const SignUpForm = () => {
                     "username": userData.email,
                     "password": userData.password
                 });
-                console.log(response);
+                // console.log(response);
+                history.push('/sign-in')
             } catch (error) {
                 console.error(error);
             }
