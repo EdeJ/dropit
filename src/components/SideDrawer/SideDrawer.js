@@ -6,7 +6,11 @@ function SideDrawer({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     return (
         <nav className={`side-drawer ${sideDrawerOpen ? 'open' : ''}`}>
-            <button onClick={() => setSideDrawerOpen(false)} type="button"><CloseIcon /></button>
+            <button
+                onClick={() => setSideDrawerOpen(false)}
+                type="button">
+                <CloseIcon />
+            </button>
             {children}
         </nav>
     )

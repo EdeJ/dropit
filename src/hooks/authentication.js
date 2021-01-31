@@ -12,7 +12,7 @@ export const AuthProvider = ({ children }) => {
     if (user) {
       return user.roles.includes(roles.ADMIN)
     }
-    return false
+    // return false
   }
 
   const login = async (username, password) => {
