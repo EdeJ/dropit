@@ -18,7 +18,7 @@ function MenuLinks({ links, setSideDrawerOpen }) {
                 <NavLink to={link.path}>{link.label}</NavLink>
             </li>
         ))}
-            {user && <li onClick={() => {
+            {user && <li key="TODO" onClick={() => {
                 logout()
                 pause()
                 setCurrentSong(null)

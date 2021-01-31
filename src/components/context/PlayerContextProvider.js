@@ -41,7 +41,7 @@ function PlayerContextProvider({ children }) {
     }
     return (
         <PlayerContext.Provider value={data}>
-            <audio crossorigin="anonymous" id="audio-element" ref={audio} ></audio>
+            <audio crossOrigin="anonymous" ref={audio} ></audio>
             {children}
         </PlayerContext.Provider>
     )

@@ -37,7 +37,7 @@ function App() {
   ]);
 
   useEffect(() => {
-    if (user.roles.includes(roles.ADMIN)) {
+    if (isAdmin()) {
       setMainLinks([
         { path: '/sign-up', label: 'Sign up' },
         { path: '/sign-in', label: 'Sign in' },

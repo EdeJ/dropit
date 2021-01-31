@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { ReactComponent as Logo } from '../../assets/images/logo.svg'
-import './Toolbar.css'
 import { useAuthentication } from '../../hooks/authentication'
 import { roles } from '../../helpers/roles'
 import { IoMenu, IoPersonCircleOutline } from 'react-icons/io5'
+
+import './Toolbar.css'
 
 function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
@@ -19,8 +20,8 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
         <header className="toolbar">
             {user && (
                 <div style={{ fontSize: '10px' }}>
-                    <p>USERNAME: {user.username}</p>
-                    <p>ROLES: {user.roles.map(role => <span>{role}, </span>)}</p>
+                    <p key="1">USERNAME: {user.username}</p>
+                    <p key="2">ROLES: {user.roles.map(role => <span>{role}, </span>)}</p>
                 </div>
             )}
             <nav className="toolbar-navigation">
@@ -39,7 +40,6 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
                 </div>
                 <div className="toolbar-navigation-items">
                     <ul>{children}</ul>
-
                 </div>
             </nav>
         </header>
