@@ -51,7 +51,7 @@ export const SignInForm = () => {
                                 })}
                             />
                             <button type="submit">Sign In</button>
-                            <p className="small-text card">New to dropit? &nbsp<Link to="/sign-up"> Create an account</Link></p>
+                            <p className="small-text card">New to dropit? <Link to="/sign-up"> Create an account</Link></p>
                         </form>
                     </FormProvider>
                 )}

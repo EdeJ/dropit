@@ -62,7 +62,6 @@ function MainMenu({ setSideDrawerOpen }) {
                         <NavLink to='/all-demos'>All demos</NavLink>
                     </li>
                 )}
-                {/* // TODO weet je zeker dat je wilt uitloggen? */}
                 {user && (
                     <li key="signOut" onClick={setShowModal}>
                         <Link to={'#'}>Sign out</Link>
