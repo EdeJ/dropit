@@ -90,7 +90,7 @@ export const SignUpForm = () => {
                     })}
                 />
                 <button type="submit">Sign up for dropit</button>
-                <p className="small-text">By creating an account, you agree to the <Link to="/">Terms of Service</Link>.</p>
+                <p className="small-text">By creating an account, you agree to the <Link to="/">Terms of Service</Link></p>
             </form>
         </FormProvider>
     )
