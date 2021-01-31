@@ -1,27 +1,19 @@
 import React, { useState, useContext, createContext, useEffect } from "react"
 import { axiosConfig } from "../axios/axiosConfig"
+import { roles } from "../helpers/roles"
 
 const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
 
-  // const [isAuthenticated, setIsAuthenticated] = useState(
-  //   // Boolean(localStorage.getItem("user"))
-  //   true
-  // )
-
-  const [isAdmin, setIsAdmin] = useState(false)
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
-  // myUser.roles.includes('ROLE_ADMIN')
-
-  useEffect(() => {
-    console.log("wat is mijn user", user)
+  function isAdmin() {
     if (user) {
-      setIsAdmin(user.roles.includes('ROLE_ADMIN'))
+      return user.roles.includes(roles.ADMIN)
     }
-  }, [])
-
+    return false
+  }
 
   const login = async (username, password) => {
 
@@ -36,7 +28,7 @@ export const AuthProvider = ({ children }) => {
       newUser.username = response.data.username
       newUser.accessToken = 'Bearer ' + response.data.accessToken
       newUser.roles = response.data.roles
-      setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
+      // setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
       setUser(newUser)
 
       localStorage.setItem("user", JSON.stringify(newUser))
@@ -57,7 +49,7 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem('user')
     // setIsAuthenticated(false)
     setUser(null)
-    setIsAdmin(false)
+    // setIsAdmin(false)
   }
 
   return (

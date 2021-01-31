@@ -4,7 +4,6 @@ export const PlayerContext = createContext()
 
 function PlayerContextProvider({ children }) {
 
-    // const [audio] = useState(new Audio())
     const audio = useRef()
     const [currentSong, setSong] = useState(null)
     const [showPlayer, setShowPlayer] = useState(false)

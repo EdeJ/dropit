@@ -44,21 +44,39 @@ function AddDemo() {
                 <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
                     {/* // TODO form className   */}
                     <input
-                        ref={register}
                         type="file"
                         name="file"
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must add a mp3 audio file"
+                            }
+                        })
+                        }
                     />
                     <TextInput
                         type="text"
                         label="Song title"
                         name="songTitle"
-                        fieldRef={register}
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must specify a song title"
+                            }
+                        })
+                        }
                     />
                     <TextInput
                         type="text"
                         label="Artist"
                         name="artist"
-                        fieldRef={register}
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must specify an artist name"
+                            }
+                        })
+                        }
                     />
                     <button>upload</button>
                 </form>

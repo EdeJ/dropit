@@ -25,7 +25,7 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
             )}
             <nav className="toolbar-navigation">
                 <div className="toolbar-logo" >
-                    <Link to={user && user.roles.includes(roles.USER) ? '/my-demos' : '/'}>
+                    <Link to="/">
                         <Logo title="dropit" />
                     </Link>
                 </div>

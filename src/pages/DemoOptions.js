@@ -62,9 +62,9 @@ function DemoOptions({ isAdmin }) {
                     <h3>Demo options</h3>
                     {song && <SongPanel song={song} />}
                     <MenuPanel>
-                        <li><Link to="/my-demos">
-                            {/* TODO back met history? omdat de admin vanaf allDemos komt */}
-                            <IoReturnUpBack />Back to all demos</Link>
+                        <li>
+                            <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : 'my-demos'} >
+                                <IoReturnUpBack />Back to all demos</Link>
                         </li>
                         {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />}
                         <li>

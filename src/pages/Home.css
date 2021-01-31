@@ -39,3 +39,22 @@ body,
 .action-btns a:hover {
     color: var(--custom-dark-green);
 }
+
+@keyframes glowing {
+    0% {
+      color: var(--custom-brown);
+    }
+    50% {
+        color: var(--custom-green);
+    }
+    100% {
+      color: var(--custom-brown);;
+    }
+  }
+
+  .play-btn {
+    animation: glowing 1300ms infinite;
+    width: 70px;
+    height: 70px;
+    cursor: pointer;
+  }

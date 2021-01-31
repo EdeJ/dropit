@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import SideDrawer from './components/sideDrawer/SideDrawer'
 import Toolbar from './components/toolbar/Toolbar'
@@ -20,22 +20,44 @@ import PrivateRoute from './components/PrivateRoute'
 import './App.css'
 import AllDemos from './pages/AllDemos'
 import { roles } from './helpers/roles'
-import MusicPlayer from './pages/MusicPlayer'
 import MainPlayer from './components/mainPlayer/MainPlayer'
-import AudioVisualizer from './components/AudioVisualizer'
+import { useAuthentication } from './hooks/authentication'
 
 function App() {
 
+  const { user, isAdmin } = useAuthentication()
   const { currentSong, setShowPlayer, showMainPlayer } = useContext(PlayerContext)
 
-  const mainLinks = [{ path: '/sign-up', label: 'Sign up' },
-  { path: '/sign-in', label: 'Sign in' },
-  { path: '/my-demos', label: 'My demos' },
-  { path: '/all-demos', label: 'All demos' },
-  { path: '/add-new-demo', label: 'Add new demo' },
-  { path: '/music-player', label: 'Music Player' },
-  { path: '/my-profile', label: 'My profile' }
-  ]
+  const [mainLinks, setMainLinks] = useState([
+    { path: '/sign-up', label: 'Sign up' },
+    { path: '/sign-in', label: 'Sign in' },
+    { path: '/my-demos', label: 'My demos' },
+    { path: '/add-new-demo', label: 'Add new demo' },
+    { path: '/my-profile', label: 'My profile' }
+  ]);
+
+  useEffect(() => {
+    if (user.roles.includes(roles.ADMIN)) {
+      setMainLinks([
+        { path: '/sign-up', label: 'Sign up' },
+        { path: '/sign-in', label: 'Sign in' },
+        { path: '/all-demos', label: 'All demos' },
+        { path: '/my-profile', label: 'My profile' }
+      ])
+    } else {
+      setMainLinks(
+        [
+          { path: '/sign-up', label: 'Sign up' },
+          { path: '/sign-in', label: 'Sign in' },
+          { path: '/my-demos', label: 'My demos' },
+          { path: '/add-new-demo', label: 'Add new demo' },
+          { path: '/my-profile', label: 'My profile' }
+        ])
+
+    }
+  }, [isAdmin])
+
+
 
   const [sideDrawerOpen, setSideDrawerOpen] = useState(false)
 
@@ -46,6 +68,7 @@ function App() {
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}
         >
+          {/* // TODO maak hier een hoofdmenu van die intern zelf regeld of het links voor ADMIN of voor USER moet zijn */}
           <MenuLinks links={mainLinks} setSideDrawerOpen={setSideDrawerOpen} />
         </Toolbar>
         <SideDrawer
@@ -88,9 +111,6 @@ function App() {
           <Route path="/demo-options/:songId">
             <DemoOptions />
           </Route>
-          {/* <Route path="/music-player">
-            <MusicPlayer />
-          </Route> */}
         </Switch>
       </div>
       {currentSong !== null && (
