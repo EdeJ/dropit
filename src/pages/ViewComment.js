@@ -4,7 +4,7 @@ import styles from './ViewComment.module.css'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
 import SongPanel from '../components/SongPanel'
-import { getDemoByUserId } from '../axios/axiosConfig'
+import { getDemoById } from '../axios/axiosConfig'
 
 function ViewComment() {
 
@@ -18,7 +18,7 @@ function ViewComment() {
 
         async function fetchData() {
 
-            const { data } = await getDemoByUserId(songId)
+            const { data } = await getDemoById(songId)
             setSong(data)
             setComment(data.comment.message)
 

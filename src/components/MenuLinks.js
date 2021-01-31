@@ -5,7 +5,7 @@ import { PlayerContext } from './context/PlayerContextProvider'
 
 function MenuLinks({ links, setSideDrawerOpen }) {
 
-    const { isAuthenticated, logout } = useAuthentication()
+    const { user, logout } = useAuthentication()
     const { pause, setCurrentSong } = useContext(PlayerContext)
     const history = useHistory()
 
@@ -18,7 +18,7 @@ function MenuLinks({ links, setSideDrawerOpen }) {
                 <NavLink to={link.path}>{link.label}</NavLink>
             </li>
         ))}
-            {isAuthenticated && <li onClick={() => {
+            {user && <li key="TODO" onClick={() => {
                 logout()
                 pause()
                 setCurrentSong(null)

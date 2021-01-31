@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 
 import styles from './ViewComment.module.css'
 import SongPanel from '../components/SongPanel'
-import { getDemoByUserId } from '../axios/axiosConfig'
+import { getDemoById } from '../axios/axiosConfig'
 
 
 function EditComment() {
@@ -19,7 +19,7 @@ function EditComment() {
 
         async function fetchData() {
 
-            const { data } = await getDemoByUserId(songId)
+            const { data } = await getDemoById(songId)
             setSong(data)
             setComment(data.comment.message)
 

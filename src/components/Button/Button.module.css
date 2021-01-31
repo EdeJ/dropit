@@ -1,0 +1,16 @@
+
+.customButton {
+    font-weight: bold;
+    color: var(--custom-green);
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid;
+    background-color: var(--custom-background);
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 18px;
+    margin: 20px;
+}
+.warning {
+    color: var(--custom-red)
+}

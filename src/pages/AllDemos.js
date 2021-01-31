@@ -1,15 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react'
-import './MyDemos.css'
 import SongCard from '../components/SongCard';
 import { PlayerContext } from '../components/context/PlayerContextProvider';
-import { getAllDemosByUserId } from '../axios/axiosConfig';
-import { useAuthentication } from '../hooks/authentication';
+import { getAllDemos } from '../axios/axiosConfig';
+import './MyDemos.css'
 
+function AllDemos() {
 
-function AllDemos({ adminonly }) {
-    console.log(adminonly);
-
-    const { user } = useAuthentication()
     const { showMainPlayer } = useContext(PlayerContext)
     const [songs, setSongs] = useState()
 
@@ -17,7 +13,7 @@ function AllDemos({ adminonly }) {
         fetchData();
         async function fetchData() {
             try {
-                const { data } = await getAllDemosByUserId(user.userId)
+                const { data } = await getAllDemos()
                 setSongs(data)
             } catch (error) {
             }

@@ -14,7 +14,6 @@ function AddDemo() {
 
     async function onSubmit(data) {
         setMessage()
-        console.log(user.userId);
 
         const formData = new FormData()
         formData.append('file', data.file[0])
@@ -22,8 +21,6 @@ function AddDemo() {
         formData.append('fileName', data.file[0].name)
         formData.append('songTitle', data.songTitle)
         formData.append('artist', data.artist)
-
-        console.log(formData);
 
         try {
             const result = await axiosConfig.post('api/files', formData, {
@@ -47,21 +44,39 @@ function AddDemo() {
                 <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
                     {/* // TODO form className   */}
                     <input
-                        ref={register}
                         type="file"
                         name="file"
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must add a mp3 audio file"
+                            }
+                        })
+                        }
                     />
                     <TextInput
                         type="text"
                         label="Song title"
                         name="songTitle"
-                        fieldRef={register}
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must specify a song title"
+                            }
+                        })
+                        }
                     />
                     <TextInput
                         type="text"
                         label="Artist"
                         name="artist"
-                        fieldRef={register}
+                        fieldRef={register({
+                            required: {
+                                value: true,
+                                message: "You must specify an artist name"
+                            }
+                        })
+                        }
                     />
                     <button>upload</button>
                 </form>

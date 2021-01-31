@@ -3,36 +3,37 @@ import { Route, Redirect } from "react-router-dom"
 import { useAuthentication } from "../hooks/authentication"
 
 
-function PrivateRoute({ children, ...rest }) {
-    const { adminOnly } = rest;
+function PrivateRoute({ children, permittedRoles, ...rest }) {
 
+    const { user } = useAuthentication()
 
-    const { isAuthenticated, isAdmin } = useAuthentication()
-    const [isAllowed, setIsAllowed] = useState(false)
+    let isAllowed = false
 
-    console.log("adminOnly: ", adminOnly);
-    console.log("isAdmin: ", isAdmin);
+    console.log("isAuthenticated: ", user)
 
-    useEffect(() => {
-        let isAllowed = false
-        if (isAuthenticated) {
-            isAllowed = true
-        }
-        if (adminOnly) {
-            if (adminOnly !== isAdmin) {
-                isAllowed = false
+    if (user) {
+        user.roles.forEach(role => {
+            console.log('user.roles: ', role)
+            if (permittedRoles.includes(role)) {
+                isAllowed = true
             }
-        }
-        setIsAllowed(isAllowed)
-    }, [])
+        });
+
+        // isAllowed = user.roles.reduce((boolean, role) => {
+        //     return permittedRoles.includes(role)
+        // })
+        console.log("ROLE isAllowed: ", isAllowed)
+    }
+
+    // setIsAllowed(isAllowed)
+
 
     return (
         <>
-            {isAllowed ? <h1>isAllowed!</h1> : <h1>NOT ALLOWED</h1>}
             <Route
                 {...rest}
                 render={({ location }) =>
-                    isAuthenticated ? (children) : (
+                    isAllowed ? (children) : (
                         <Redirect
                             to={{
                                 pathname: "/sign-in",

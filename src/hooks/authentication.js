@@ -1,23 +1,19 @@
 import React, { useState, useContext, createContext, useEffect } from "react"
 import { axiosConfig } from "../axios/axiosConfig"
+import { roles } from "../helpers/roles"
 
 const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
 
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    Boolean(localStorage.getItem("user"))
-  )
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
 
-  const [isAdmin, setIsAdmin] = useState(false)
-  const [user, setUser] = useState()
-
-  useEffect(() => {
-    if (isAuthenticated) {
-      setUser(JSON.parse(localStorage.getItem("user")))
+  function isAdmin() {
+    if (user) {
+      return user.roles.includes(roles.ADMIN)
     }
-  }, [isAuthenticated])
-
+    return false
+  }
 
   const login = async (username, password) => {
 
@@ -32,11 +28,12 @@ export const AuthProvider = ({ children }) => {
       newUser.username = response.data.username
       newUser.accessToken = 'Bearer ' + response.data.accessToken
       newUser.roles = response.data.roles
-      setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
+      // setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
+      setUser(newUser)
 
       localStorage.setItem("user", JSON.stringify(newUser))
-      setIsAuthenticated(true)
-      // setUser(newUser)
+      // setIsAuthenticated(true)
+
 
       return true;
 
@@ -50,15 +47,15 @@ export const AuthProvider = ({ children }) => {
   const logout = async () => {
     // localStorage.removeItem("auth")
     localStorage.removeItem('user')
-    setIsAuthenticated(false)
-    setIsAdmin(false)
-    // setUser(null)
+    // setIsAuthenticated(false)
+    setUser(null)
+    // setIsAdmin(false)
   }
 
   return (
     <AuthContext.Provider
       value={{
-        isAuthenticated,
+        // isAuthenticated,
         isAdmin,
         login,
         logout,

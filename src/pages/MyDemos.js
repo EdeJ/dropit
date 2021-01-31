@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from 'react'
+import SongCard from '../components/SongCard'
+import { PlayerContext } from '../components/context/PlayerContextProvider'
+import { getAllDemosByUserId } from '../axios/axiosConfig'
+import { useAuthentication } from '../hooks/authentication'
+
 import './MyDemos.css'
-import SongCard from '../components/SongCard';
-import { PlayerContext } from '../components/context/PlayerContextProvider';
-import { getAllDemosByUserId } from '../axios/axiosConfig';
-import { useAuthentication } from '../hooks/authentication';
 
 
 function MyDemos() {
@@ -13,7 +14,8 @@ function MyDemos() {
     const [songs, setSongs] = useState()
 
     useEffect(() => {
-        fetchData();
+        console.log("my-demos LOADED!")
+        fetchData()
         async function fetchData() {
             try {
                 const { data } = await getAllDemosByUserId(user.userId)
@@ -21,7 +23,11 @@ function MyDemos() {
             } catch (error) {
             }
         }
-    }, [])
+    }, [user])
+
+    // function deleteDemo(demoId) {
+    //     deleteDemoById(demoId)
+    // }
 
     return (
         <div className="full-page">
