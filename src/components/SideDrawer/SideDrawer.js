@@ -7,6 +7,7 @@ function SideDrawer({ sideDrawerOpen, setSideDrawerOpen, children }) {
     return (
         <nav className={`side-drawer ${sideDrawerOpen ? 'open' : ''}`}>
             <button
+                className="close-btn"
                 onClick={() => setSideDrawerOpen(false)}
                 type="button">
                 <CloseIcon />

@@ -55,7 +55,7 @@
     color: var(--custom-dark-green);
 }
 
-.side-drawer button {
+.side-drawer .close-btn {
     fill: var(--custom-green);
     background: none;
     border: none;

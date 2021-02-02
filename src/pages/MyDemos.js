@@ -13,6 +13,8 @@ function MyDemos() {
     const { showMainPlayer } = useContext(PlayerContext)
     const [songs, setSongs] = useState()
 
+
+    // TODO Alle demos zitten al in de User, moet dit hier nog wel geladen worden???
     useEffect(() => {
         console.log("my-demos LOADED!")
         fetchData()
@@ -31,6 +33,7 @@ function MyDemos() {
 
     return (
         <div className="full-page">
+            {console.log(songs)}
             <h3>My Demos</h3>
             <div className="demo-list">
                 {!showMainPlayer && (

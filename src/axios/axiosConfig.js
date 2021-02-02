@@ -41,4 +41,32 @@ export const deleteDemoById = async (demoId) => {
     }
 }
 
+export const addComment = async (comment) => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.post(
+            `/api/comments/`,
+            {
+                headers: { Authorization: accessToken },
+                data: comment
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateComment = async (comment) => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.put(
+            `/api/comments/${comment.commentId}`,
+            comment,
+            {
+                headers: { Authorization: accessToken },
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 

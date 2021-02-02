@@ -25,6 +25,8 @@ function Home() {
                     onClick={playBtnHandler}
                 />
             )}
+
+            {/* // TODO Link to my-demos */}
             {!user && (
                 <div className="action-btns">
                     <NavLink type="button" to="/sign-in" >Sign In</NavLink>

@@ -5,9 +5,12 @@ import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
 import SongPanel from '../components/SongPanel'
 import { getDemoById } from '../axios/axiosConfig'
+import { roles } from '../helpers/roles'
+import { useAuthentication } from '../hooks/authentication'
 
 function ViewComment() {
 
+    const { user } = useAuthentication()
     const { songId } = useParams()
     const [comment, setComment] = useState()
     const [song, setSong] = useState(null)
@@ -47,7 +50,9 @@ function ViewComment() {
             </ul> */}
                 <MenuPanel>
                     <li>
-                        <Link to="/my-demos"><IoReturnUpBack />Back to all demos</Link>
+                        <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
+                            <IoReturnUpBack /> Back to all demos
+                        </Link>
                     </li>
                     <li>
                         <Link to={`/edit-comment/${songId}`} >Edit comment</Link>
