@@ -11,6 +11,7 @@ import OptionsList from '../components/OptionsList'
 import { roles } from '../helpers/roles'
 
 import styles from './DemoOptions.module.css'
+import CommentOptions from '../components/CommentOptions'
 
 function DemoOptions() {
 
@@ -38,7 +39,7 @@ function DemoOptions() {
             setCurrentSong(null)
             const result = await deleteDemoById(songId)
             if (result) {
-                history.push('/my-demos')
+                isAdmin() ? history.push('/all-demos') : history.push('/my-demos')
             }
         }
     }
@@ -62,23 +63,15 @@ function DemoOptions() {
                                     <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
                                         <IoReturnUpBack />Back to all demos</Link>
                                 </li>
-                                {/* {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />} */}
                                 {song.comment && (
                                     <li key="view">
                                         <Link to={`/view-comment/${song.id}`}>View comment</Link>
                                     </li>
                                 )}
-                                {isAdmin() && (
-                                    <>
-                                        {song.comment ? (
-                                            <>
-                                                <li key="edit"><Link to={`/edit-comment/${song.id}`}>Edit comment</Link></li>
-                                                <li key="delete"><Link to={`/delete-comment/${song.id}`}>Delete comment</Link></li>
-                                            </>
-                                        ) : (
-                                                <li key="write"><Link to={`/write-comment/${song.id}`}>Write new comment</Link></li>
-                                            )}
-                                    </>
+                                {isAdmin() && !song.comment && (
+                                    <li key="write">
+                                        <Link to={`/write-comment/${song.id}`}>Write comment</Link>
+                                    </li>
                                 )}
                                 <li>
                                     <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>

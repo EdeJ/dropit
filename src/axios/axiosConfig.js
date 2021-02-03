@@ -55,9 +55,9 @@ export const addComment = async (comment) => {
     try {
         return await axiosConfig.post(
             `/api/comments/`,
+            comment,
             {
                 headers: { Authorization: accessToken },
-                data: comment
             })
     } catch (error) {
         console.log(error)
@@ -77,5 +77,19 @@ export const updateComment = async (comment) => {
         console.log(error)
     }
 }
+
+export const deleteComment = async (commentId) => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.delete(
+            `/api/comments/${commentId}`,
+            {
+                headers: { Authorization: accessToken },
+            })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 
 

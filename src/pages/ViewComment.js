@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import styles from './ViewComment.module.css'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../components/MenuPanel'
 import SongPanel from '../components/SongPanel'
 import { getDemoById } from '../axios/axiosConfig'
 import { roles } from '../helpers/roles'
 import { useAuthentication } from '../hooks/authentication'
+import CommentOptions from '../components/CommentOptions'
+
+import styles from './ViewComment.module.css'
 
 function ViewComment() {
 
@@ -21,9 +23,12 @@ function ViewComment() {
 
         async function fetchData() {
 
-            const { data } = await getDemoById(songId)
-            setSong(data)
-            setComment(data.comment.message)
+            const result = await getDemoById(songId)
+            if (result) {
+                console.log('RESULT: ', result)
+                setSong(result.data)
+                setComment(result.data.comment)
+            }
 
         }
     }, [songId])
@@ -43,23 +48,15 @@ function ViewComment() {
                     </Link>
                 </div>
                 <p className={styles.comment}>
-                    {comment}
+                    {comment && comment.message}
                 </p>
-                {/* <ul className={styles.linkList}>
-                <li><NavLink to='/my-demos'>My demos</NavLink></li>
-            </ul> */}
                 <MenuPanel>
                     <li>
                         <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
                             <IoReturnUpBack /> Back to all demos
                         </Link>
                     </li>
-                    <li>
-                        <Link to={`/edit-comment/${songId}`} >Edit comment</Link>
-                    </li>
-                    <li>
-                        <Link to={`#`}>Delete demo</Link>
-                    </li>
+                    {comment && <CommentOptions song={song} comment={comment} />}
                 </MenuPanel>
             </div>
         </div>

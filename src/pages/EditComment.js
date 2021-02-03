@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import SongPanel from '../components/SongPanel'
+import { getDemoById, updateComment } from '../axios/axiosConfig'
 
 import styles from './ViewComment.module.css'
-import SongPanel from '../components/SongPanel'
-import { addComment, getDemoById, updateComment } from '../axios/axiosConfig'
 
 
 function EditComment() {
@@ -27,7 +27,6 @@ function EditComment() {
 
     function handleChange(event) {
         const updatedComment = { ...comment }
-        // const updatedComment = {}
         updatedComment.message = event.target.value
         updatedComment.demoId = parseInt(songId)
         setComment(updatedComment)
