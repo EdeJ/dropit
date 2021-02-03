@@ -5,7 +5,7 @@ import Toolbar from './components/toolbar/Toolbar'
 import Player from './components/player/Player'
 import MainMenu from './components/MainMenu'
 import Home from './pages/Home'
-import MyDemos from './pages/MyDemos'
+
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import AddDemo from './pages/AddDemo'
@@ -16,11 +16,12 @@ import EditComment from './pages/EditComment'
 import DemoOptions from './pages/DemoOptions'
 import { PlayerContext } from './components/context/PlayerContextProvider'
 import PrivateRoute from './components/PrivateRoute'
-import AllDemos from './pages/AllDemos'
+import AllDemos from './pages/myDemos/AllDemos'
 import { roles } from './helpers/roles'
 import MainPlayer from './components/mainPlayer/MainPlayer'
 
 import './App.css'
+import MyDemos from './pages/myDemos/MyDemos'
 
 function App() {
 

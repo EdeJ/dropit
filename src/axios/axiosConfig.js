@@ -23,6 +23,15 @@ export const getDemoById = async (demoId) => {
     }
 }
 
+export const getAllUsers = async () => {
+    const { accessToken } = getUser()
+    try {
+        return await axiosConfig.get(`/api/users/`, { headers: { Authorization: accessToken } })
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAllDemosByUserId = async (userId) => {
     const { accessToken } = getUser()
     try {

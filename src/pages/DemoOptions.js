@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
 import { IoReturnUpBack } from 'react-icons/io5'
 import SongPanel from '../components/SongPanel'
@@ -13,15 +12,14 @@ import { roles } from '../helpers/roles'
 
 import styles from './DemoOptions.module.css'
 
-function DemoOptions({ isAdmin }) {
+function DemoOptions() {
 
     const { songId } = useParams()
-    const [comment, setComment] = useState()
     const [song, setSong] = useState()
     const { setCurrentSong } = useContext(PlayerContext)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
-    const { user } = useAuthentication()
+    const { user, isAdmin } = useAuthentication()
 
     useEffect(() => {
 
@@ -56,17 +54,38 @@ function DemoOptions({ isAdmin }) {
             <div className={styles.page}>
                 <div className={styles.container}>
                     <h3>Demo options</h3>
-                    {song && <SongPanel song={song} />}
-                    <MenuPanel>
-                        <li>
-                            <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
-                                <IoReturnUpBack />Back to all demos</Link>
-                        </li>
-                        {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />}
-                        <li>
-                            <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
-                        </li>
-                    </MenuPanel>
+                    {song && (
+                        <>
+                            <SongPanel song={song} />
+                            <MenuPanel>
+                                <li>
+                                    <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
+                                        <IoReturnUpBack />Back to all demos</Link>
+                                </li>
+                                {/* {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />} */}
+                                {song.comment && (
+                                    <li key="view">
+                                        <Link to={`/view-comment/${song.id}`}>View comment</Link>
+                                    </li>
+                                )}
+                                {isAdmin() && (
+                                    <>
+                                        {song.comment ? (
+                                            <>
+                                                <li key="edit"><Link to={`/edit-comment/${song.id}`}>Edit comment</Link></li>
+                                                <li key="delete"><Link to={`/delete-comment/${song.id}`}>Delete comment</Link></li>
+                                            </>
+                                        ) : (
+                                                <li key="write"><Link to={`/write-comment/${song.id}`}>Write new comment</Link></li>
+                                            )}
+                                    </>
+                                )}
+                                <li>
+                                    <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
+                                </li>
+                            </MenuPanel>
+                        </>
+                    )}
                 </div>
             </div>
         </>

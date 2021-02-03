@@ -27,7 +27,6 @@ function SongCard({ song, size }) {
                 <PlayButton song={song} />
             </div>
             <div className={styles.songDetails}
-                // style={{ with: size }}
                 onClick={clickHandler}
             >
                 <strong className={currentSong === song ? styles.selected : ''}>{song.songTitle}</strong>

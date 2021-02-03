@@ -33,9 +33,9 @@ function EditComment() {
         setComment(updatedComment)
     }
 
-    function handleSave() {
+    async function handleSave() {
         console.log("write update to Database")
-        updateComment(comment)
+        await updateComment(comment)
         history.push(`/view-comment/${songId}`)
 
     }

@@ -8,16 +8,20 @@ function OptionsList({ isAdmin, song }) {
     return (
         <>
             {song.comment && (
-                <li>
+                <li key="view">
                     <Link to={`/view-comment/${song.id}`}>View comment</Link>
                 </li>
             )}
             { isAdmin && (
                 <>
-                    <li><Link to={`/write-comment/${song.id}`}>Write new comment</Link></li>
-                    {song.comment && (
-                        <li><Link to={`/edit-comment/${song.id}`}>Edit comment</Link></li>
-                    )}
+                    {song.comment ? (
+                        <>
+                            <li key="edit"><Link to={`/edit-comment/${song.id}`}>Edit comment</Link></li>
+                            <li key="delete"><Link to={`/delete-comment/${song.id}`}>Delete comment</Link></li>
+                        </>
+                    ) : (
+                            <li key="write"><Link to={`/write-comment/${song.id}`}>Write new comment</Link></li>
+                        )}
                 </>
             )}
         </>
