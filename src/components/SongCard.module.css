@@ -28,6 +28,7 @@
     flex-direction: column;
     line-height: 18px;
     width: 100%;
+    cursor: pointer;
 }
 
 .songDetails strong,

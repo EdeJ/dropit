@@ -8,7 +8,7 @@ import './Home.css'
 
 function Home() {
 
-    const { user } = useAuthentication()
+    const { user, isAdmin } = useAuthentication()
     const { setShowMainPlayer, currentSong, play, isPlaying } = useContext(PlayerContext)
 
     function playBtnHandler() {
@@ -25,7 +25,15 @@ function Home() {
                     onClick={playBtnHandler}
                 />
             )}
-
+            {user && (
+                <div className="action-btns">
+                    {(isAdmin()) ? (
+                        <NavLink className="border" type="button" to="/all-demos" >All demos</NavLink>
+                    ) : (
+                            <NavLink className="border" type="button" to="/my-demos" >My demos</NavLink>
+                        )}
+                </div>
+            )}
             {/* // TODO Link to my-demos */}
             {!user && (
                 <div className="action-btns">

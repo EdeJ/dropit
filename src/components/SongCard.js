@@ -7,7 +7,14 @@ import PlayButton from './PlayButton'
 
 function SongCard({ song, size }) {
 
-    const { currentSong, setShowMainPlayer } = useContext(PlayerContext)
+    const { currentSong, setCurrentSong, setShowMainPlayer } = useContext(PlayerContext)
+
+    function clickHandler() {
+        if (!currentSong) {
+            setCurrentSong(song)
+        }
+        setShowMainPlayer(true)
+    }
 
     return (
         <div className={`${styles.songCard} ${currentSong === song ? styles.selected : ''}`}
@@ -21,7 +28,7 @@ function SongCard({ song, size }) {
             </div>
             <div className={styles.songDetails}
                 // style={{ with: size }}
-                onClick={() => setShowMainPlayer(true)}
+                onClick={clickHandler}
             >
                 <strong className={currentSong === song ? styles.selected : ''}>{song.songTitle}</strong>
                 <span>{song.artist}</span>

@@ -13,6 +13,7 @@ function PlayButton({ song }) {
             play()
         } else {
             setCurrentSong(song)
+            play()
         }
     }
 
