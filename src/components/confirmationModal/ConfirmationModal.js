@@ -12,8 +12,8 @@ function ConfirmationModal({ message, action }) {
                     onClick={() => action(false)}
                 />
                 <Button
-                    label="Delete"
-                    color="warning"
+                    label="Ok"
+                    // color="warning"
                     onClick={() => action(true)}
                 />
             </div>

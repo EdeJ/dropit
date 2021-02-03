@@ -2,18 +2,16 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
 import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
-// import songs from '../assets/audio/songs'
 import { IoReturnUpBack } from 'react-icons/io5'
-import styles from './DemoOptions.module.css'
 import SongPanel from '../components/SongPanel'
 import { useAuthentication } from '../hooks/authentication'
-import { axiosConfig, deleteDemoById, getDemoById } from '../axios/axiosConfig'
+import { deleteDemoById, getDemoById } from '../axios/axiosConfig'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
 import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
-import SideDrawer from '../components/sideDrawer/SideDrawer'
 import OptionsList from '../components/OptionsList'
 import { roles } from '../helpers/roles'
 
+import styles from './DemoOptions.module.css'
 
 function DemoOptions({ isAdmin }) {
 
@@ -28,11 +26,9 @@ function DemoOptions({ isAdmin }) {
     useEffect(() => {
 
         fetchData()
-
         async function fetchData() {
             const { data } = await getDemoById(songId)
             setSong(data)
-            console.log(song);
         }
 
     }, [songId])
@@ -63,7 +59,7 @@ function DemoOptions({ isAdmin }) {
                     {song && <SongPanel song={song} />}
                     <MenuPanel>
                         <li>
-                            <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : 'my-demos'} >
+                            <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
                                 <IoReturnUpBack />Back to all demos</Link>
                         </li>
                         {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />}
