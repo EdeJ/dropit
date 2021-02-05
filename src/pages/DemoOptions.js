@@ -17,7 +17,7 @@ function DemoOptions() {
 
     const { songId } = useParams()
     const [song, setSong] = useState()
-    const { setCurrentSong } = useContext(PlayerContext)
+    const { setCurrentSong, pause } = useContext(PlayerContext)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
     const { user, isAdmin } = useAuthentication()
@@ -39,6 +39,7 @@ function DemoOptions() {
             setCurrentSong(null)
             const result = await deleteDemoById(songId)
             if (result) {
+                pause()
                 isAdmin() ? history.push('/all-demos') : history.push('/my-demos')
             }
         }

@@ -12,7 +12,7 @@ import styles from './ViewComment.module.css'
 
 function ViewComment() {
 
-    const { user } = useAuthentication()
+    const { user, isAdmin } = useAuthentication()
     const { songId } = useParams()
     const [comment, setComment] = useState()
     const [song, setSong] = useState(null)
@@ -39,13 +39,15 @@ function ViewComment() {
                 <h3 style={{ marginBottom: 60 }}>View comment</h3>
                 {song && <SongPanel song={song} />}
                 <div className={styles.container}>
-                    <Link
-                        className={styles.edit}
-                        to={`/edit-comment/${songId}`}
-                        title="edit comment"
-                    >
-                        <IoPencilSharp />
-                    </Link>
+                    {isAdmin() && (
+                        <Link
+                            className={styles.edit}
+                            to={`/edit-comment/${songId}`}
+                            title="edit comment"
+                        >
+                            <IoPencilSharp />
+                        </Link>
+                    )}
                 </div>
                 <p className={styles.comment}>
                     {comment && comment.message}

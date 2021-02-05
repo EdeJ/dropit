@@ -6,11 +6,11 @@ import { IoPlayOutline } from 'react-icons/io5'
 
 function PlayButton({ song }) {
 
-    const { currentSong, setCurrentSong, isPlaying, play } = useContext(PlayerContext)
+    const { currentSong, setCurrentSong, isPlaying, play, pause } = useContext(PlayerContext)
 
     function handlePlay() {
         if (currentSong && song.id === currentSong.id) {
-            play()
+            isPlaying ? pause() : play()
         } else {
             setCurrentSong(song)
             play()

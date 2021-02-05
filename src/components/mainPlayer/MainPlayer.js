@@ -17,7 +17,7 @@ import { useAuthentication } from '../../hooks/authentication'
 
 function MainPlayer() {
 
-    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, play } = useContext(PlayerContext)
+    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, play, pause } = useContext(PlayerContext)
     const [index, setIndex] = useState()
 
     const { user } = useAuthentication()
@@ -33,6 +33,10 @@ function MainPlayer() {
         if (index < songs.length - 1) {
             setCurrentSong(songs[index + 1])
         }
+    }
+
+    function playHandler() {
+        isPlaying ? pause() : play()
     }
 
     return (
@@ -66,7 +70,7 @@ function MainPlayer() {
                             </button>
                             <button
                                 className={styles.play}
-                                onClick={play}
+                                onClick={playHandler}
                             >
                                 {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
                             </button>

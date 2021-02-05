@@ -28,6 +28,10 @@ function SmallPlayer() {
         }
     }
 
+    function playHandler() {
+        isPlaying ? pause() : play()
+    }
+
     return (
         <div className="sticky-player">
             <div
@@ -44,7 +48,7 @@ function SmallPlayer() {
                         <p>{currentSong.artist}</p>
                     </div>
                 )}
-                <button onClick={play}
+                <button onClick={playHandler}
                     type="button">
                     {isPlaying ? <IoPauseSharp /> : <IoPlaySharp />}
                 </button>

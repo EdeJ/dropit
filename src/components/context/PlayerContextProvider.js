@@ -22,8 +22,9 @@ function PlayerContextProvider({ children }) {
     }
 
     function play() {
-        isPlaying ? audio.current.pause() : audio.current.play()
-        setIsPlaying(!isPlaying)
+        // isPlaying ? audio.current.pause() : audio.current.play()
+        audio.current.play()
+        setIsPlaying(true)
     }
 
     function pause() {

@@ -34,6 +34,7 @@ export const getAllUsers = async () => {
 
 export const getAllDemosByUserId = async (userId) => {
     const { accessToken } = getUser()
+    // console.log(accessToken)
     try {
         return await axiosConfig.get(`/api/users/${userId}/demos`, { headers: { Authorization: accessToken } })
     } catch (error) {

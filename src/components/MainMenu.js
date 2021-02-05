@@ -53,7 +53,7 @@ function MainMenu({ setSideDrawerOpen }) {
                             <NavLink to='/my-demos'>My demos</NavLink>
                         </li>
                         <li key="addNewDemo" onClick={() => setSideDrawerOpen(false)}>
-                            <NavLink to='add-new-demo'>Add new demo</NavLink>
+                            <NavLink to='/add-new-demo'>Add new demo</NavLink>
                         </li>
                     </>
                 )}
