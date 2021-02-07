@@ -13,15 +13,13 @@ import {
     IoPauseCircleOutline
 } from 'react-icons/io5'
 import AudioVisualizer from '../AudioVisualizer'
-import { useAuthentication } from '../../hooks/authentication'
+// import { useAuthentication } from '../../hooks/authentication'
 
 function MainPlayer() {
 
-    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, play } = useContext(PlayerContext)
-    const [index, setIndex] = useState()
-
-    const { user } = useAuthentication()
-    console.log(user)
+    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, play, pause } = useContext(PlayerContext)
+    const [index] = useState() //setIndex
+    // const { user } = useAuthentication()
 
     function previous() {
         if (index > 0) {
@@ -33,6 +31,10 @@ function MainPlayer() {
         if (index < songs.length - 1) {
             setCurrentSong(songs[index + 1])
         }
+    }
+
+    function playHandler() {
+        isPlaying ? pause() : play()
     }
 
     return (
@@ -66,7 +68,7 @@ function MainPlayer() {
                             </button>
                             <button
                                 className={styles.play}
-                                onClick={play}
+                                onClick={playHandler}
                             >
                                 {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
                             </button>

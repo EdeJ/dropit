@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import comments from '../assets/comments.json'
 import MenuPanel from '../components/MenuPanel'
 import { IoReturnUpBack } from 'react-icons/io5'
 import SongPanel from '../components/SongPanel'
@@ -8,20 +7,20 @@ import { useAuthentication } from '../hooks/authentication'
 import { deleteDemoById, getDemoById } from '../axios/axiosConfig'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
 import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
-import OptionsList from '../components/OptionsList'
+// import OptionsList from '../components/OptionsList'
 import { roles } from '../helpers/roles'
 
 import styles from './DemoOptions.module.css'
+// import CommentOptions from '../components/CommentOptions'
 
-function DemoOptions({ isAdmin }) {
+function DemoOptions() {
 
     const { songId } = useParams()
-    const [comment, setComment] = useState()
     const [song, setSong] = useState()
-    const { setCurrentSong } = useContext(PlayerContext)
+    const { setCurrentSong, pause } = useContext(PlayerContext)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
-    const { user } = useAuthentication()
+    const { user, isAdmin } = useAuthentication()
 
     useEffect(() => {
 
@@ -40,7 +39,8 @@ function DemoOptions({ isAdmin }) {
             setCurrentSong(null)
             const result = await deleteDemoById(songId)
             if (result) {
-                history.push('/my-demos')
+                pause()
+                isAdmin() ? history.push('/all-demos') : history.push('/my-demos')
             }
         }
     }
@@ -56,17 +56,30 @@ function DemoOptions({ isAdmin }) {
             <div className={styles.page}>
                 <div className={styles.container}>
                     <h3>Demo options</h3>
-                    {song && <SongPanel song={song} />}
-                    <MenuPanel>
-                        <li>
-                            <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
-                                <IoReturnUpBack />Back to all demos</Link>
-                        </li>
-                        {song && <OptionsList isAdmin={user.roles.includes(roles.ADMIN)} song={song} />}
-                        <li>
-                            <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
-                        </li>
-                    </MenuPanel>
+                    {song && (
+                        <>
+                            <SongPanel song={song} />
+                            <MenuPanel>
+                                <li>
+                                    <Link to={user.roles.includes(roles.ADMIN) ? '/all-demos' : '/my-demos'} >
+                                        <IoReturnUpBack />Back to all demos</Link>
+                                </li>
+                                {song.comment && (
+                                    <li key="view">
+                                        <Link to={`/view-comment/${song.id}`}>View comment</Link>
+                                    </li>
+                                )}
+                                {isAdmin() && !song.comment && (
+                                    <li key="write">
+                                        <Link to={`/write-comment/${song.id}`}>Write comment</Link>
+                                    </li>
+                                )}
+                                <li>
+                                    <Link to={'#'} onClick={() => setShowModal(true)}>Delete demo</Link>
+                                </li>
+                            </MenuPanel>
+                        </>
+                    )}
                 </div>
             </div>
         </>

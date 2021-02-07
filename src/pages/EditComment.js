@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
+import SongPanel from '../components/SongPanel'
+import { getDemoById, updateComment } from '../axios/axiosConfig'
 
 import styles from './ViewComment.module.css'
-import SongPanel from '../components/SongPanel'
-import { addComment, getDemoById, updateComment } from '../axios/axiosConfig'
 
 
 function EditComment() {
@@ -21,21 +21,18 @@ function EditComment() {
             const { data } = await getDemoById(songId)
             setSong(data)
             setComment(data.comment)
-            console.log(data)
         }
     }, [songId])
 
     function handleChange(event) {
         const updatedComment = { ...comment }
-        // const updatedComment = {}
         updatedComment.message = event.target.value
         updatedComment.demoId = parseInt(songId)
         setComment(updatedComment)
     }
 
-    function handleSave() {
-        console.log("write update to Database")
-        updateComment(comment)
+    async function handleSave() {
+        await updateComment(comment)
         history.push(`/view-comment/${songId}`)
 
     }
