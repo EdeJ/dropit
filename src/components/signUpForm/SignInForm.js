@@ -16,11 +16,9 @@ export const SignInForm = () => {
         if (!result) {
             setMessage("Incorrect username or password");
         }
-
     }
 
     const onError = (errorList) => {
-        console.log("ON ERROR");
         console.log(errorList)
     }
 

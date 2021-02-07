@@ -1,32 +1,32 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
-import ReactAudioPlayer from 'react-audio-player'
-import AudioPlayer from 'react-h5-audio-player'
+import React, { useContext } from 'react'
+// import ReactAudioPlayer from 'react-audio-player'
+// import AudioPlayer from 'react-h5-audio-player'
 import { IoPlaySharp, IoPauseSharp } from 'react-icons/io5'
 import { PlayerContext } from '../../context/PlayerContextProvider'
-import songs from '../../../assets/audio/songs.json'
-import AudioSpectrum from 'react-audio-spectrum'
+// import songs from '../../../assets/audio/songs.json'
+// import AudioSpectrum from 'react-audio-spectrum'
 import 'react-h5-audio-player/lib/styles.css'
-import { useHistory } from 'react-router-dom'
+// import { useHistory } from 'react-router-dom'
 
 function SmallPlayer() {
 
-    const { currentSong, setCurrentSong, setShowMainPlayer, isPlaying, setIsPlaying, play, pause } = useContext(PlayerContext)
+    const { currentSong, setShowMainPlayer, isPlaying, play, pause } = useContext(PlayerContext)
 
-    const [index, setIndex] = useState(0)
-    const history = useHistory()
+    // const [index, setIndex] = useState(0)
+    // const history = useHistory()
 
 
-    function previous() {
-        if (index > 0) {
-            setCurrentSong(songs[index - 1])
-        }
-    }
+    // function previous() {
+    //     if (index > 0) {
+    //         setCurrentSong(songs[index - 1])
+    //     }
+    // }
 
-    function next() {
-        if (index < songs.length - 1) {
-            setCurrentSong(songs[index + 1])
-        }
-    }
+    // function next() {
+    //     if (index < songs.length - 1) {
+    //         setCurrentSong(songs[index + 1])
+    //     }
+    // }
 
     function playHandler() {
         isPlaying ? pause() : play()

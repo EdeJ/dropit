@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 
 function OptionsList({ isAdmin, song }) {
 
-    console.log(song);
-
     return (
         <>
             {song.comment && (

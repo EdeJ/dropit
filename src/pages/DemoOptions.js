@@ -7,11 +7,11 @@ import { useAuthentication } from '../hooks/authentication'
 import { deleteDemoById, getDemoById } from '../axios/axiosConfig'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
 import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
-import OptionsList from '../components/OptionsList'
+// import OptionsList from '../components/OptionsList'
 import { roles } from '../helpers/roles'
 
 import styles from './DemoOptions.module.css'
-import CommentOptions from '../components/CommentOptions'
+// import CommentOptions from '../components/CommentOptions'
 
 function DemoOptions() {
 

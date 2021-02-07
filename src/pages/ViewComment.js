@@ -20,12 +20,9 @@ function ViewComment() {
     useEffect(() => {
 
         fetchData()
-
         async function fetchData() {
-
             const result = await getDemoById(songId)
             if (result) {
-                console.log('RESULT: ', result)
                 setSong(result.data)
                 setComment(result.data.comment)
             }

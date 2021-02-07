@@ -21,7 +21,6 @@ function EditComment() {
             const { data } = await getDemoById(songId)
             setSong(data)
             setComment(data.comment)
-            console.log(data)
         }
     }, [songId])
 
@@ -33,7 +32,6 @@ function EditComment() {
     }
 
     async function handleSave() {
-        console.log("write update to Database")
         await updateComment(comment)
         history.push(`/view-comment/${songId}`)
 

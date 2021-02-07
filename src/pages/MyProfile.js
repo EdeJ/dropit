@@ -16,12 +16,12 @@ function MyProfile() {
 
             } catch (error) {
 
-                console.error(error);
+                console.error(error)
             }
         }
         fetchData()
 
-    }, [])
+    }, [user])
 
     return (
         <div>

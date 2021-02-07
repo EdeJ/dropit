@@ -28,34 +28,43 @@ function AllDemos() {
         }
     }, [])
 
+    function displayDemos(demos) {
+        return demos.map(demo => (
+            <li key={demo.id}>
+                <SongCard
+                    song={demo}
+                    size={{ width: 144, height: 144 }}
+                />
+            </li>
+        ))
+    }
+
+    function displayUser(user) {
+        return user.demos.length > 0 && (
+            <ul key={`ul.${user.userId}`}>
+                <li
+                    key={`user.${user.userId}`}
+                    className={styles['user']}>
+                    <strong>User: </strong>{user.username}
+                </li>
+                {displayDemos(user.demos)}
+            </ul>
+        )
+    }
+
+
     return (
         <div className="full-page">
             <h3>All Demos</h3>
             <div className={styles['demo-list']}>
-                <ul>
-                    {!hasDemos && <li key="no-demos">No demos yet...</li>}
-                    {allUsers && allUsers.map(user => (
-                        <>
-                            {user.demos.length > 0 && (
-                                <li
-                                    key="user"
-                                    className={styles['user']}>
-                                    <strong>User: </strong>{user.username}
-                                </li>
-                            )}
-                            {user.demos.map(demo => (
-                                <li key={demo.id}>
-                                    <SongCard
-                                        song={demo}
-                                        size={{ width: 144, height: 144 }}
-                                    />
-                                </li>
-                            ))}
-                        </>
-                    ))}
-                </ul>
+                {!hasDemos && <ul><li key="no-demos">No demos yet...</li></ul>}
+                {allUsers && allUsers.map(user => (
+                    <div>
+                        {displayUser(user)}
+                    </div>
+                ))}
             </div>
-        </div>
+        </div >
     )
 }
 

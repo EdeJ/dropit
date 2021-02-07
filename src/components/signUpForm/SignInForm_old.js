@@ -1,10 +1,9 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, Redirect } from 'react-router-dom'
 import { TextInput } from '../TextInput'
 import './signUpForm/SignUpForm.css'
 import { useAuthentication } from '../../hooks/authentication'
-import { axiosConfig } from '../../axios/axiosConfig'
 
 export const SignInForm = () => {
 
@@ -22,7 +21,7 @@ export const SignInForm = () => {
     return (
         <>
             {user ? (
-                <Redirect to={'/my-demos'} /> //location.state.from || '/blog'
+                <Redirect to={'/my-demos'} />
             ) : (
                     <FormProvider {...methods} >
                         <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>

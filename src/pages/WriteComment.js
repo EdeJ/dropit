@@ -32,7 +32,6 @@ function WriteComment() {
     }
 
     async function handleSave() {
-        console.log("write comment to Database", comment)
         await addComment(comment)
         history.push(`/view-comment/${songId}`)
 

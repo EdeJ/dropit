@@ -1,7 +1,9 @@
 
 
 export function getUser() {
-    return JSON.parse(localStorage.getItem("user"))
+    if (localStorage.getItem("user")) {
+        return JSON.parse(localStorage.getItem("user")).accessToken
+    }
 }
 
 export function setUser(user) {
