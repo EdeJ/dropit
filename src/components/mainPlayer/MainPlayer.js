@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import songs from '../../assets/audio/songs.json'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { PlayerContext } from '../context/PlayerContextProvider'
 import styles from './MainPlayer.module.css'
@@ -22,15 +21,15 @@ function MainPlayer() {
     // const { user } = useAuthentication()
 
     function previous() {
-        if (index > 0) {
-            setCurrentSong(songs[index - 1])
-        }
+        // if (index > 0) {
+        //     setCurrentSong(songs[index - 1])
+        // }
     }
 
     function next() {
-        if (index < songs.length - 1) {
-            setCurrentSong(songs[index + 1])
-        }
+        // if (index < songs.length - 1) {
+        //     setCurrentSong(songs[index + 1])
+        // }
     }
 
     function playHandler() {

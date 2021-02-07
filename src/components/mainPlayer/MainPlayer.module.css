@@ -60,7 +60,7 @@
 }
 
 .song-details {
-    /* TODO make --custom-white ipv text-white  */
+    line-height: 30px;
     background-color: var(--custom-white); 
     padding: 40px 20px 20px 20px;
     margin: 40px;
