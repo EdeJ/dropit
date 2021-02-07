@@ -1,8 +1,9 @@
 import React, { useContext } from 'react'
 import { PlayerContext } from './context/PlayerContextProvider'
+import { IoPlayOutline } from 'react-icons/io5'
+
 import TurningRecord from '../assets/images/turning-vinyl.gif'
 import styles from './PlayButton.module.css'
-import { IoPlayOutline } from 'react-icons/io5'
 
 function PlayButton({ song }) {
 
@@ -18,7 +19,7 @@ function PlayButton({ song }) {
     }
 
     return (
-        <div className={styles.playButton}>
+        <div className={styles['play-button']}>
             <button type="button" onClick={handlePlay}>
                 {(currentSong && song.id === currentSong.id && isPlaying) ? (
                     <img src={TurningRecord} alt="vinyl" />

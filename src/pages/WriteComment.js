@@ -38,27 +38,24 @@ function WriteComment() {
     }
 
     return (
-        <div className={styles.center}>
-            <div className={styles.fullPage}>
+        <div className={styles['center']}>
+            <div className={styles['full-page']}>
                 <h3>Write comment</h3>
                 {song && <SongPanel song={song} />}
-                <p className={styles.comment}>
-                    {/* {comment && ( */}
+                <p className={styles['comment']}>
                     <textarea
                         value={comment.message}
                         onChange={handleChange}
                     />
-                    {/* )} */}
                 </p>
                 <button
-                    className={styles.save}
+                    className={styles['save']}
                     type="button"
                     onClick={handleSave}
                 >Save comment</button>
             </div>
         </div>
     )
-
 }
 
 export default WriteComment

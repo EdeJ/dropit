@@ -3,7 +3,7 @@ import styles from './MenuPanel.module.css'
 
 function MenuPanel({ children }) {
     return (
-        <ul className={styles.menuPanel}>
+        <ul className={styles['menu-panel']}>
             {children}
         </ul>
     )

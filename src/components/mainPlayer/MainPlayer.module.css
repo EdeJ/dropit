@@ -1,6 +1,6 @@
 @import url('../../custom-vars.css');
 
-.mainPlayer {
+.main-player {
     background-color: red;
     position: relative;
     height: 100%;
@@ -16,7 +16,7 @@
     flex-direction: column;
     justify-content: space-between;
 }
-.mainPlayer button {
+.main-player button {
     cursor: pointer;
     border: none;
     background: none;
@@ -26,7 +26,7 @@
     transform: translateY(0);
 }
 
-.headerContainer {
+.header-container {
     position: relative;
     height: 80px;
     background-color: var(--custom-green);
@@ -34,34 +34,34 @@
     justify-content: flex-end;
 }
 
-.closeButton {
+.close-button {
     font-size: 40px;
-    color: var(--custom-text-white);
+    color: var(--custom-white);
     display: flex;
     justify-content: center;
     align-items: center;
     width: 80px;
 }
 
-.songContainer {
+.song-container {
     position: relative;
     width: 100%;
     max-width: 600px;
 }
 
-.eq {
+.visualizer {
     width: 100%;
     display: flex;
     justify-content: center;
 }
 
-.eq svg {
+.visualizer svg {
     fill: var(--custom-brown);
 }
 
-.songDetails {
-    /* min-height: 200px; */
-    background-color: white;
+.song-details {
+    /* TODO make --custom-white ipv text-white  */
+    background-color: var(--custom-white); 
     padding: 40px 20px 20px 20px;
     margin: 40px;
     border-radius: var(--custom-border-radius);
@@ -69,7 +69,7 @@
     position: relative;
 }
 
-.songDetails h2 {
+.song-details h2 {
     font-size: 18px;
 }
 
@@ -89,18 +89,17 @@
     padding: 0 10px 0 20px;
 }
 
-.controlContainer {
+.control-container {
     display: flex;
     justify-content: center;
     margin-bottom: 20px;
 }
 
-.controlContainer button {
-    /* font-size: 60px; */
+.control-container button {
     color: var(--custom-green);
 }
 
-.controlBtns {
+.control-btns {
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -108,7 +107,7 @@
     max-width: 400px;
 }
 
-.controlBtns button {
+.control-btns button {
     display: flex;
     justify-content: center;
     align-items: center;

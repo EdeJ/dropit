@@ -4,7 +4,7 @@ import styles from './ConfirmationModal.module.css'
 
 function ConfirmationModal({ message, action }) {
     return (
-        <div className={styles.modal}>
+        <div className={styles['modal']}>
             <h3>{message}</h3>
             <div>
                 <Button

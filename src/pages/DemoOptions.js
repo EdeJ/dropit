@@ -7,11 +7,9 @@ import { useAuthentication } from '../hooks/authentication'
 import { deleteDemoById, getDemoById } from '../axios/axiosConfig'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
 import ConfirmationModal from '../components/confirmationModal/ConfirmationModal'
-// import OptionsList from '../components/OptionsList'
 import { roles } from '../helpers/roles'
 
 import styles from './DemoOptions.module.css'
-// import CommentOptions from '../components/CommentOptions'
 
 function DemoOptions() {
 
@@ -53,8 +51,8 @@ function DemoOptions() {
                     message="Are you sure you want to delete this demo?"
                 />
             )}
-            <div className={styles.page}>
-                <div className={styles.container}>
+            <div className={styles['page']}>
+                <div className={styles['container']}>
                     <h3>Demo options</h3>
                     {song && (
                         <>

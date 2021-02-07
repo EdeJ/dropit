@@ -5,19 +5,14 @@
     bottom: 0;
     height: 80px;
     width: 100%;
-    /* max-width: 1480px; */
     background-color: var(--custom-green);
-    color: var(--custom-text-white);
+    color: var(--custom-white);
 
-    /* Maak tekst niet selecteerbaar */
+     /* make text unselectable in multiple browsers */
     -webkit-user-select: none;
-    /* Safari */
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
-    /* IE10+/Edge */
     user-select: none;
-    /* Standard */
 }
 
 .sticky-player .arrow-up {
@@ -44,7 +39,7 @@
     border: none;
     background: none;
     font-size: 32px;
-    color: var(--custom-text-white);
+    color: var(--custom-white);
 }
 
 
@@ -57,5 +52,4 @@
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 22px;
-    /* margin-top: 20px; */
 }

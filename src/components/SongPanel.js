@@ -8,10 +8,10 @@ function SongPanel({ song }) {
     const { isPlaying } = useContext(PlayerContext)
 
     return (
-        <div className={`${styles.song} `}>
+        <div className={`${styles['song']} `}>
             <PlayButton song={song} />
-            <div className={styles.songDetails}>
-                <strong className={isPlaying ? styles.isPlaying : ''}>{song.songTitle}</strong>
+            <div className={styles['song-details']}>
+                <strong className={isPlaying ? styles['is-playing'] : ''}>{song['song-title']}</strong>
                 <span>{song.artist}</span>
             </div>
         </div>

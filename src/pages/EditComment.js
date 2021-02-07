@@ -38,11 +38,11 @@ function EditComment() {
     }
 
     return (
-        <div className={styles.center}>
-            <div className={styles.fullPage}>
+        <div className={styles['center']}>
+            <div className={styles['full-page']}>
                 <h3>Edit comment</h3>
                 {song && <SongPanel song={song} />}
-                <p className={styles.comment}>
+                <p className={styles['comment']}>
                     {comment && (
                         <textarea
                             value={comment.message}
@@ -51,7 +51,7 @@ function EditComment() {
                     )}
                 </p>
                 <button
-                    className={styles.save}
+                    className={styles['save']}
                     type="button"
                     onClick={handleSave}
                 >Save comment</button>

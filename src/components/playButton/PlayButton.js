@@ -1,20 +1,13 @@
 import React, { useContext } from 'react'
 import { PlayerContext } from '../context/PlayerContextProvider'
 import TurningRecord from '../assets/images/turning-vinyl.gif'
-import styles from './PlayButton.module.css'
 import { IoPlayOutline } from 'react-icons/io5'
+
+import styles from './PlayButton.module.css'
 
 function PlayButton({ song }) {
 
     const { currentSong, setCurrentSong, isPlaying, setIsPlaying } = useContext(PlayerContext)
-
-    const setIcon = () => {
-        if (song === currentSong && isPlaying) {
-            return styles.vinyl
-        } else {
-            return styles.play
-        }
-    }
 
     const play = () => {
         if (song === currentSong) {
@@ -26,7 +19,7 @@ function PlayButton({ song }) {
     }
 
     return (
-        <div className={styles.playButton}>
+        <div className={styles['play-button']}>
             <button
                 type="button"
                 onClick={() => play()}

@@ -5,14 +5,14 @@ display: flex;
 justify-content: center;
 }
 
-.fullPage {
+.full-page {
     padding: 0 20px;
     margin-bottom: 160px;
     width: 100%;
     max-width: 800px;
 }
 
-.fullPage h3 {
+.full-page h3 {
     margin-bottom: 20px;
 }
 
@@ -35,18 +35,18 @@ justify-content: center;
 }
 
 
-.linkList {
+.link-list {
     height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
 }
 
-.linkList li {
+.link-list li {
     border-bottom: 1px solid var(--custom-border-beige);
 }
 
-.linkList a {
+.link-list a {
     color: var(--custom-brown);
     text-decoration: none;
     padding: 18px 0;
@@ -54,7 +54,7 @@ justify-content: center;
     width: 100%;
 }
 
-.linkList a:hover {
+.link-list a:hover {
     color: var(--custom-dark-green);
 }
 
@@ -85,5 +85,4 @@ justify-content: center;
     text-decoration: none;
     border: none;
     width: 100%;
-    /* transition: background .1s; */
 }

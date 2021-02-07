@@ -2,7 +2,6 @@ import { useContext, useState } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import SideDrawer from './components/sideDrawer/SideDrawer'
 import Toolbar from './components/toolbar/Toolbar'
-import Player from './components/player/Player'
 import MainMenu from './components/MainMenu'
 import Home from './pages/Home'
 
@@ -22,6 +21,7 @@ import MainPlayer from './components/mainPlayer/MainPlayer'
 
 import './App.css'
 import MyDemos from './pages/myDemos/MyDemos'
+import SmallPlayer from './components/smallPlayer/SmallPlayer'
 
 function App() {
 
@@ -81,7 +81,7 @@ function App() {
       </div>
       {currentSong !== null && (
         <>
-          {!showMainPlayer && <Player />}
+          {!showMainPlayer && <SmallPlayer />}
           <MainPlayer />
         </>
       )}
