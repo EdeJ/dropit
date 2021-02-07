@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../Button/Button'
+import Button from '../button/Button'
 import styles from './ConfirmationModal.module.css'
 
 function ConfirmationModal({ message, action }) {

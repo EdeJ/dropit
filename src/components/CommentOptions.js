@@ -16,7 +16,7 @@ function CommentOptions({ song, comment }) {
             // setCurrentSong(null)
             const result = await deleteComment(comment.commentId)
             if (result) {
-                history.push(`/demo-options/${comment.commentId}`)
+                history.push(`/demo-options/${song.id}`)
             }
         }
     }

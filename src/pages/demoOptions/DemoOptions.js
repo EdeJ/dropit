@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-import MenuPanel from '../../components/MenuPanel'
+
 import { IoReturnUpBack } from 'react-icons/io5'
 import SongPanel from '../../components/SongPanel'
 import { useAuthentication } from '../../hooks/authentication'
@@ -10,6 +10,7 @@ import ConfirmationModal from '../../components/confirmationModal/ConfirmationMo
 import { roles } from '../../helpers/roles'
 
 import styles from './DemoOptions.module.css'
+import MenuPanel from '../../components/menuPanel/MenuPanel'
 
 function DemoOptions() {
 

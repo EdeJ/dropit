@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
-import MenuPanel from '../../components/MenuPanel'
+import MenuPanel from '../../components/menuPanel/MenuPanel'
 import SongPanel from '../../components/SongPanel'
 import { getDemoById } from '../../axios/axiosConfig'
 import { useAuthentication } from '../../hooks/authentication'

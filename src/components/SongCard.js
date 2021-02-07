@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { PlayerContext } from './context/PlayerContextProvider'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import styles from './SongCard.module.css'
-import PlayButton from './PlayButton'
+import PlayButton from './playButton/PlayButton'
 
 function SongCard({ song, size }) {
 
