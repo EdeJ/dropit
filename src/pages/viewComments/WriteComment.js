@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import { addComment, getDemoById } from '../axios/axiosConfig'
-import SongPanel from '../components/SongPanel'
+import { addComment, getDemoById } from '../../axios/axiosConfig'
+import SongPanel from '../../components/SongPanel'
 
 import styles from './ViewComment.module.css'
 

@@ -1,4 +1,4 @@
-@import url('../../custom-vars.css');
+@import url('../../css/custom-vars.css');
 
 .demo-list ul {
     display: flex;
@@ -44,11 +44,3 @@
 .user strong {
     color: var(--custom-green)
 }
-
-
-/* @media (min-width: 769px) {
-
-    .demo-list ul.overlay {
-        display: flex;
-    }
-} */
