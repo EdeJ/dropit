@@ -1,4 +1,4 @@
-@import url('../custom-vars.css');
+@import url('../css/custom-vars.css');
 
 .song {
     display: flex;
@@ -8,13 +8,13 @@
     
 }
 
-.songDetails {
+.song-details {
     display: flex;
     flex-direction: column;
     justify-content: center;
     line-height: 22px;
 }
 
-.isPlaying {
+.is-playing {
     color: var(--custom-green);
 }

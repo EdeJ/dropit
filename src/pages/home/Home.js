@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { IoPlayOutline } from 'react-icons/io5'
 import { NavLink } from 'react-router-dom'
-import { PlayerContext } from '../components/context/PlayerContextProvider'
-import { useAuthentication } from '../hooks/authentication'
+import { PlayerContext } from '../../components/context/PlayerContextProvider'
+import { useAuthentication } from '../../hooks/authentication'
 import './Home.css'
 
 function Home() {

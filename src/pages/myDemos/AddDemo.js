@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { axiosConfig } from '../axios/axiosConfig'
+import { axiosConfig } from '../../axios/axiosConfig'
 import FlashMessage from 'react-flash-message'
-import { useAuthentication } from '../hooks/authentication'
-import { TextInput } from '../components/TextInput'
-import '../components/signUpForm/SignUpForm.css'
-import FileInput from '../components/FileInput'
+import { useAuthentication } from '../../hooks/authentication'
+import { TextInput } from '../../components/TextInput'
+import FileInput from '../../components/FileInput'
 import { useHistory } from 'react-router-dom'
 
+import '../../components/signUpForm/SignUpForm.css'
+
 function AddDemo() {
+
+    // TODO maak een css module
 
     const { register, handleSubmit, errors } = useForm()
     const [message, setMessage] = useState()

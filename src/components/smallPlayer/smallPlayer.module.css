@@ -1,26 +1,21 @@
-@import url('../../custom-vars.css');
+@import url('../../css/custom-vars.css');
 
 .sticky-player {
     position: fixed;
     bottom: 0;
     height: 80px;
     width: 100%;
-    /* max-width: 1480px; */
     background-color: var(--custom-green);
-    color: var(--custom-text-white);
+    color: var(--custom-white);
 
-    /* Maak tekst niet selecteerbaar */
+     /* make text unselectable in multiple browsers */
     -webkit-user-select: none;
-    /* Safari */
     -moz-user-select: none;
-    /* Firefox */
     -ms-user-select: none;
-    /* IE10+/Edge */
     user-select: none;
-    /* Standard */
 }
 
-.sticky-player .arrow-up {
+ .arrow-up {
     position: absolute;
     left: 50%;
     top: 0;
@@ -44,7 +39,7 @@
     border: none;
     background: none;
     font-size: 32px;
-    color: var(--custom-text-white);
+    color: var(--custom-white);
 }
 
 
@@ -52,10 +47,15 @@
     outline: 0;
 }
 
-.sticky-player .song-details {
+.song-details {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     line-height: 22px;
-    /* margin-top: 20px; */
+}
+
+@media (min-width: 769px) {
+    .container {
+    padding: 0 40px;
+    }
 }

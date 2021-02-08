@@ -1,18 +1,17 @@
-@import url('../custom-vars.css');
+@import url('../../css/custom-vars.css');
 
-.menuPanel {
-    /* margin-top: 80px; */
+.menu-panel {
     height: 100%;
     list-style: none;
     display: flex;
     flex-direction: column;
 }
 
-.menuPanel li {
+.menu-panel li {
     border-bottom: 1px solid var(--custom-border-beige);
 }
 
-.menuPanel a {
+.menu-panel a {
     box-sizing: border-box;
     position: relative;
     padding:  18px 26px;
@@ -22,12 +21,11 @@
     width: 100%;
 }
 
-.menuPanel a:hover {
+.menu-panel a:hover {
     color: var(--custom-green);
 }
 
-
-.menuPanel a svg {
+.menu-panel a svg {
     position: absolute;
     top:18px;
     left:0;
@@ -36,6 +34,6 @@
     margin-right: 10px;
 }
 
-.menuPanel a.active {
+.menu-panel a.active {
     color: var(--custom-green);
 }

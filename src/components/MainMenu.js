@@ -31,7 +31,6 @@ function MainMenu({ setSideDrawerOpen }) {
                 />
             )}
             <ul>
-                {/* <ul> */}
                 {user && (
                     <li key="myProfile" onClick={() => setSideDrawerOpen(false)}>
                         <NavLink to='/my-profile'>My profile</NavLink>

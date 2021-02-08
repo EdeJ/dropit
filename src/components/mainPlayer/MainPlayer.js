@@ -1,6 +1,5 @@
 import React, { useContext, useState } from 'react'
 import { Link } from 'react-router-dom'
-import songs from '../../assets/audio/songs.json'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { PlayerContext } from '../context/PlayerContextProvider'
 import styles from './MainPlayer.module.css'
@@ -22,15 +21,15 @@ function MainPlayer() {
     // const { user } = useAuthentication()
 
     function previous() {
-        if (index > 0) {
-            setCurrentSong(songs[index - 1])
-        }
+        // if (index > 0) {
+        //     setCurrentSong(songs[index - 1])
+        // }
     }
 
     function next() {
-        if (index < songs.length - 1) {
-            setCurrentSong(songs[index + 1])
-        }
+        // if (index < songs.length - 1) {
+        //     setCurrentSong(songs[index + 1])
+        // }
     }
 
     function playHandler() {
@@ -38,36 +37,36 @@ function MainPlayer() {
     }
 
     return (
-        <div className={styles.mainPlayer} style={{ transform: showMainPlayer ? 'translateY(0)' : '' }} >
-            <div className={styles.headerContainer}>
-                <button className={styles.closeButton}
+        <div className={styles['main-player']} style={{ transform: showMainPlayer ? 'translateY(0)' : '' }} >
+            <div className={styles['header-container']}>
+                <button className={styles['close-button']}
                     onClick={() => setShowMainPlayer(false)}
                     type="button">
                     <IoCloseOutline />
                 </button>
             </div>
-            <div className={styles.center}>
-                <div className={styles.songContainer}>
-                    <div className={styles.eq}>
+            <div className={styles['center']}>
+                <div className={styles['song-container']}>
+                    <div className={styles['visualizer']}>
                         <AudioVisualizer />
                     </div>
-                    <div className={styles.songDetails}>
+                    <div className={styles['song-details']}>
                         <h2>{currentSong && currentSong.songTitle}</h2>
                         <span>{currentSong && currentSong.artist}</span>
-                        <Link className={styles.settings} to={`/demo-options/${currentSong.id}`}
+                        <Link className={styles['settings']} to={`/demo-options/${currentSong.id}`}
                             onClick={() => setShowMainPlayer(false)}
                         >
                             <IoEllipsisHorizontal />
                         </Link>
                     </div>
-                    <div className={styles.controlContainer}>
-                        <div className={styles.controlBtns}>
+                    <div className={styles['control-container']}>
+                        <div className={styles['control-btns']}>
 
                             <button onClick={previous}>
                                 <IoPlaySkipBackSharp />
                             </button>
                             <button
-                                className={styles.play}
+                                className={styles['play']}
                                 onClick={playHandler}
                             >
                                 {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}

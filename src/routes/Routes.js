@@ -1,28 +1,60 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
-// import { Switch, Route } from 'react-router-dom';
+import { PlayerContext } from '../components/context/PlayerContextProvider'
+import PrivateRoute from '../components/PrivateRoute'
+import { roles } from '../helpers/roles'
+import AddDemo from '../pages/myDemos/AddDemo'
+import DemoOptions from '../pages/demoOptions/DemoOptions'
 
-/// WORDT NOG NIET GEBRUIK|T
-
+import AllDemos from '../pages/myDemos/AllDemos'
+import MyDemos from '../pages/myDemos/MyDemos'
+import MyProfile from '../pages/MyProfile'
+import SignIn from '../pages/SignIn'
+import SignUp from '../pages/SignUp'
+import WriteComment from '../pages/viewComments/WriteComment'
+import ViewComment from '../pages/viewComments/ViewComment'
+import EditComment from '../pages/viewComments/EditComment'
+import Home from '../pages/home/Home'
 
 function Routes() {
+
+    const { setShowPlayer } = useContext(PlayerContext)
+
     return (
         <Switch>
             <Route exact path="/">
-                <h1>Home</h1>
-                {/* <Home /> */}
+                <Home />
             </Route>
-            {/* <PrivateRoute path="/blog/:id">
-                <BlogPost />
-            </PrivateRoute> */}
-            <Route path="/blog">
-                <h1>Blog</h1>
-                {/* <Blog /> */}
+            <Route path="/sign-up">
+                <SignUp setShowPlayer={setShowPlayer} />
             </Route>
-            <Route path="/login">
-                <h1>Login</h1>
-                {/* <Login /> */}
+            <Route path="/sign-in">
+                <SignIn />
             </Route>
+            <PrivateRoute path="/my-demos" permittedRoles={[roles.USER]}>
+                <MyDemos />
+            </PrivateRoute>
+            <PrivateRoute path="/all-demos" permittedRoles={[roles.ADMIN]}>
+                <AllDemos />
+            </PrivateRoute>
+            <PrivateRoute path="/add-new-demo" permittedRoles={[roles.USER]}>
+                <AddDemo />
+            </PrivateRoute>
+            <PrivateRoute path="/my-profile" permittedRoles={[roles.USER, roles.ADMIN]}>
+                <MyProfile />
+            </PrivateRoute>
+            <PrivateRoute path="/write-comment/:songId" permittedRoles={[roles.ADMIN]}>
+                <WriteComment />
+            </PrivateRoute>
+            <PrivateRoute path="/view-comment/:songId" permittedRoles={[roles.USER, roles.ADMIN]}>
+                <ViewComment />
+            </PrivateRoute>
+            <PrivateRoute path="/edit-comment/:songId" permittedRoles={[roles.ADMIN]} >
+                <EditComment />
+            </PrivateRoute>
+            <PrivateRoute path="/demo-options/:songId" permittedRoles={[roles.USER, roles.ADMIN]}>
+                <DemoOptions />
+            </PrivateRoute>
         </Switch>
     )
 }

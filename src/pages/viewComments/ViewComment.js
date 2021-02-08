@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
-import MenuPanel from '../components/MenuPanel'
-import SongPanel from '../components/SongPanel'
-import { getDemoById } from '../axios/axiosConfig'
-import { roles } from '../helpers/roles'
-import { useAuthentication } from '../hooks/authentication'
-import CommentOptions from '../components/CommentOptions'
+import MenuPanel from '../../components/menuPanel/MenuPanel'
+import SongPanel from '../../components/SongPanel'
+import { getDemoById } from '../../axios/axiosConfig'
+import { useAuthentication } from '../../hooks/authentication'
+import CommentOptions from '../../components/CommentOptions'
+import { roles } from '../../helpers/roles'
 
 import styles from './ViewComment.module.css'
 
@@ -31,14 +31,15 @@ function ViewComment() {
     }, [songId])
 
     return (
-        <div className={styles.center}>
-            <div className={styles.fullPage}>
+        // TODO CSS  view comment moet veel duidelijker!
+        <div className={styles['center']}>
+            <div className={styles['full-page']}>
                 <h3 style={{ marginBottom: 60 }}>View comment</h3>
                 {song && <SongPanel song={song} />}
-                <div className={styles.container}>
+                <div className={styles['container']}>
                     {isAdmin() && (
                         <Link
-                            className={styles.edit}
+                            className={styles['edit']}
                             to={`/edit-comment/${songId}`}
                             title="edit comment"
                         >
@@ -46,7 +47,7 @@ function ViewComment() {
                         </Link>
                     )}
                 </div>
-                <p className={styles.comment}>
+                <p className={styles['comment']}>
                     {comment && comment.message}
                 </p>
                 <MenuPanel>
