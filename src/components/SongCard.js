@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
 import { PlayerContext } from './context/PlayerContextProvider'
-import { IoEllipsisHorizontal } from 'react-icons/io5'
+import { IoChatbox, IoChatboxOutline, IoEllipsisHorizontal } from 'react-icons/io5'
 import styles from './SongCard.module.css'
 import PlayButton from './playButton/PlayButton'
 
@@ -20,6 +20,15 @@ function SongCard({ song, size }) {
         <div className={`${styles['songCard']} ${currentSong === song ? styles['selected'] : ''}`}
             style={{ width: size.width, height: size.height }}
         >
+            {song.comment && (
+                <Link
+                    to={`/view-comment/${song.id}`}
+                    className={styles['review-icon']}
+                >
+                    {song.comment.viewed ? <IoChatboxOutline /> : <IoChatbox />}
+                </Link>
+            )}
+
             <Link className={styles['settings']} to={`/demo-options/${song.id}`}>
                 <IoEllipsisHorizontal />
             </Link>

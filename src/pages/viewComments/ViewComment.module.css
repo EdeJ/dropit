@@ -23,15 +23,25 @@ justify-content: center;
 }
 
 .edit {
-    color: var(--custom-brown);
-    font-size: 20px;
+    color: var(--custom-green);
     cursor: pointer;
-    padding: 20px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    text-decoration: none;
 }
+.edit span {
+    margin-left: 10px;
+}
+
 
 .comment {
     position: relative;
     margin-bottom: 20px;
+    min-height: 80px;
+    background-color: var(--custom-white);
+    border-radius: var(--custom-border-radius);
+    padding: 20px;
 }
 
 

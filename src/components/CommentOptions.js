@@ -29,11 +29,11 @@ function CommentOptions({ song, comment }) {
                     message="Are you sure you want to delete this comment?"
                 />
             )}
-            {comment && (
+            {/* {comment && (
                 <li key="view">
                     <NavLink to={`/view-comment/${song.id}`}>View comment</NavLink>
                 </li>
-            )}
+            )} */}
             {isAdmin() && (
                 <>
                     {comment ? (

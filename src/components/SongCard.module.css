@@ -39,10 +39,10 @@
     text-overflow: ellipsis;
 }
 
-div.selected {
+.songDetails div.selected {
     border: 1px solid var(--custom-green);
 }
- strong.selected {
+.songDetails strong.selected {
      color: var(--custom-green);
 
 }
@@ -53,4 +53,12 @@ div.selected {
     right: 10px;
     font-size: 30px;
     color: var(--custom-brown);
+}
+
+.review-icon {
+    font-size: 24px;
+    color: #5e69ba;
+    position: absolute;
+    left: 10px;
+    top: 10px;
 }
