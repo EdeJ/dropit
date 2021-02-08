@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link, NavLink, useHistory } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { deleteComment } from '../axios/axiosConfig'
 import { useAuthentication } from '../hooks/authentication'
 import ConfirmationModal from './confirmationModal/ConfirmationModal'
@@ -13,7 +13,6 @@ function CommentOptions({ song, comment }) {
     async function modalAction(allowAction) {
         setShowModal(false)
         if (allowAction) {
-            // setCurrentSong(null)
             const result = await deleteComment(comment.commentId)
             if (result) {
                 history.push(`/demo-options/${song.id}`)
@@ -29,11 +28,6 @@ function CommentOptions({ song, comment }) {
                     message="Are you sure you want to delete this comment?"
                 />
             )}
-            {/* {comment && (
-                <li key="view">
-                    <NavLink to={`/view-comment/${song.id}`}>View comment</NavLink>
-                </li>
-            )} */}
             {isAdmin() && (
                 <>
                     {comment ? (

@@ -12,14 +12,12 @@ body {
   color: var(--custom-brown);
   display: flex;
   justify-content: center;
-  /* background-color: #ebe5d6; */
   background-color: var(--custom-background);
 }
 
 #root {
   background-color: var(--custom-background);
   width: 100%;
-  /* box-shadow: 0px 0px 8px #aaa; */
   display: flex;
   justify-content: center;
 }
@@ -44,10 +42,6 @@ h3 {
   padding: 0 20px;
 }
 
-/* .content {
-  margin-top: 30px;
-} */
-
 form .small-text {
   margin-top: 40px;
 }
@@ -59,7 +53,6 @@ form .small-text {
 }
 
 .card {
-  /* padding: 15px 20px; */
   border: 1px solid var(--custom-border-beige);
   border-radius: var(--custom-border-radius);
   height: 47px;
