@@ -42,8 +42,14 @@ justify-content: center;
     background-color: var(--custom-white);
     border-radius: var(--custom-border-radius);
     padding: 20px;
+    white-space: pre-line;
 }
 
+.editor {
+    background-color: red;
+    height: 400px;
+    min-height: 80px;
+}
 
 .link-list {
     height: 100%;

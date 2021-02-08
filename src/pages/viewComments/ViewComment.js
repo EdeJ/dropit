@@ -46,7 +46,6 @@ function ViewComment() {
     }, [songId, isAdmin])
 
     return (
-        // TODO CSS  view comment moet veel duidelijker!
         <div className={styles['center']}>
             <div className={styles['full-page']}>
                 <h3 style={{ marginBottom: 60 }}>View comment</h3>
