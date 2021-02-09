@@ -28,12 +28,9 @@ export const AuthProvider = ({ children }) => {
       newUser.username = response.data.username
       newUser.accessToken = 'Bearer ' + response.data.accessToken
       newUser.roles = response.data.roles
-      // setIsAdmin(newUser.roles.includes('ROLE_ADMIN'))
+
       setUser(newUser)
-
       localStorage.setItem("user", JSON.stringify(newUser))
-      // setIsAuthenticated(true)
-
 
       return true;
 
@@ -45,17 +42,13 @@ export const AuthProvider = ({ children }) => {
   }
 
   const logout = async () => {
-    // localStorage.removeItem("auth")
     localStorage.removeItem('user')
-    // setIsAuthenticated(false)
     setUser(null)
-    // setIsAdmin(false)
   }
 
   return (
     <AuthContext.Provider
       value={{
-        // isAuthenticated,
         isAdmin,
         login,
         logout,

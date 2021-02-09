@@ -3,7 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import { IoPencilSharp, IoReturnUpBack } from 'react-icons/io5'
 import MenuPanel from '../../components/menuPanel/MenuPanel'
 import SongPanel from '../../components/SongPanel'
-import { getDemoById } from '../../axios/axiosConfig'
+import { getDemoById, updateComment } from '../../axios/axiosConfig'
 import { useAuthentication } from '../../hooks/authentication'
 import CommentOptions from '../../components/CommentOptions'
 import { roles } from '../../helpers/roles'
@@ -19,6 +19,8 @@ function ViewComment() {
 
     useEffect(() => {
 
+        let timerId;
+
         fetchData()
         async function fetchData() {
             const result = await getDemoById(songId)
@@ -27,23 +29,33 @@ function ViewComment() {
                 setComment(result.data.comment)
             }
 
+            const updatedComment = { ...result.data.comment }
+            updatedComment.demoId = parseInt(songId)
+            updatedComment.viewed = true
+
+            // When viewed by user, update comment viewed-status to true after 3 seconds
+            if (!isAdmin()) {
+                timerId = setTimeout(() => {
+                    updateComment(updatedComment)
+                }, 3000);
+            }
         }
-    }, [songId])
+
+        return () => clearTimeout(timerId)
+
+    }, [songId, isAdmin])
 
     return (
-        // TODO CSS  view comment moet veel duidelijker!
         <div className={styles['center']}>
             <div className={styles['full-page']}>
-                <h3 style={{ marginBottom: 60 }}>View comment</h3>
+                <h3>View comment</h3>
                 {song && <SongPanel song={song} />}
                 <div className={styles['container']}>
                     {isAdmin() && (
-                        <Link
-                            className={styles['edit']}
+                        <Link className={styles['edit']}
                             to={`/edit-comment/${songId}`}
                             title="edit comment"
-                        >
-                            <IoPencilSharp />
+                        ><IoPencilSharp /> <span>edit</span>
                         </Link>
                     )}
                 </div>
@@ -56,7 +68,9 @@ function ViewComment() {
                             <IoReturnUpBack /> Back to all demos
                         </Link>
                     </li>
-                    {comment && <CommentOptions song={song} comment={comment} />}
+                    {comment && (
+                        <CommentOptions song={song} comment={comment} />
+                    )}
                 </MenuPanel>
             </div>
         </div>

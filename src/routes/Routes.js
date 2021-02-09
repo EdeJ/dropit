@@ -5,16 +5,16 @@ import PrivateRoute from '../components/PrivateRoute'
 import { roles } from '../helpers/roles'
 import AddDemo from '../pages/myDemos/AddDemo'
 import DemoOptions from '../pages/demoOptions/DemoOptions'
-
+import MyProfile from '../pages/myProfile/MyProfile'
 import AllDemos from '../pages/myDemos/AllDemos'
 import MyDemos from '../pages/myDemos/MyDemos'
-import MyProfile from '../pages/MyProfile'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
 import WriteComment from '../pages/viewComments/WriteComment'
 import ViewComment from '../pages/viewComments/ViewComment'
 import EditComment from '../pages/viewComments/EditComment'
 import Home from '../pages/home/Home'
+
 
 function Routes() {
 

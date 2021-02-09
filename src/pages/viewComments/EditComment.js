@@ -27,6 +27,7 @@ function EditComment() {
         const updatedComment = { ...comment }
         updatedComment.message = event.target.value
         updatedComment.demoId = parseInt(songId)
+        updatedComment.viewed = false
         setComment(updatedComment)
     }
 

@@ -6,6 +6,30 @@ export const axiosConfig = axios.create({
     headers: { Authorization: getUser() }
 })
 
+export const getAllUsers = async () => {
+    try {
+        return await axiosConfig.get('/api/users/')
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const getUserById = async (userId) => {
+    try {
+        return await axiosConfig.get(`/api/users/${userId}`)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const updateUser = async (user) => {
+    try {
+        return await axiosConfig.put(`/api/users/${user.userId}`, user)
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 export const getAllDemos = async () => {
     try {
         return await axiosConfig.get('/api/demos')
@@ -17,14 +41,6 @@ export const getAllDemos = async () => {
 export const getDemoById = async (demoId) => {
     try {
         return await axiosConfig.get(`/api/demos/${demoId}`)
-    } catch (error) {
-        console.log(error)
-    }
-}
-
-export const getAllUsers = async () => {
-    try {
-        return await axiosConfig.get('/api/users/')
     } catch (error) {
         console.log(error)
     }

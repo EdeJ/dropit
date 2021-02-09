@@ -1,17 +1,16 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Link, useHistory } from 'react-router-dom';
-import { axiosConfig } from '../../axios/axiosConfig';
-import { TextInput } from '../TextInput';
+import { Link, useHistory } from 'react-router-dom'
+import { axiosConfig } from '../../axios/axiosConfig'
+import { TextInput } from '../textInput/TextInput'
 
-import './SignUpForm.css';
+import './SignUpForm.css'
 
 export const SignUpForm = () => {
 
-    const { ...methods } = useForm({ mode: 'onBlur' });
-    const currentPassword = methods.watch("password");
+    const { ...methods } = useForm({ mode: 'onBlur' })
+    const currentPassword = methods.watch("password")
     const history = useHistory()
-
 
     const onSuccess = (formData) => {
         //TODO hier kan misschien één functio voor gebruikt worden, samen met het upload formulier.
@@ -23,7 +22,7 @@ export const SignUpForm = () => {
                 })
                 history.push('/sign-in')
             } catch (error) {
-                console.error(error);
+                console.error(error)
             }
         }
 
@@ -31,7 +30,7 @@ export const SignUpForm = () => {
     }
 
     const onError = (errorList) => {
-        console.log(errorList);
+        console.log(errorList)
     }
 
     const checkEmailAvailable = async (email) => {

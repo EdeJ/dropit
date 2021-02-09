@@ -117,3 +117,7 @@
 button.play {
     font-size: 100px;
 }
+
+button.disabled {
+    opacity: 0.5;
+}

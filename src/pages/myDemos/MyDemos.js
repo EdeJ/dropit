@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import SongCard from '../../components/SongCard'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
 import { getAllDemosByUserId } from '../../axios/axiosConfig'
@@ -6,8 +7,6 @@ import { useAuthentication } from '../../hooks/authentication'
 import { IoAddCircle } from 'react-icons/io5'
 
 import styles from './MyDemos.module.css'
-import { Link } from 'react-router-dom'
-
 
 function MyDemos() {
 
@@ -15,8 +14,6 @@ function MyDemos() {
     const { showMainPlayer } = useContext(PlayerContext)
     const [songs, setSongs] = useState()
 
-
-    // TODO Alle demos zitten al in de User, moet dit hier nog wel geladen worden???
     useEffect(() => {
         // TODO loading icon 
         fetchData()
