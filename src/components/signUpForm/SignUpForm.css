@@ -14,18 +14,18 @@
     margin-bottom: 30px;
 }
 
-.sign-up-form input:focus,
+/* .sign-up-form input:focus,
 .sign-up-form select:focus,
 .sign-up-form textarea:focus,
 .sign-up-form button:focus {
     outline: none;
-}
+} */
 
-.input-section {
+/* .input-section {
     margin-top: 20px;
-}
+} */
 
-.sign-up-form input[type=text],
+/* .sign-up-form input[type=text],
 .sign-up-form input[type=number],
 .sign-up-form input[type=password],
 .sign-up-form textarea {
@@ -38,9 +38,9 @@
     padding: 0 10px;
     color: var(--custom-brown);
     font-size: 16px;
-}
+} */
 
-.sign-up-form input[type=number] {
+/* .sign-up-form input[type=number] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
@@ -59,29 +59,24 @@
 .sign-up-form .error {
     border-color: var(--custom-red);
     /* background-color: var(--custom-light-red); */
-}
+/* } */
 
-.sign-up-form input.error {
+/* .sign-up-form input.error {
     border-color: var(--custom-red);
 }
 
 .sign-up-form .error-message {
     color: var(--custom-red);
-}
+}  */
 
-.sign-up-form label {
-    /* font-size: 0.9rem;
-    font-weight: 700; */
-}
 
 .sign-up-form button {
     margin-top: 40px;
     background-color: var(--custom-green);
     border-radius: 5px;
-    color: #fff;
+    color: var(--custom-white);
     cursor: pointer;
     display: inline-block;
-    /* min-width: 6.4rem; */
     font-size: inherit;
     font-weight: 700;
     line-height: 44px;
@@ -90,7 +85,6 @@
     text-decoration: none;
     border: none;
     width: 100%;
-    /* transition: background .1s; */
 }
 
 .sign-up-form button:hover {

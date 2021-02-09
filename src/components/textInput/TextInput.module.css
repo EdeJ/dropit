@@ -1,0 +1,57 @@
+@import url('../../css/custom-vars.css');
+
+.input-section {
+    margin-top: 20px;
+}
+
+.input-section input:focus,
+.input-section select:focus,
+.input-section textarea:focus,
+.input-section button:focus {
+    outline: none;
+}
+
+.input-section input[type=text],
+.input-section input[type=number],
+.input-section input[type=password],
+.input-section textarea {
+    display: block;
+    margin: 4px 0 4px 0;
+   box-sizing: border-box;
+    width: 100%;
+    line-height: 44px;
+    border: 1px solid var(--custom-border-beige);
+    border-radius: 5px;
+    padding: 0 10px;
+    color: var(--custom-brown);
+    font-size: 16px;
+}
+
+.input-section input[type=number] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+.input-section input:hover,
+.input-section textarea:hover {
+    border-color: var(--custom-brown);
+}
+
+.input-section input:focus,
+.input-section textarea:focus {
+    border-color: var(--custom-green);
+}
+
+.input-section .error {
+    border-color: var(--custom-red);
+}
+
+.input-section input.error {
+    border-color: var(--custom-red);
+}
+
+.input-section .error-message {
+    color: var(--custom-red);
+}
+

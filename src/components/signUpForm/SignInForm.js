@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, Redirect } from 'react-router-dom'
-import { TextInput } from '../TextInput'
+import { TextInput } from '../textInput/TextInput'
 import './SignUpForm.css'
 import { useAuthentication } from '../../hooks/authentication'
 

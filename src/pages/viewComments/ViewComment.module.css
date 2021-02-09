@@ -13,7 +13,7 @@ justify-content: center;
 }
 
 .full-page h3 {
-    margin-bottom: 20px;
+    margin-bottom: 60px;
 }
 
 .container {
@@ -86,7 +86,6 @@ justify-content: center;
 }
 
 .save {
-    margin-top: 20px;
     background-color: var(--custom-green);
     border-radius: 5px;
     color: #fff;

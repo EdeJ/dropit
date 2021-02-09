@@ -12,8 +12,6 @@ function EditComment() {
     const [song, setSong] = useState(null)
     const history = useHistory()
 
-    const [html, setHtml] = useState('my <b>HTML</b>');
-
     useEffect(() => {
 
         fetchData()
@@ -25,15 +23,11 @@ function EditComment() {
         }
     }, [songId])
 
-    function onChange(e) {
-        setHtml(e.target.value);
-    }
-
-
     function handleChange(event) {
         const updatedComment = { ...comment }
         updatedComment.message = event.target.value
         updatedComment.demoId = parseInt(songId)
+        updatedComment.viewed = false
         setComment(updatedComment)
     }
 

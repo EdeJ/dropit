@@ -48,7 +48,7 @@ function ViewComment() {
     return (
         <div className={styles['center']}>
             <div className={styles['full-page']}>
-                <h3 style={{ marginBottom: 60 }}>View comment</h3>
+                <h3>View comment</h3>
                 {song && <SongPanel song={song} />}
                 <div className={styles['container']}>
                     {isAdmin() && (

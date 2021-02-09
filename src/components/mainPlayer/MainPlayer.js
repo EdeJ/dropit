@@ -1,9 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { PlayerContext } from '../context/PlayerContextProvider'
-import styles from './MainPlayer.module.css'
-
+import { getAllDemos, getAllDemosByUserId } from '../../axios/axiosConfig'
+import AudioVisualizer from '../AudioVisualizer'
+import { useAuthentication } from '../../hooks/authentication'
 import {
     IoPlayCircleOutline,
     IoPlaySkipBackSharp,
@@ -11,29 +12,61 @@ import {
     IoCloseOutline,
     IoPauseCircleOutline
 } from 'react-icons/io5'
-import AudioVisualizer from '../AudioVisualizer'
-// import { useAuthentication } from '../../hooks/authentication'
+
+import styles from './MainPlayer.module.css'
 
 function MainPlayer() {
 
-    const { currentSong, setCurrentSong, showMainPlayer, setShowMainPlayer, isPlaying, play, pause } = useContext(PlayerContext)
-    const [index] = useState() //setIndex
-    // const { user } = useAuthentication()
+    const {
+        currentSong,
+        setCurrentSong,
+        showMainPlayer,
+        setShowMainPlayer,
+        isPlaying,
+        play,
+        pause
+    } = useContext(PlayerContext)
+    const [songList, setSongList] = useState()
+    const { user, isAdmin } = useAuthentication()
+
+    useEffect(() => {
+
+        fetchData()
+        async function fetchData() {
+            let result;
+            if (isAdmin()) {
+                result = await getAllDemos()
+            } else {
+                result = await getAllDemosByUserId(user.userId)
+            }
+
+            setSongList(result.data)
+        }
+
+    }, [isAdmin, user])
 
     function previous() {
-        // if (index > 0) {
-        //     setCurrentSong(songs[index - 1])
-        // }
+        const index = getCurrentIndex()
+        if (index > 0) {
+            setCurrentSong(songList[index - 1])
+            isPlaying && play()
+        }
     }
 
     function next() {
-        // if (index < songs.length - 1) {
-        //     setCurrentSong(songs[index + 1])
-        // }
+        const index = getCurrentIndex()
+        if (index < songList.length - 1) {
+            setCurrentSong(songList[index + 1])
+            isPlaying && play()
+        }
     }
 
     function playHandler() {
         isPlaying ? pause() : play()
+    }
+
+    function getCurrentIndex() {
+        return songList.map(song => song.id).indexOf(currentSong.id)
     }
 
     return (
@@ -62,18 +95,26 @@ function MainPlayer() {
                     <div className={styles['control-container']}>
                         <div className={styles['control-btns']}>
 
-                            <button onClick={previous}>
-                                <IoPlaySkipBackSharp />
-                            </button>
+                            {songList && (
+                                <button
+                                    onClick={previous}
+                                    className={styles[getCurrentIndex() - 1 < 0 ? 'disabled' : '']}>
+                                    <IoPlaySkipBackSharp />
+                                </button>
+                            )}
                             <button
                                 className={styles['play']}
                                 onClick={playHandler}
                             >
                                 {isPlaying ? <IoPauseCircleOutline /> : <IoPlayCircleOutline />}
                             </button>
-                            <button onClick={next} >
-                                <IoPlaySkipForwardSharp />
-                            </button>
+                            {songList && (
+                                <button
+                                    onClick={next}
+                                    className={styles[getCurrentIndex() + 2 > songList.length ? 'disabled' : '']}>
+                                    <IoPlaySkipForwardSharp />
+                                </button>
+                            )}
                         </div>
                     </div>
                 </div>
