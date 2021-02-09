@@ -4,7 +4,6 @@ import { axiosConfig } from '../../axios/axiosConfig'
 import FlashMessage from 'react-flash-message'
 import { useAuthentication } from '../../hooks/authentication'
 import { TextInput } from '../../components/textInput/TextInput'
-import FileInput from '../../components/FileInput'
 import { useHistory } from 'react-router-dom'
 
 import '../../components/signUpForm/SignUpForm.css'

@@ -10,9 +10,9 @@ import AllDemos from '../pages/myDemos/AllDemos'
 import MyDemos from '../pages/myDemos/MyDemos'
 import SignIn from '../pages/SignIn'
 import SignUp from '../pages/SignUp'
-import WriteComment from '../pages/viewComments/WriteComment'
-import ViewComment from '../pages/viewComments/ViewComment'
-import EditComment from '../pages/viewComments/EditComment'
+import WriteComment from '../pages/comments/WriteComment'
+import ViewComment from '../pages/comments/ViewComment'
+import EditComment from '../pages/comments/EditComment'
 import Home from '../pages/home/Home'
 
 
