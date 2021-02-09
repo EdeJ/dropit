@@ -17,10 +17,7 @@ function MyProfile() {
 
     useEffect(() => {
 
-        // methods.setValue([
-        //     { firstName: 'TEST' }
-        // ])
-
+        fetchData()
         async function fetchData() {
             try {
                 const result = await getUserById(user.userId)
@@ -30,19 +27,18 @@ function MyProfile() {
                 console.error(error)
             }
         }
-        fetchData()
+
     }, [user])
 
     const onSuccess = (formData) => {
 
         formData.userId = user.userId
         formData.username = user.username
-        console.log('userformDataData = ', formData)
+
         sendUser(formData)
         async function sendUser(formData) {
             try {
                 await updateUser(formData)
-                // history.push('/sign-in')
                 setMessage({ text: "TEST", type: "" })
             } catch (error) {
                 console.error(error)
