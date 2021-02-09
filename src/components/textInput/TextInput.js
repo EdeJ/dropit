@@ -15,7 +15,7 @@ export const TextInput = ({ name, label, type, fieldRef, value, disabled }) => {
                 id={name}
                 name={name}
                 ref={fieldRef}
-                value={value}
+                defaultValue={value}
                 disabled={disabled}
             />
             {errors[name] &&

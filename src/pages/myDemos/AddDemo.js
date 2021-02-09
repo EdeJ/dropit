@@ -47,7 +47,7 @@ function AddDemo() {
         <div className="full-page">
             <h3>Add new demo</h3>
             <FormProvider errors={errors} >
-                <form className="sign-up-form" onSubmit={handleSubmit(onSubmit)}>
+                <form className="dropit-form" onSubmit={handleSubmit(onSubmit)}>
                     {/* // TODO form className   */}
                     <FileInput
                         type="file"
@@ -88,7 +88,7 @@ function AddDemo() {
                 </form>
             </FormProvider>
             {message && (
-                <FlashMessage duration={5000} className={message.type}>
+                <FlashMessage duration={5000}>
                     <strong>{message.text}</strong>
                 </FlashMessage>
             )}
