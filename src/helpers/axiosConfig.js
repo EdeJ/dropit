@@ -1,9 +1,9 @@
 import axios from 'axios'
-import { getUser } from '../functions/helperFunctions'
+import { getAccessToken } from './helperFunctions'
 
 export const axiosConfig = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,
-    headers: { Authorization: getUser() }
+    headers: { Authorization: getAccessToken() }
 })
 
 export const getAllUsers = async () => {

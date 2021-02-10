@@ -1,16 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link, useHistory, useParams } from 'react-router-dom'
-
+import MenuPanel from '../../components/menuPanel/MenuPanel'
 import { IoReturnUpBack } from 'react-icons/io5'
-import SongPanel from '../../components/SongPanel'
+import SongPanel from '../../components/songPanel/SongPanel'
 import { useAuthentication } from '../../hooks/authentication'
-import { deleteDemoById, getDemoById } from '../../axios/axiosConfig'
+import { deleteDemoById, getDemoById } from '../../helpers/axiosConfig'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
 import ConfirmationModal from '../../components/confirmationModal/ConfirmationModal'
 import { roles } from '../../helpers/roles'
 
 import styles from './DemoOptions.module.css'
-import MenuPanel from '../../components/menuPanel/MenuPanel'
+
+
 
 function DemoOptions() {
 

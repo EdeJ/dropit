@@ -1,40 +1,42 @@
 import React, { useEffect, useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form';
-import { IoPencilSharp } from 'react-icons/io5';
-import { getUserById } from '../../axios/axiosConfig';
-import { TextInput } from '../../components/textInput/TextInput';
-import { useAuthentication } from '../../hooks/authentication';
+import { FormProvider, useForm } from 'react-hook-form'
+import { IoPencilSharp } from 'react-icons/io5'
+import { getUserById, updateUser } from '../../helpers/axiosConfig'
+import { TextInput } from '../../components/textInput/TextInput'
+import { useAuthentication } from '../../hooks/authentication'
 
 import styles from './MyProfile.module.css'
 
 function MyProfile() {
-
-    const { user, isAdmin } = useAuthentication()
+    const { user } = useAuthentication()
     const [userData, setUserData] = useState()
     const [disabled, setDisabled] = useState(true)
     const { ...methods } = useForm({ mode: 'onBlur' })
 
     useEffect(() => {
+
+        fetchData()
         async function fetchData() {
             try {
                 const result = await getUserById(user.userId)
-                console.log(result.data)
                 setUserData(result.data)
             } catch (error) {
                 console.error(error)
             }
         }
-        fetchData()
+
     }, [user])
 
     const onSuccess = (formData) => {
 
-        updateUser(formData)
+        formData.userId = user.userId
+        formData.username = user.username
 
-        async function updateUser(userData) {
+        sendUser(formData)
+        async function sendUser(formData) {
             try {
-                await updateUser(user)
-                // history.push('/sign-in')
+                await updateUser(formData)
+                setDisabled(true)
             } catch (error) {
                 console.error(error)
             }
@@ -55,13 +57,7 @@ function MyProfile() {
                     <h3>My Profile</h3>
                     <div>
                         {userData && (
-                            // <ul>
-                            //     <li>Username: {userData.username}</li>
-                            //     <li>First Name: {userData.firstName}</li>
-                            //     <li>Last Name: {userData.lastName}</li>
-                            //     <li>E-mail: {userData.email}</li>
-                            // </ul>
-                            <form className="sign-up-form">
+                            <form className="dropit-form">
                                 <div
                                     className={styles['edit']}
                                     onClick={() => setDisabled(!disabled)}
@@ -85,20 +81,47 @@ function MyProfile() {
                                     name="firstName"
                                     value={userData.firstName}
                                     disabled={disabled}
+                                    fieldRef={methods.register}
                                 />
                                 <TextInput
                                     type="text"
                                     label="Last name"
-                                    name="lastname"
+                                    name="lastName"
                                     value={userData.lastName}
                                     disabled={disabled}
+                                    fieldRef={methods.register}
                                 />
                                 <TextInput
                                     type="text"
-                                    label="E-mail"
+                                    label="Country"
+                                    name="country"
+                                    value={userData.country}
+                                    disabled={disabled}
+                                    fieldRef={methods.register}
+                                />
+                                <TextInput
+                                    type="text"
+                                    label="Email address"
                                     name="email"
                                     value={userData.email}
                                     disabled={disabled}
+                                    fieldRef={methods.register}
+                                />
+                                <TextInput
+                                    type="text"
+                                    label="Facebook"
+                                    name="facebook"
+                                    value={userData.facebook}
+                                    disabled={disabled}
+                                    fieldRef={methods.register}
+                                />
+                                <TextInput
+                                    type="text"
+                                    label="Instagram"
+                                    name="instagram"
+                                    value={userData.instagram}
+                                    disabled={disabled}
+                                    fieldRef={methods.register}
                                 />
                                 {!disabled && <button type="submit">Save</button>}
                             </form>

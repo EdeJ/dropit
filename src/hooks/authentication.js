@@ -1,18 +1,18 @@
 import React, { useState, useContext, createContext } from "react"
-import { axiosConfig } from "../axios/axiosConfig"
+import { axiosConfig } from "../helpers/axiosConfig"
+import { setLocalUser, getLocalUser } from "../helpers/helperFunctions"
 import { roles } from "../helpers/roles"
 
 const AuthContext = createContext({})
 
 export const AuthProvider = ({ children }) => {
 
-  const [user, setUser] = useState(JSON.parse(localStorage.getItem("user")))
+  const [user, setUser] = useState(getLocalUser())
 
   function isAdmin() {
     if (user) {
       return user.roles.includes(roles.ADMIN)
     }
-    // return false
   }
 
   const login = async (username, password) => {
@@ -30,7 +30,7 @@ export const AuthProvider = ({ children }) => {
       newUser.roles = response.data.roles
 
       setUser(newUser)
-      localStorage.setItem("user", JSON.stringify(newUser))
+      setLocalUser(newUser)
 
       return true;
 

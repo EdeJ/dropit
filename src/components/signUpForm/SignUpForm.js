@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, useHistory } from 'react-router-dom'
-import { axiosConfig } from '../../axios/axiosConfig'
+import { axiosConfig } from '../../helpers/axiosConfig'
 import { TextInput } from '../textInput/TextInput'
 
 import './SignUpForm.css'
@@ -13,7 +13,8 @@ export const SignUpForm = () => {
     const history = useHistory()
 
     const onSuccess = (formData) => {
-        //TODO hier kan misschien één functio voor gebruikt worden, samen met het upload formulier.
+        //TODO hier kan misschien één function voor gebruikt worden, samen met het upload formulier.
+        addUser(formData)
         async function addUser(userData) {
             try {
                 await axiosConfig.post('api/auth/signup', {
@@ -25,8 +26,6 @@ export const SignUpForm = () => {
                 console.error(error)
             }
         }
-
-        addUser(formData)
     }
 
     const onError = (errorList) => {
@@ -44,7 +43,7 @@ export const SignUpForm = () => {
 
     return (
         <FormProvider {...methods} >
-            <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
+            <form className="dropit-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
                 <h3>Sign Up</h3>
                 <TextInput
                     type="text"

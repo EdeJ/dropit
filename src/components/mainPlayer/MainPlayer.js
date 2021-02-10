@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { IoEllipsisHorizontal } from 'react-icons/io5'
 import { PlayerContext } from '../context/PlayerContextProvider'
-import { getAllDemos, getAllDemosByUserId } from '../../axios/axiosConfig'
+import { getAllDemos, getAllDemosByUserId } from '../../helpers/axiosConfig'
 import AudioVisualizer from '../AudioVisualizer'
 import { useAuthentication } from '../../hooks/authentication'
 import {

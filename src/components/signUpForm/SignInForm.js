@@ -28,7 +28,7 @@ export const SignInForm = () => {
                 <Redirect to={'/'} />
             ) : (
                     <FormProvider {...methods} >
-                        <form className="sign-up-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
+                        <form className="dropit-form" onSubmit={methods.handleSubmit(onSuccess, onError)}>
                             <h3>Sign In</h3>
                             <TextInput
                                 type="text"

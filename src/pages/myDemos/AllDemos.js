@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import SongCard from '../../components/SongCard'
-import { getAllUsers } from '../../axios/axiosConfig'
+import SongCard from '../../components/songCard/SongCard'
+import { getAllUsers } from '../../helpers/axiosConfig'
 
 import styles from './MyDemos.module.css'
 

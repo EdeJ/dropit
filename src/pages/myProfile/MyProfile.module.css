@@ -24,7 +24,7 @@ justify-content: center;
 
 .edit {
     display: flex;
-    justify-content: end;
+    justify-content:flex-end;
     font-size: 20px;
     color: var(--custom-green);
     cursor: pointer;

@@ -8,16 +8,16 @@
     align-items: center;
 }
 
-.sign-up-form {
+.dropit-form {
     width: 100%;
     max-width: 600px;
     margin-bottom: 30px;
 }
 
-/* .sign-up-form input:focus,
-.sign-up-form select:focus,
-.sign-up-form textarea:focus,
-.sign-up-form button:focus {
+/* .dropit-form input:focus,
+.dropit-form select:focus,
+.dropit-form textarea:focus,
+.dropit-form button:focus {
     outline: none;
 } */
 
@@ -25,10 +25,10 @@
     margin-top: 20px;
 } */
 
-/* .sign-up-form input[type=text],
-.sign-up-form input[type=number],
-.sign-up-form input[type=password],
-.sign-up-form textarea {
+/* .dropit-form input[type=text],
+.dropit-form input[type=number],
+.dropit-form input[type=password],
+.dropit-form textarea {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -40,37 +40,37 @@
     font-size: 16px;
 } */
 
-/* .sign-up-form input[type=number] {
+/* .dropit-form input[type=number] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
 }
 
-.sign-up-form input:hover,
-.sign-up-form textarea:hover {
+.dropit-form input:hover,
+.dropit-form textarea:hover {
     border-color: var(--custom-brown);
 }
 
-.sign-up-form input:focus,
-.sign-up-form textarea:focus {
+.dropit-form input:focus,
+.dropit-form textarea:focus {
     border-color: var(--custom-green);
 }
 
-.sign-up-form .error {
+.dropit-form .error {
     border-color: var(--custom-red);
     /* background-color: var(--custom-light-red); */
 /* } */
 
-/* .sign-up-form input.error {
+/* .dropit-form input.error {
     border-color: var(--custom-red);
 }
 
-.sign-up-form .error-message {
+.dropit-form .error-message {
     color: var(--custom-red);
 }  */
 
 
-.sign-up-form button {
+.dropit-form button {
     margin-top: 40px;
     background-color: var(--custom-green);
     border-radius: 5px;
@@ -87,32 +87,32 @@
     width: 100%;
 }
 
-.sign-up-form button:hover {
+.dropit-form button:hover {
     background-color: var(--custom-dark-green);
 }
 
 
-.sign-up-form .radio-group {
+.dropit-form .radio-group {
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
     flex-wrap: wrap;
 }
 
-.sign-up-form .radio-set {
+.dropit-form .radio-set {
     margin-right: 10px;
     margin-bottom: 5px;
 }
 
-.sign-up-form .radio-set label {
+.dropit-form .radio-set label {
     margin-left: 10px;
 }
 
-.sign-up-form .checkbox label {
+.dropit-form .checkbox label {
     margin-left: 10px;
 }
 
-.sign-up-form .small-text a {
+.dropit-form .small-text a {
 margin-left: 10px;
 }
 
