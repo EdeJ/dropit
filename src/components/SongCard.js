@@ -16,7 +16,8 @@ function SongCard({ song, size }) {
     } = useContext(PlayerContext)
 
     function clickHandler() {
-        if (song.id !== currentSong.id) {
+
+        if (!currentSong || song.id !== currentSong.id) {
             setCurrentSong(song)
         }
         isPlaying && play()

@@ -33,11 +33,11 @@ function ViewComment() {
             updatedComment.demoId = parseInt(songId)
             updatedComment.viewed = true
 
-            // When viewed by user, update comment viewed-status to true after 3 seconds
+            // When viewed by user, update comment viewed-status to true after 2 seconds
             if (!isAdmin()) {
                 timerId = setTimeout(() => {
                     updateComment(updatedComment)
-                }, 3000);
+                }, 2000);
             }
         }
 

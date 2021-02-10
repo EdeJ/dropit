@@ -55,6 +55,9 @@ function Routes() {
             <PrivateRoute path="/demo-options/:songId" permittedRoles={[roles.USER, roles.ADMIN]}>
                 <DemoOptions />
             </PrivateRoute>
+            <Route path="/reset">
+                {localStorage.removeItem('user')}
+            </Route>
         </Switch>
     )
 }

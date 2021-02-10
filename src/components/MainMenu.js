@@ -38,11 +38,11 @@ function MainMenu({ setSideDrawerOpen }) {
                 )}
                 {!user && (
                     <>
-                        <li key="signUp" onClick={() => setSideDrawerOpen(false)}>
-                            <NavLink to='/sign-up'>Sign up</NavLink>
-                        </li>
                         <li key="signIn" onClick={() => setSideDrawerOpen(false)}>
                             <NavLink to='/sign-in'>Sign in</NavLink>
+                        </li>
+                        <li key="signUp" onClick={() => setSideDrawerOpen(false)}>
+                            <NavLink to='/sign-up'>Sign up</NavLink>
                         </li>
                     </>
                 )}

@@ -111,7 +111,7 @@ function MyProfile() {
                                     type="text"
                                     label="Facebook"
                                     name="facebook"
-                                    value={userData.country}
+                                    value={userData.facebook}
                                     disabled={disabled}
                                     fieldRef={methods.register}
                                 />
@@ -119,7 +119,7 @@ function MyProfile() {
                                     type="text"
                                     label="Instagram"
                                     name="instagram"
-                                    value={userData.country}
+                                    value={userData.instagram}
                                     disabled={disabled}
                                     fieldRef={methods.register}
                                 />
