@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useHistory } from 'react-router-dom'
-import { deleteComment } from '../axios/axiosConfig'
+import { deleteComment } from '../helpers/axiosConfig'
 import { useAuthentication } from '../hooks/authentication'
 import ConfirmationModal from './confirmationModal/ConfirmationModal'
 

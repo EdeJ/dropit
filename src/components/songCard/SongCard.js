@@ -1,8 +1,8 @@
 import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
-import { PlayerContext } from './context/PlayerContextProvider'
+import { PlayerContext } from '../context/PlayerContextProvider'
 import { IoChatbox, IoChatboxOutline, IoEllipsisHorizontal } from 'react-icons/io5'
-import PlayButton from './playButton/PlayButton'
+import PlayButton from '../playButton/PlayButton'
 import styles from './SongCard.module.css'
 
 function SongCard({ song, size }) {

@@ -1,13 +1,13 @@
 
 // TODO naar map helpers
 
-export function getUser() {
+export function getLocalUser() {
     if (localStorage.getItem("user")) {
         return JSON.parse(localStorage.getItem("user"))
     }
 }
 
-export function setUser(user) {
+export function setLocalUser(user) {
     localStorage.setItem("user", JSON.stringify(user))
 }
 

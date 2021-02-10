@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { IoPencilSharp } from 'react-icons/io5'
-import { getUserById, updateUser } from '../../axios/axiosConfig'
+import { getUserById, updateUser } from '../../helpers/axiosConfig'
 import { TextInput } from '../../components/textInput/TextInput'
 import { useAuthentication } from '../../hooks/authentication'
 

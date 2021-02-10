@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getAccessToken } from '../functions/helperFunctions'
+import { getAccessToken } from './helperFunctions'
 
 export const axiosConfig = axios.create({
     baseURL: process.env.REACT_APP_BASE_URL,

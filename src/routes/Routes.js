@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { Route, Switch } from 'react-router-dom'
 import { PlayerContext } from '../components/context/PlayerContextProvider'
-import PrivateRoute from '../components/PrivateRoute'
+import PrivateRoute from './PrivateRoute'
 import { roles } from '../helpers/roles'
 import AddDemo from '../pages/myDemos/AddDemo'
 import DemoOptions from '../pages/demoOptions/DemoOptions'
@@ -55,9 +55,6 @@ function Routes() {
             <PrivateRoute path="/demo-options/:songId" permittedRoles={[roles.USER, roles.ADMIN]}>
                 <DemoOptions />
             </PrivateRoute>
-            <Route path="/reset">
-                {localStorage.removeItem('user')}
-            </Route>
         </Switch>
     )
 }

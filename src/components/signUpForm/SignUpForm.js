@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Link, useHistory } from 'react-router-dom'
-import { axiosConfig } from '../../axios/axiosConfig'
+import { axiosConfig } from '../../helpers/axiosConfig'
 import { TextInput } from '../textInput/TextInput'
 
 import './SignUpForm.css'

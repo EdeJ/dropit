@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { axiosConfig } from '../../axios/axiosConfig'
+import { axiosConfig } from '../../helpers/axiosConfig'
 import FlashMessage from 'react-flash-message'
 import { useAuthentication } from '../../hooks/authentication'
 import { TextInput } from '../../components/textInput/TextInput'
@@ -47,12 +47,17 @@ function AddDemo() {
                 <FormProvider errors={errors} >
                     <form className="dropit-form" onSubmit={handleSubmit(onSubmit)}>
                         <TextInput
+                            label="mp3 max 10MB "
                             type="file"
                             name="file"
                             fieldRef={register({
                                 required: {
                                     value: true,
                                     message: "You must add a mp3 audio file"
+                                },
+                                validate: {
+                                    fileSize: async value => value[0].size <= 11000000,
+                                    fileType: async value => value[0].type === "audio/mpeg"
                                 }
                             })
                             }

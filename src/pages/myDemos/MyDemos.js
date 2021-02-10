@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
-import SongCard from '../../components/SongCard'
+import SongCard from '../../components/songCard/SongCard'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
-import { getAllDemosByUserId } from '../../axios/axiosConfig'
+import { getAllDemosByUserId } from '../../helpers/axiosConfig'
 import { useAuthentication } from '../../hooks/authentication'
 import { IoAddCircle } from 'react-icons/io5'
 
