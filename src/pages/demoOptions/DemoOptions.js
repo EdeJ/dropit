@@ -11,13 +11,11 @@ import { roles } from '../../helpers/roles'
 
 import styles from './DemoOptions.module.css'
 
-
-
 function DemoOptions() {
 
     const { songId } = useParams()
     const [song, setSong] = useState()
-    const { setCurrentSong, pause } = useContext(PlayerContext)
+    const { currentSong, setCurrentSong, pause } = useContext(PlayerContext)
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
     const { user, isAdmin } = useAuthentication()
@@ -36,10 +34,15 @@ function DemoOptions() {
     async function modalAction(allowAction) {
         setShowModal(false)
         if (allowAction) {
-            setCurrentSong(null)
             const result = await deleteDemoById(songId)
             if (result) {
-                pause()
+
+                // if the deleted song is the currently playing song, 
+                // stop playing audio and set current song to null, this will hide the sticky footer music player.
+                if (currentSong && parseInt(songId) === parseInt(currentSong.id)) {
+                    setCurrentSong(null)
+                    pause()
+                }
                 isAdmin() ? history.push('/all-demos') : history.push('/my-demos')
             }
         }
