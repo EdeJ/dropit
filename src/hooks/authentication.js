@@ -1,6 +1,6 @@
 import React, { useState, useContext, createContext } from "react"
 import { axiosConfig } from "../helpers/axiosConfig"
-import { setLocalUser, getLocalUser } from "../helpers/helperFunctions"
+import { setLocalUser, getLocalUser, resetLocalUser } from "../helpers/helperFunctions"
 import { roles } from "../helpers/roles"
 
 const AuthContext = createContext({})
@@ -38,11 +38,10 @@ export const AuthProvider = ({ children }) => {
       console.error(error);
       return false;
     }
-
   }
 
   const logout = async () => {
-    localStorage.removeItem('user')
+    resetLocalUser()
     setUser(null)
   }
 
