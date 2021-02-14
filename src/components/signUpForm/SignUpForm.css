@@ -14,61 +14,9 @@
     margin-bottom: 30px;
 }
 
-/* .dropit-form input:focus,
-.dropit-form select:focus,
-.dropit-form textarea:focus,
-.dropit-form button:focus {
-    outline: none;
-} */
-
-/* .input-section {
-    margin-top: 20px;
-} */
-
-/* .dropit-form input[type=text],
-.dropit-form input[type=number],
-.dropit-form input[type=password],
-.dropit-form textarea {
-    display: block;
-    box-sizing: border-box;
-    width: 100%;
-    line-height: 44px;
-    border: 1px solid var(--custom-border-beige);
-    border-radius: 5px;
-    padding: 0 10px;
-    color: var(--custom-brown);
-    font-size: 16px;
-} */
-
-/* .dropit-form input[type=number] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
-}
-
-.dropit-form input:hover,
-.dropit-form textarea:hover {
-    border-color: var(--custom-brown);
-}
-
-.dropit-form input:focus,
-.dropit-form textarea:focus {
-    border-color: var(--custom-green);
-}
-
-.dropit-form .error {
-    border-color: var(--custom-red);
-    /* background-color: var(--custom-light-red); */
-/* } */
-
-/* .dropit-form input.error {
-    border-color: var(--custom-red);
-}
-
 .dropit-form .error-message {
     color: var(--custom-red);
-}  */
-
+} 
 
 .dropit-form button {
     margin-top: 40px;
