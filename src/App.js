@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import SideDrawer from './components/sideDrawer/SideDrawer'
-import Toolbar from './components/toolbar/Toolbar'
+import Toolbar from './components/header/Header'
 import MainMenu from './components/MainMenu'
 import { PlayerContext } from './components/context/PlayerContextProvider'
 import MainPlayer from './components/mainPlayer/MainPlayer'

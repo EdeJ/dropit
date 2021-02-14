@@ -1,14 +1,10 @@
 @import url('../../css/custom-vars.css');
 
-.toolbar {
-    /* position: fixed; */
-    top: 0;
-    left: 0;
-    width: 100%;
+.header {
     height: 80px;
 }
 
-.toolbar-navigation {
+.navigation {
     display: flex;
     height: 100%;
     align-items: center;
@@ -16,7 +12,7 @@
     justify-content: space-between
 }
 
-.toolbar-logo svg {
+.logo {
     width: 150px
 }
 
@@ -24,58 +20,58 @@
     flex: 1;
 }
 
-.toolbar-navigation-items ul {
+.items ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: flex;
 }
 
-.toolbar-navigation-items li {
+.items li {
     padding: 0 0.5rem;
 }
 
-.toolbar-navigation-items a {
+.items a {
     color: var(--custom-brown);
     text-decoration: none;
 }
 
-.toolbar-navigation-items a:hover,
-.toolbar-navigation-items a:active {
+.items a:hover,
+.items a:active {
     color: var(--custom-green);
 }
-.toolbar .header-buttons {
+.header-buttons {
     display: flex;
 }
 
-.toolbar .header-buttons svg {
+.header-buttons svg {
     color: var(--custom-green);
     cursor: pointer;
 }
 
-.toolbar .toggle-menu-btn {
+.toggle-menu-btn {
     width: 40px;
     height: 40px;
 }
 
-.toolbar .profile-icon {
+.profile-icon {
     margin-right: 20px;
     width: 40px;
     height: 40px;
 }
 
 @media (max-width: 768px) {
-    .toolbar-navigation-items {
+    .items {
         display: none;
     }
 }
 
 @media (min-width: 769px) {
-    .toolbar .header-buttons {
+    .header-buttons {
         display: none;
     }
 
-    .toolbar-logo {
+    .logo {
         margin-left: 0;
     }
 }

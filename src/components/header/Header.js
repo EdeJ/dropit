@@ -5,9 +5,9 @@ import { useAuthentication } from '../../hooks/authentication'
 import { roles } from '../../helpers/roles'
 import { IoMenu, IoPersonCircleOutline } from 'react-icons/io5'
 
-import './Toolbar.css'
+import styles from './Header.module.css'
 
-function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
+function Header({ sideDrawerOpen, setSideDrawerOpen, children }) {
 
     const { user } = useAuthentication()
 
@@ -16,22 +16,28 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
     }
 
     return (
-        <header className="toolbar">
-            <nav className="toolbar-navigation">
-                <div className="toolbar-logo" >
+        <header className={styles['header']}>
+            <nav className={styles['navigation']}>
+                <div className={styles['logo']} >
                     <Link to="/">
                         <Logo title="dropit" />
                     </Link>
                 </div>
-                <div className="header-buttons">
+                <div className={styles['header-buttons']}>
                     {user && (
                         <Link to="/my-profile">
-                            <IoPersonCircleOutline className="profile-icon" color={getColor()} />
+                            <IoPersonCircleOutline
+                                className={styles['profile-icon']}
+                                color={getColor()}
+                            />
                         </Link>
                     )}
-                    <IoMenu className="toggle-menu-btn" onClick={() => setSideDrawerOpen(!sideDrawerOpen)} />
+                    <IoMenu
+                        className={styles['toggle-menu-btn']}
+                        onClick={() => setSideDrawerOpen(!sideDrawerOpen)}
+                    />
                 </div>
-                <div className="toolbar-navigation-items">
+                <div className={styles['items']}>
                     <ul>{children}</ul>
                 </div>
             </nav>
@@ -39,4 +45,4 @@ function Toolbar({ sideDrawerOpen, setSideDrawerOpen, children }) {
     )
 }
 
-export default Toolbar
+export default Header
