@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-// TODO this is temp for github pages
-// import { HashRouter as Router } from 'react-router-dom'
 import PlayerContextProvider from './components/context/PlayerContextProvider';
 import { AuthProvider } from './hooks/authentication';
 
