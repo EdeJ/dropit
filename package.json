@@ -1,6 +1,5 @@
 {
   "homepage": "http://edej.github.io/dropit",
-  "name": "dropit",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
