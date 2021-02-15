@@ -38,7 +38,7 @@ function Header({ sideDrawerOpen, setSideDrawerOpen, children }) {
                     />
                 </div>
                 <div className={styles['items']}>
-                    <ul>{children}</ul>
+                    {children}
                 </div>
             </nav>
         </header>

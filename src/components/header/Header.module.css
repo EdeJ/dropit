@@ -16,6 +16,10 @@
     width: 150px
 }
 
+.logo a {
+    text-decoration: none;
+}
+
 .spacer {
     flex: 1;
 }

@@ -1,6 +1,6 @@
 import { useContext, useState } from 'react'
 import SideDrawer from './components/sideDrawer/SideDrawer'
-import Toolbar from './components/header/Header'
+import Header from './components/header/Header'
 import MainMenu from './components/MainMenu'
 import { PlayerContext } from './components/context/PlayerContextProvider'
 import MainPlayer from './components/mainPlayer/MainPlayer'
@@ -17,12 +17,12 @@ function App() {
   return (
     <>
       <div className="app" >
-        <Toolbar
+        <Header
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}
         >
           <MainMenu setSideDrawerOpen={setSideDrawerOpen} />
-        </Toolbar>
+        </Header>
         <SideDrawer
           sideDrawerOpen={sideDrawerOpen}
           setSideDrawerOpen={setSideDrawerOpen}

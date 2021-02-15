@@ -4,18 +4,26 @@ import { Link, Redirect } from 'react-router-dom'
 import { TextInput } from '../textInput/TextInput'
 import './SignUpForm.css'
 import { useAuthentication } from '../../hooks/authentication'
+import Spinner from '../spinner/Spinner'
 
 export const SignInForm = () => {
 
+    // TODO loader!
+
     const { ...methods } = useForm()
     const { login, user } = useAuthentication()
-    const [message, setMessage] = useState();
+    const [message, setMessage] = useState()
+    const [isLoading, setIsLoading] = useState(false)
 
     const onSuccess = async ({ email, password }) => {
+
+        setIsLoading(true)
+
         const result = await login(email, password)
         if (!result) {
             setMessage("Incorrect username or password");
         }
+        setIsLoading(false)
     }
 
     const onError = (errorList) => {
@@ -24,6 +32,7 @@ export const SignInForm = () => {
 
     return (
         <>
+            {isLoading && <Spinner />}
             {user ? (
                 <Redirect to={'/'} />
             ) : (

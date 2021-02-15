@@ -23,7 +23,7 @@ function MainMenu({ setSideDrawerOpen }) {
     }
 
     return (
-        <div>
+        <>
             {showModal && (
                 <ConfirmationModal
                     action={handleLogOut}
@@ -67,7 +67,7 @@ function MainMenu({ setSideDrawerOpen }) {
                     </li>
                 )}
             </ul>
-        </div>
+        </>
     )
 }
 

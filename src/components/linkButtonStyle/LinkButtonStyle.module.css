@@ -1,0 +1,11 @@
+.btn-style {
+font-weight: bold;
+color: var(--custom-green);
+text-decoration: none;
+border-radius: 5px;
+padding: 10px 20px;
+}
+
+.border {
+    border: 2px solid;
+}

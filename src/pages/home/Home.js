@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import { IoPlayOutline } from 'react-icons/io5'
-import { NavLink } from 'react-router-dom'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
+import LinkButtonStyle from '../../components/linkButtonStyle/LinkButtonStyle'
 import { useAuthentication } from '../../hooks/authentication'
 import './Home.css'
 
@@ -27,16 +27,16 @@ function Home() {
             {user && (
                 <div className="action-btns">
                     {(isAdmin()) ? (
-                        <NavLink className="border" type="button" to="/all-demos" >All demos</NavLink>
+                        <LinkButtonStyle url="/all-demos" >All demos</LinkButtonStyle>
                     ) : (
-                            <NavLink className="border" type="button" to="/my-demos" >My demos</NavLink>
+                            <LinkButtonStyle url="/my-demos" >My demos</LinkButtonStyle>
                         )}
                 </div>
             )}
             {!user && (
                 <div className="action-btns">
-                    <NavLink type="button" to="/sign-in" >Sign In</NavLink>
-                    <NavLink className="border" type="button" to="/sign-up" >Sign Up</NavLink>
+                    <LinkButtonStyle url="/sign-in" border={false}>Sign in</LinkButtonStyle>
+                    <LinkButtonStyle url="/sign-up" >Sign up</LinkButtonStyle>
                 </div>
             )}
 

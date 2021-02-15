@@ -27,11 +27,11 @@
     font-size: 16px;
 }
 
-.input-section input[type=number] {
+/* .input-section input[type=number] {
     -webkit-appearance: textfield;
     -moz-appearance: textfield;
     appearance: textfield;
-}
+} */
 
 .input-section input:hover,
 .input-section textarea:hover {

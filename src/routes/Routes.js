@@ -14,6 +14,8 @@ import WriteComment from '../pages/comments/WriteComment'
 import ViewComment from '../pages/comments/ViewComment'
 import EditComment from '../pages/comments/EditComment'
 import Home from '../pages/home/Home'
+import TermsOfService from '../pages/termsOfService/TermsOfService'
+
 
 
 function Routes() {
@@ -55,6 +57,9 @@ function Routes() {
             <PrivateRoute path="/demo-options/:songId" permittedRoles={[roles.USER, roles.ADMIN]}>
                 <DemoOptions />
             </PrivateRoute>
+            <Route path="/terms-of-service">
+                <TermsOfService />
+            </Route>
         </Switch>
     )
 }
