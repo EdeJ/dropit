@@ -5,7 +5,6 @@ import { IoChatbox, IoChatboxOutline, IoEllipsisHorizontal } from 'react-icons/i
 import PlayButton from '../playButton/PlayButton'
 import styles from './SongCard.module.css'
 
-// TODO on loading... ???
 function SongCard({ song, size }) {
 
     const {

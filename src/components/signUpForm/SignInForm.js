@@ -8,8 +8,6 @@ import Spinner from '../spinner/Spinner'
 
 export const SignInForm = () => {
 
-    // TODO loader!
-
     const { ...methods } = useForm()
     const { login, user } = useAuthentication()
     const [message, setMessage] = useState()

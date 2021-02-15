@@ -7,6 +7,7 @@ import { TextInput } from '../../components/textInput/TextInput'
 import { useHistory } from 'react-router-dom'
 
 import '../../components/signUpForm/SignUpForm.css'
+import Spinner from '../../components/spinner/Spinner'
 
 function AddDemo() {
 
@@ -16,6 +17,7 @@ function AddDemo() {
     const [message, setMessage] = useState()
     const { user } = useAuthentication()
     const history = useHistory()
+    const [isLoading, setIsLoading] = useState(false)
 
     async function onSubmit(data) {
 
@@ -27,75 +29,80 @@ function AddDemo() {
         formData.append('artist', data.artist)
 
         try {
+            setIsLoading(true)
             await axiosConfig.post('api/files', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                     'Authorization': user.accessToken
                 }
             })
+            setIsLoading(false)
             history.push('/my-demos')
         } catch (error) {
-            console.log(error)
+            setIsLoading(false)
             setMessage({ text: 'Error in file upload', type: 'error' })
         }
     }
 
     return (
-        <div className="page">
-            <div className="content">
-                <h3>Add new demo</h3>
-                <FormProvider errors={errors} >
-                    <form className="dropit-form" onSubmit={handleSubmit(onSubmit)}>
-                        <TextInput
-                            label="mp3 max 10MB "
-                            type="file"
-                            name="file"
-                            fieldRef={register({
-                                required: {
-                                    value: true,
-                                    message: "You must add a mp3 audio file"
-                                },
-                                validate: {
-                                    fileSize: async value => value[0].size <= 11000000,
-                                    fileType: async value => value[0].type === "audio/mpeg"
+        <>
+            {isLoading && <Spinner message="uploading file" />}
+            <div className="page">
+                <div className="content">
+                    <h3>Add new demo</h3>
+                    <FormProvider errors={errors} >
+                        <form className="dropit-form" onSubmit={handleSubmit(onSubmit)}>
+                            <TextInput
+                                label="mp3 max 10MB "
+                                type="file"
+                                name="file"
+                                fieldRef={register({
+                                    required: {
+                                        value: true,
+                                        message: "You must add a mp3 audio file"
+                                    },
+                                    validate: {
+                                        fileSize: async value => value[0].size <= 11000000,
+                                        fileType: async value => value[0].type === "audio/mpeg"
+                                    }
+                                })
                                 }
-                            })
-                            }
-                        />
-                        <TextInput
-                            type="text"
-                            label="Song title"
-                            name="songTitle"
-                            fieldRef={register({
-                                required: {
-                                    value: true,
-                                    message: "You must specify a song title"
+                            />
+                            <TextInput
+                                type="text"
+                                label="Song title"
+                                name="songTitle"
+                                fieldRef={register({
+                                    required: {
+                                        value: true,
+                                        message: "You must specify a song title"
+                                    }
+                                })
                                 }
-                            })
-                            }
-                        />
-                        <TextInput
-                            type="text"
-                            label="Artist"
-                            name="artist"
-                            fieldRef={register({
-                                required: {
-                                    value: true,
-                                    message: "You must specify an artist name"
+                            />
+                            <TextInput
+                                type="text"
+                                label="Artist"
+                                name="artist"
+                                fieldRef={register({
+                                    required: {
+                                        value: true,
+                                        message: "You must specify an artist name"
+                                    }
+                                })
                                 }
-                            })
-                            }
-                        />
-                        <button>upload</button>
-                    </form>
-                </FormProvider>
-                {message && (
-                    <FlashMessage duration={5000}>
-                        <strong>{message.text}</strong>
-                    </FlashMessage>
-                )}
+                            />
+                            <button>upload</button>
+                        </form>
+                    </FormProvider>
+                    {message && (
+                        <FlashMessage duration={5000}>
+                            <strong>{message.text}</strong>
+                        </FlashMessage>
+                    )}
+                </div>
             </div>
-        </div>
+        </>
     )
 }
 

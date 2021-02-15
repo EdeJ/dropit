@@ -10,6 +10,7 @@ import ConfirmationModal from '../../components/confirmationModal/ConfirmationMo
 import { roles } from '../../helpers/roles'
 
 import styles from './DemoOptions.module.css'
+import Spinner from '../../components/spinner/Spinner'
 
 function DemoOptions() {
 
@@ -19,12 +20,15 @@ function DemoOptions() {
     const history = useHistory()
     const [showModal, setShowModal] = useState(false)
     const { user, isAdmin } = useAuthentication()
+    const [isLoading, setIsLoading] = useState(false)
 
     useEffect(() => {
 
         fetchData()
         async function fetchData() {
+            setIsLoading(true)
             const { data } = await getDemoById(songId)
+            setIsLoading(false)
             setSong(data)
         }
 
@@ -34,7 +38,9 @@ function DemoOptions() {
     async function modalAction(allowAction) {
         setShowModal(false)
         if (allowAction) {
+            setIsLoading(true)
             const result = await deleteDemoById(songId)
+            setIsLoading(false)
             if (result) {
 
                 // if the deleted song is the currently playing song, 
@@ -50,6 +56,7 @@ function DemoOptions() {
 
     return (
         <>
+            {isLoading && <Spinner />}
             {showModal && (
                 <ConfirmationModal
                     action={modalAction}

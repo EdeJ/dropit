@@ -1,15 +1,13 @@
 import React from 'react'
-// import loaderIcon from '../../assets/images/loading-1.svg'
-import { ReactComponent as LoaderIcon } from '../../assets/images/loading-1.svg'
+import { ReactComponent as LoaderIcon } from '../../assets/images/loading.svg'
 import styles from './Spinner.module.css'
 
-function Spinner() {
+function Spinner({ message = 'loading...' }) {
 
     return (
         <div className={styles['spinner']}>
             <LoaderIcon />
-            {/* <img src={loaderIcon} alt="loading..." /> */}
-            <p>loading...</p>
+            <p>{message}</p>
         </div>
     )
 }
