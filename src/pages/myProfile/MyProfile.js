@@ -4,9 +4,10 @@ import { IoPencilSharp } from 'react-icons/io5'
 import { getUserById, updateUser } from '../../helpers/axiosConfig'
 import { TextInput } from '../../components/textInput/TextInput'
 import { useAuthentication } from '../../hooks/authentication'
+import Spinner from '../../components/spinner/Spinner'
+
 
 import styles from './MyProfile.module.css'
-import Spinner from '../../components/spinner/Spinner'
 
 function MyProfile() {
     const { user } = useAuthentication()
