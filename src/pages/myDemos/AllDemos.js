@@ -38,7 +38,6 @@ function AllDemos() {
         return demos.map(demo => (
 
             <li key={demo.songTitle} >
-                {console.log(demo.songTitle)}
                 <SongCard
                     song={demo}
                     size={{ width: 144, height: 144 }}
