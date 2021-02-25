@@ -31,7 +31,7 @@ function Home() {
                 }
             }
         }
-    }, [])
+    }, [isWakedUp])
 
     return (
         <div className="container-center">
