@@ -33,7 +33,6 @@
 
 .songDetails strong,
 .songDetails span {
-    /* max-width: 130px; */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -57,7 +56,7 @@
 
 .review-icon {
     font-size: 24px;
-    color: #5e69ba;
+    color: var(--custom-blue);
     position: absolute;
     left: 10px;
     top: 10px;

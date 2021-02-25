@@ -14,15 +14,10 @@ function PlayerContextProvider({ children }) {
         setSong(song)
         if (song) {
             audio.current.src = `${process.env.REACT_APP_BASE_URL}api/files/${song.fileName}`
-            // audio.current.play()
-            // setIsPlaying(true)
-        } else {
-            // audio.current.pause()
         }
     }
 
     function play() {
-        // isPlaying ? audio.current.pause() : audio.current.play()
         audio.current.play()
         setIsPlaying(true)
     }

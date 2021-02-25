@@ -1,7 +1,8 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IoPlayOutline } from 'react-icons/io5'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
 import LinkButtonStyle from '../../components/linkButtonStyle/LinkButtonStyle'
+import { axiosConfig } from '../../helpers/axiosConfig'
 import { useAuthentication } from '../../hooks/authentication'
 import './Home.css'
 
@@ -14,6 +15,21 @@ function Home() {
         setShowMainPlayer(true)
         isPlaying || play()
     }
+
+    useEffect(() => {
+
+        // This call to the back-end servers is only to wake-up the sleeping heroku server as soon as possible
+        if (process.env.REACT_APP_BASE_URL === 'https://dropit-api.herokuapp.com/') {
+            wakeUp()
+            async function wakeUp() {
+                try {
+                    await axiosConfig.get('/api/home/wake-up')
+                } catch (error) {
+                    console.log(error)
+                }
+            }
+        }
+    }, [])
 
     return (
         <div className="container-center">

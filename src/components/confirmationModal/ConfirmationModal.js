@@ -13,7 +13,6 @@ function ConfirmationModal({ message, action }) {
                 />
                 <Button
                     label="Ok"
-                    // color="warning"
                     onClick={() => action(true)}
                 />
             </div>
