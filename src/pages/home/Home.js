@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { IoPlayOutline } from 'react-icons/io5'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
 import LinkButtonStyle from '../../components/linkButtonStyle/LinkButtonStyle'
@@ -8,9 +8,8 @@ import './Home.css'
 
 function Home() {
 
-    const { user, isAdmin } = useAuthentication()
+    const { user, isAdmin, isWakedUp, setIsWakedUp } = useAuthentication()
     const { setShowMainPlayer, currentSong, play, isPlaying } = useContext(PlayerContext)
-    const [isWakedUp, setIsWakedUp] = useState(false)
 
     function playBtnHandler() {
         setShowMainPlayer(true)
@@ -31,7 +30,7 @@ function Home() {
                 }
             }
         }
-    }, [isWakedUp])
+    }, [isWakedUp, setIsWakedUp])
 
     return (
         <div className="container-center">

@@ -8,6 +8,7 @@ const AuthContext = createContext({})
 export const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(getLocalUser())
+  const [isWakedUp, setIsWakedUp] = useState(false)
 
   function isAdmin() {
     if (user) {
@@ -51,7 +52,9 @@ export const AuthProvider = ({ children }) => {
         isAdmin,
         login,
         logout,
-        user
+        user,
+        isWakedUp,
+        setIsWakedUp
       }}
     >
       {children}
