@@ -46,7 +46,6 @@ justify-content: center;
 }
 
 .editor {
-    background-color: red;
     height: 400px;
     min-height: 80px;
 }
@@ -88,7 +87,7 @@ justify-content: center;
 .save {
     background-color: var(--custom-green);
     border-radius: 5px;
-    color: #fff;
+    color: var(--custom-white);
     cursor: pointer;
     display: inline-block;
     min-width: 6.4rem;

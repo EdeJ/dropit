@@ -1,7 +1,6 @@
 @import url('../../css/custom-vars.css');
 
 .main-player {
-    background-color: red;
     position: relative;
     height: 100%;
     background-color: var(--custom-background);

@@ -28,6 +28,7 @@ function AllDemos() {
                     }
                 })
             } catch (error) {
+                setIsLoading(false)
                 console.log(error)
             }
         }
