@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { IoPlayOutline } from 'react-icons/io5'
 import { PlayerContext } from '../../components/context/PlayerContextProvider'
 import LinkButtonStyle from '../../components/linkButtonStyle/LinkButtonStyle'
@@ -10,6 +10,7 @@ function Home() {
 
     const { user, isAdmin } = useAuthentication()
     const { setShowMainPlayer, currentSong, play, isPlaying } = useContext(PlayerContext)
+    const [isWakedUp, setIsWakedUp] = useState(false)
 
     function playBtnHandler() {
         setShowMainPlayer(true)
@@ -19,9 +20,10 @@ function Home() {
     useEffect(() => {
 
         // This call to the back-end servers is only to wake-up the sleeping heroku server as soon as possible
-        if (process.env.REACT_APP_BASE_URL === 'https://dropit-api.herokuapp.com/') {
+        if (process.env.REACT_APP_BASE_URL === 'https://dropit-api.herokuapp.com/' && !isWakedUp) {
             wakeUp()
             async function wakeUp() {
+                setIsWakedUp(true)
                 try {
                     await axiosConfig.get('/api/home/wake-up')
                 } catch (error) {
