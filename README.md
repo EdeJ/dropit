@@ -1,5 +1,5 @@
 # Dropit
 
- ![dropit animated gif](/src/assets/images/dropit-animated.gif)
+Live example: https://dropit.netlify.app/
 
-
+![dropit animated gif](/src/assets/images/dropit-animated.gif)
